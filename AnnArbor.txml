@@ -279,7 +279,7 @@
       <TYPE>H</TYPE>
       <INACTIVE>0</INACTIVE>
       <LENGTH>0</LENGTH>
-      <DEFAULT_TEXT>Black Hills Tele-ID Information</DEFAULT_TEXT>
+      <DEFAULT_TEXT>Ann Arbor Tele-ID Information</DEFAULT_TEXT>
       <DEFAULT_INDEX>0</DEFAULT_INDEX>
       <REQUIRED>0</REQUIRED>
       <SEPARATE_LINES>0</SEPARATE_LINES>
@@ -446,7 +446,7 @@
       <TYPE>H</TYPE>
       <INACTIVE>0</INACTIVE>
       <LENGTH>0</LENGTH>
-      <DEFAULT_TEXT>Black Hills VAHCS Antibiotic Sensitivities</DEFAULT_TEXT>
+      <DEFAULT_TEXT>Ann Arbor VAHCS Antibiotic Sensitivities</DEFAULT_TEXT>
       <DEFAULT_INDEX>0</DEFAULT_INDEX>
       <REQUIRED>0</REQUIRED>
       <SEPARATE_LINES>1</SEPARATE_LINES>
