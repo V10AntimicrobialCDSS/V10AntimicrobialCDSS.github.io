@@ -30,6 +30,12 @@ const URLS = [
   '/AnnArborOMJSON.json',
   '/AnnArborODJSON.json',
 
+
+  '/BattleCreek.txml',
+  '/BattleCreekCDSS.html',
+  '/BattleCreekOMJSON.json',
+  '/BattleCreekODJSON.json',
+
   '/ChillicotheCDSS.html',
   '/ChillicotheItemLinks.json',
   '/ChillicotheOMJSON.json',
