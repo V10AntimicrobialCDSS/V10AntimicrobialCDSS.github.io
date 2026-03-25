@@ -1,7 +1,7 @@
 {
-  "name": "Antimicrobial CDSS",
+  "name": "V10 Antimicrobial CDSS",
   "short_name": "CDSS",
-  "description": "Antimicrobial CDSS App",
+  "description": "V10 Antimicrobial CDSS App",
   "scope": "/",
   "start_url": "/index.html",
   "background_color": "#ffffff",

@@ -13,7 +13,7 @@
       <p>{FLD:ABX CBOC INFO WI}</p>
       <p>{FLD:ABX CDC ADULT IMMMUNIZATION SCHEDULE LIST}</p>
       <p>{FLD:ABX ADULT IMMUNIZATION SCHEDULE, FULL VERSION}</p>
-      <p>{FLD:ABX EMAIL VISN23 ANTIMICROBIAL CDSS}</p>
+      <p>{FLD:ABX EMAIL VISN10 ANTIMICROBIAL CDSS}</p>
       <p>{FLD:ABX CDSS STAFF EMAIL VERBAGE}</p>
       <p>{FLD:ABX MINNEAPOLIS ON-CALL SCHEDULE}</p>
       <p>{FLD:ABX CDSS STAFF EMAIL ADDITIONAL VERBAGE}</p>
@@ -229,7 +229,7 @@
       <INCREMENT>0</INCREMENT>
       <URL>https://www.cdc.gov/vaccines/schedules/downloads/adult/adult-combined-schedule.pdf</URL>
     </FIELD>
-    <FIELD NAME="ABX EMAIL VISN23 ANTIMICROBIAL CDSS">
+    <FIELD NAME="ABX EMAIL VISN10 ANTIMICROBIAL CDSS">
       <TYPE>H</TYPE>
       <INACTIVE>0</INACTIVE>
       <LENGTH>0</LENGTH>
@@ -243,7 +243,7 @@
       <MIN_VALUE>0</MIN_VALUE>
       <MAX_VALUE>0</MAX_VALUE>
       <INCREMENT>0</INCREMENT>
-      <URL>https://outlook.office.com/owa/?path=/mail/action/compose&amp;to=[VISN23AntimicrobialCDSS@va.gov]?subject=Antimicrobial CDSS</URL>
+      <URL>https://outlook.office.com/owa/?path=/mail/action/compose&amp;to=[V10AntimicrobialCDSS@va.gov]?subject=Antimicrobial CDSS</URL>
     </FIELD>
     <FIELD NAME="ABX CDSS STAFF EMAIL VERBAGE">
       <TYPE>T</TYPE>
@@ -263,7 +263,7 @@
         <p>box and then </p>
         <p>*WAIT* for Outlook Email to open in </p>
         <p>browser.</p>
-        <p>Email: VISN23AntimicrobialCDSS@va.gov</p>
+        <p>Email: V10AntimicrobialCDSS@va.gov</p>
         <p></p>
         <p>CDSS Staff (call or Skype for immediate </p>
         <p>assistance):</p>
