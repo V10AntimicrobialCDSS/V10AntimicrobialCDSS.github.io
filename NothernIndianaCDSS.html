@@ -10,9 +10,9 @@
   gtag('config', 'G-RZT6D0E0DS');
   </script>
   <script>
-  var CDSSlocation = 'Indianapolis'; /*Only important to CDSS program functions, can be left as it for other systems*/
-  var Title = 'Indianapolis Antimicrobial CDSS'; /*Name of the tab on the website*/
-  var MainMenuButton = 'Indianapolis Home'; /*Main menu button name*/
+  var CDSSlocation = 'NothernIndiana'; /*Only important to CDSS program functions, can be left as it for other systems*/
+  var Title = 'NothernIndiana Antimicrobial CDSS'; /*Name of the tab on the website*/
+  var MainMenuButton = 'NothernIndiana Home'; /*Main menu button name*/
   const MainMenu = 'ORZID2 GMENU ABX INPT MAIN'; /*the menu the website starts at*/
   const outptMenu = 'ORZID3 GMENU ABX OUTPT MAIN'; /*the menu the website starts at*/
   const erucMenu = 'ORZID GMENU ER/UC EMERGENCY DEPARTMENT MAIN MENU'; /*the menu the website starts at*/	  
@@ -20,9 +20,9 @@
   var homeButtonUrl = 'https://v10antimicrobialcdss.github.io/'; /*Only important to CDSS program functions, home URL*/
   const Index = 'ORZID2 GMENU ABX INDEX INPATIENT';/*Only important to CDSS program functions, can be left as it for other systems*/
   const outptIndex = 'ORZID3 GMENU ABX INDEX OUTPATIENT';/*Only important to CDSS program functions, can be left as it for other systems*/
-  const OMjson = 'IndianapolisOMJSON.json'; /*Name of OMJSON file*/
-  const ODjson = 'IndianapolisODJSON.json'; /*Name of ODJSOM file*/
-  const txmlFile = 'Indianapolis.txml'; /*Name of txml file*/
+  const OMjson = 'NothernIndianaOMJSON.json'; /*Name of OMJSON file*/
+  const ODjson = 'NothernIndianaODJSON.json'; /*Name of ODJSOM file*/
+  const txmlFile = 'NothernIndiana.txml'; /*Name of txml file*/
   const AbxLinkjson = 'AbxLinks.json'; /*Name of AbxLinks file*/
   const SearchMenuPrefix = 'ORZID2'; /*Order menu prefix to be used in search bar*/
   const MenuPrefix = 'ORZID'; /*Order menu prefix*/
@@ -357,7 +357,7 @@
       <button id="fargoButton" class="button">Fargo</button>
       <button id="minneapolisButton" class="button">Minneapolis</button>
       <button id="omahaButton" class="button">Omaha</button>
-      <button id="stCloudButton" class="button">Indianapolis</button>
+      <button id="stCloudButton" class="button">NothernIndiana</button>
       <button id="siouxFallsButton" class="button">Sioux Falls</button>
     </div>
     <div class="picture-container">
@@ -479,7 +479,7 @@ if (CDSSlocation === 'Minneapolis') {
 if (CDSSlocation === 'Omaha') {
   {document.getElementById("omahaButton").style.display="none";};
 }  
-if (CDSSlocation === 'Indianapolis') {
+if (CDSSlocation === 'NothernIndiana') {
   {document.getElementById("stCloudButton").style.display="none";};
 }
 if (CDSSlocation === 'Sioux Falls') {
