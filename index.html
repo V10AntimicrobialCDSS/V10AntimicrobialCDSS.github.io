@@ -7,7 +7,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-RZT6D0E0DS');
 </script>
     <meta charset="UTF-8">
@@ -17,11 +16,6 @@
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="icon" href="CDSSLogo.png" type="image/x-icon">
     <style>
-        /*ColorScheme:#d11141	(209,17,65)
-#00b159	(0,177,89)
-#00aedb	(0,174,219)
-#f37735	(243,119,53)
-#ffc425*/
         @font-face {
           font-family: 'PT Serif Bold';
           src: url('Fonts/Montserrat-Bold.eot');
@@ -54,6 +48,8 @@
           font-weight: normal;
           font-style: normal;
         }
+
+        /* ── CENTERING: body becomes a flex column aligned to center ── */
         body {
             font-family: 'PT Serif Regular', Arial, sans-serif;
             font-size: 16px;
@@ -61,26 +57,36 @@
             padding: 0;
             display: flex;
             flex-direction: column;
+            align-items: center;  /* horizontally centers all direct children */
         }
+
         .textContainer {
             margin-top: 0px;
+            width: 100%;
             max-width: 800px;
             padding-left: 10px;
+            box-sizing: border-box;
         }
         .bold-text {
             font-family: 'PT Serif Bold', Arial, sans-serif;
             font-weight: bold;
         }
+
+        /* ── BLUE BUTTONS: changed to a softer, more pleasant blue ── */
         .button {
             white-space: nowrap;
             flex: 1;
-            background-color: #00aedb;
+            background-color: #4A90D9;  /* was #00aedb */
             color: white;
             padding: 10px 20px;
             border: none;
             cursor: pointer;
             text-align: center;
         }
+        .button:hover {
+            background-color: #357ABD;  /* slightly darker on hover for feedback */
+        }
+
         .special-button {
             white-space: nowrap;
             flex: 1;
@@ -95,7 +101,7 @@
             font-size: 16px;
             white-space: nowrap;
             flex: 1;
-            background-color: #f37735; /* This is the color green */
+            background-color: #f37735;
             color: white;
             padding: 10px 20px;
             border: none;
@@ -114,21 +120,23 @@
             flex-direction: column;
             gap: 5px;
             margin: 10px;
+            width: 100%;
             max-width: 800px;
+            box-sizing: border-box;
         }
         .top-image,
         .bottom-image {
             margin-top: 20px;
             margin-left: 10px;
-            float: left;
-            clear: left;
+            width: 100%;
+            max-width: 800px;
         }
         #CDSSLogo,
         #VASeal {
-            width:100%;
-            max-width: 400px; /* Set the maximum width for the image */
+            width: 100%;
+            max-width: 400px;
             height: auto;
-            float: left; /* Float the image to the right */
+            display: block;  /* removes inline spacing */
         }
     </style>
 </head>
@@ -147,7 +155,7 @@
     <div class="button-container">
         <p><span class="bold-text">Continue by selecting version below:</span></p>
         <div class="green-button-row">
-        <button id="install-button" class="appinstall-button" style="display: none;">Install App</button>
+            <button id="install-button" class="appinstall-button" style="display: none;">Install App</button>
         </div>
         <div class="orange-button-row">
             <a style="text-decoration:none" class="special-button" href="AnnArborCDSS.html">Ann Arbor</a>
@@ -170,61 +178,9 @@
             <a style="text-decoration:none" class="button" href="NorthernIndianaCDSS.html">Northern Indiana</a>
             <a style="text-decoration:none" class="button" href="SaginawCDSS.html">Saginaw</a>
         </div>
-         <div class="blankSpace"></div>
+        <div class="blankSpace"></div>
         <div class="blue-button-row">
             <a style="text-decoration:none" class="special-button" href="ColumbusCDSS.html">Columbus</a>
         </div>
     </div>
-    <div class="bottom-image">
-        <img src="VASeal.jpg" alt="VA Seal" id="VASeal">
-    </div>
-    <div class="textContainer">
-    <p>Contact the Antimicrobial CDSS Team: 
-     <a href="https://outlook.office.com/mail/deeplink/compose?to=%5BV10AntimicrobialCDSS@va.gov%5D">V10AntimicrobialCDSS@va.gov</a> 
-    </p>
-    </div>
-    <script>
-        // Your existing PWA registration code
-
-        if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.register('/service-worker.js', {
-            scope: '/'
-          });
-        }
-
-        // Add an event listener to trigger the installation prompt
-        let deferredInstallPrompt;
-
-        window.addEventListener('beforeinstallprompt', (event) => {
-            // Store the event to use it later when you want to show the install prompt.
-            deferredInstallPrompt = event;
-
-            // Show the install button
-            const installButton = document.getElementById('install-button');
-            installButton.style.display = 'block';
-        });
-
-        // Your existing click event listener for the install button
-        const installButton = document.getElementById('install-button');
-
-        installButton.addEventListener('click', () => {
-            if (deferredInstallPrompt) {
-                // Show the installation prompt to the user
-                deferredInstallPrompt.prompt();
-
-                // Wait for the user's choice
-                deferredInstallPrompt.userChoice.then((choiceResult) => {
-                    if (choiceResult.outcome === 'accepted') {
-                        console.log('User accepted the installation');
-                    } else {
-                        console.log('User dismissed the installation');
-                    }
-
-                    // Reset the deferred event
-                    deferredInstallPrompt = null;
-                });
-            }
-        });
-    </script>
-</body>
-</html>
+    <div
