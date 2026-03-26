@@ -49,7 +49,6 @@
           font-style: normal;
         }
 
-        /* ── CENTERING: body becomes a flex column aligned to center ── */
         body {
             font-family: 'Montserrat Regular', Arial, sans-serif;
             font-size: 16px;
@@ -57,7 +56,7 @@
             padding: 0;
             display: flex;
             flex-direction: column;
-            align-items: center;  /* horizontally centers all direct children */
+            align-items: center;
         }
 
         .textContainer {
@@ -72,11 +71,10 @@
             font-weight: bold;
         }
 
-        /* ── BLUE BUTTONS: changed to a softer, more pleasant blue ── */
         .button {
             white-space: nowrap;
             flex: 1;
-            background-color: #4A90D9;  /* was #00aedb */
+            background-color: #4A90D9;
             color: white;
             padding: 10px 20px;
             border: none;
@@ -84,7 +82,7 @@
             text-align: center;
         }
         .button:hover {
-            background-color: #357ABD;  /* slightly darker on hover for feedback */
+            background-color: #357ABD;
         }
 
         .special-button {
@@ -124,10 +122,9 @@
             max-width: 800px;
             box-sizing: border-box;
         }
-        /*.top-image,
+        .top-image,
         .bottom-image {
             margin-top: 20px;
-            margin-left: 10px;
             width: 100%;
             max-width: 800px;
         }
@@ -136,32 +133,81 @@
             width: 100%;
             max-width: 400px;
             height: auto;
-            display: block;  /* removes inline spacing */
+            display: block;
+            margin: 0 auto;
         }
-        */
 
-
-
-.top-image,
-.bottom-image {
-    margin-top: 20px;
-    width: 100%;
-    max-width: 800px;
-}
-
-#CDSSLogo,
-#VASeal {
-    width: 100%;
-    max-width: 400px;
-    height: auto;
-    display: block;
-    margin: 0 auto;  /* centers the image horizontally */
-}
-
+        /* ── DISCLAIMER MODAL ── */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal-box {
+            background: white;
+            max-width: 700px;
+            width: 90%;
+            padding: 30px;
+            border-radius: 6px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+        .modal-box h2 {
+            margin-top: 0;
+            font-family: 'Montserrat Bold', Arial, sans-serif;
+        }
+        .modal-acknowledge {
+            margin-top: 20px;
+            background-color: #4A90D9;
+            color: white;
+            padding: 10px 30px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .modal-acknowledge:hover {
+            background-color: #357ABD;
+        }
 
     </style>
 </head>
 <body>
+
+    <!-- ── DISCLAIMER MODAL (shown once per session) ── -->
+    <div class="modal-overlay" id="disclaimerModal">
+        <div class="modal-box">
+            <h2>DISCLAIMER</h2>
+            <p>This tool is intended for use by trainees and health-care professionals within Veteran's Integrated 
+                Services Networks (VISN10) as a reference to guide treatment of infectious diseases in conjunction with 
+                the Computerized Patient Record System (CPRS). The developers of this guide make no guarantees on 
+                the accuracy or completeness of contained information, its use in health-care systems apart from 
+                VISN10 health care systems, and its appropriateness in patient-specific circumstances. The developers 
+                are not liable for any claims or losses arising from the use or misuse of this guide, its contents, and any 
+                omissions from its contents or otherwise. This guide may not contain all relevant or required 
+                information and should not be used as the sole resource for patient care or prescribing decisions. 
+                Updates to this guide are released periodically, and it is up to the user to ensure use of the most up-to-
+                date version. Certain links and documents contained within the guide are accessible only when logged 
+                into the VISN10 intranet. Local health-care system guidance takes precedence over any information 
+                contained within this guide.</p>
+            <p>Questions, comments, or concerns, please contact the Antimicrobial CDSS Team: 
+                <a href="https://outlook.office.com/mail/deeplink/compose?to=%5BV10AntimicrobialCDSS@va.gov%5D">V10AntimicrobialCDSS@va.gov</a>
+            </p>
+            <button class="modal-acknowledge" id="acknowledgeBtn">I Acknowledge</button>
+        </div>
+    </div>
+
     <div class="top-image">
         <img src="CDSSLogo.png" alt="CDSS Logo" id="CDSSLogo" title="CDSS Logo">
     </div>
@@ -204,7 +250,7 @@
             <a style="text-decoration:none" class="special-button" href="ColumbusCDSS.html" title="Columbus">Columbus</a>
         </div>
     </div>
-     <div class="bottom-image">
+    <div class="bottom-image">
         <img src="VASeal.jpg" alt="VA Seal" id="VASeal" title="VA Seal">
     </div>
     <div class="textContainer">
@@ -212,11 +258,26 @@
          <a href="https://outlook.office.com/mail/deeplink/compose?to=%5BV10AntimicrobialCDSS@va.gov%5D">V10AntimicrobialCDSS@va.gov</a> 
         </p>
     </div>
+
     <script>
         if ('serviceWorker' in navigator) {
           navigator.serviceWorker.register('/service-worker.js', { scope: '/' });
         }
 
+        // ── DISCLAIMER MODAL LOGIC ──
+        const modal = document.getElementById('disclaimerModal');
+        const acknowledgeBtn = document.getElementById('acknowledgeBtn');
+
+        if (!sessionStorage.getItem('disclaimerAcknowledged')) {
+            modal.classList.add('active');  // show modal if not yet seen this session
+        }
+
+        acknowledgeBtn.addEventListener('click', () => {
+            sessionStorage.setItem('disclaimerAcknowledged', 'true');
+            modal.classList.remove('active');
+        });
+
+        // ── PWA INSTALL LOGIC ──
         let deferredInstallPrompt;
 
         window.addEventListener('beforeinstallprompt', (event) => {
@@ -243,3 +304,4 @@
     </script>
 </body>
 </html>
+
