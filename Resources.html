@@ -118,14 +118,36 @@ body {
             height: auto;
             float: left; /* Float the image to the right */
         }
+        .home-icon {
+    position: fixed;
+    top: 10px;
+    right: 15px;
+    z-index: 999;
+    text-decoration: none;
+    color: #002A66;
+    font-size: 32px;
+    line-height: 1;
+}
+.home-icon:hover {
+    color: #001a47;
+}
     </style>
 </head>
 <body>
+
+<a href="index.html" class="home-icon" title="Home">
+    <img src="Home.png" alt="Home" style="width: 65px; height: auto; border: none;">
+</a>
     <div class="top-image">
         <img src="CDSSLogo.png" alt="CDSS Logo" id="CDSSLogo">
     </div>
     <div class="textContainer">
-        <p><a href="index.html">Return to home page</a></p>
+
+<!--<div class="top-image">
+    <a href="index.html">
+        <img src="Home.png" alt="Home" id="Home" title="Home" style="width: 100%; max-width: 50px; height: auto; border:none">
+    </a>
+</div>-->
         <p><span class="bold-text">Additional VA Resoures</span> *Links below may require VA Intranet login to access</p>
         <p></p>
           <p><a href="https://web.sanfordguide.com/">Sanford Guide</a> | <a href="https://www.uptodate.com/contents/search">UpToDate</a> | <a href="https://www.clinicalkey.com/#!/">Clincal Key</a> | <a href="https://www.clinicalkey.com/#!/browse/book/3-s2.0-C2016100010X">Mandells</a></p>
