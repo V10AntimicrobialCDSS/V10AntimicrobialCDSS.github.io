@@ -152,31 +152,35 @@
             display: flex;
         }
         .modal-box {
-            background: white;
-            max-width: 700px;
-            width: 90%;
-            padding: 30px;
-            border-radius: 6px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            max-height: 85vh;
-            overflow-y: auto;
-        }
-        .modal-box h2 {
-            margin-top: 0;
-            font-family: 'Montserrat Bold', Arial, sans-serif;
-        }
-        .modal-acknowledge {
-            margin-top: 20px;
-            background-color: #4A90D9;
-            color: white;
-            padding: 10px 30px;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
+    background: white;
+    max-width: 700px;
+    width: 90%;
+    padding: 30px;
+    border-radius: 6px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    max-height: 85vh;
+    overflow-y: auto;
+    font-family: 'Montserrat Regular', Arial, sans-serif;  /* ADD THIS */
+}
+.modal-box h2 {
+    margin-top: 0;
+    font-family: 'Montserrat Bold', Arial, sans-serif;
+    text-align: center;  /* ADD THIS */
+}
+.modal-box .modal-acknowledge {
+    margin-top: 20px;
+    background-color: #4A90D9;
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Montserrat Regular', Arial, sans-serif;  /* ADD THIS */
+}
+
         .modal-acknowledge:hover {
             background-color: #357ABD;
         }
@@ -201,9 +205,10 @@
                 date version. Certain links and documents contained within the guide are accessible only when logged 
                 into the VISN10 intranet. Local health-care system guidance takes precedence over any information 
                 contained within this guide.</p>
-            <p>Questions, comments, or concerns, please contact the Antimicrobial CDSS Team: 
-                <a href="https://outlook.office.com/mail/deeplink/compose?to=%5BV10AntimicrobialCDSS@va.gov%5D">V10AntimicrobialCDSS@va.gov</a>
-            </p>
+
+<p style="text-align: center;">Questions, comments, or concerns, please contact the Antimicrobial CDSS Team: 
+    <a href="https://outlook.office.com/mail/deeplink/compose?to=%5BV10AntimicrobialCDSS@va.gov%5D">V10AntimicrobialCDSS@va.gov</a>
+</p>
             <button class="modal-acknowledge" id="acknowledgeBtn">I Acknowledge</button>
         </div>
     </div>
