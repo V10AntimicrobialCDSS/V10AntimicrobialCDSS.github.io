@@ -183,4 +183,42 @@
             <a style="text-decoration:none" class="special-button" href="ColumbusCDSS.html">Columbus</a>
         </div>
     </div>
-    <div
+     <div class="bottom-image">
+        <img src="VASeal.jpg" alt="VA Seal" id="VASeal">
+    </div>
+    <div class="textContainer">
+        <p>Contact the Antimicrobial CDSS Team: 
+         <a href="https://outlook.office.com/mail/deeplink/compose?to=%5BV10AntimicrobialCDSS@va.gov%5D">V10AntimicrobialCDSS@va.gov</a> 
+        </p>
+    </div>
+    <script>
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('/service-worker.js', { scope: '/' });
+        }
+
+        let deferredInstallPrompt;
+
+        window.addEventListener('beforeinstallprompt', (event) => {
+            deferredInstallPrompt = event;
+            const installButton = document.getElementById('install-button');
+            installButton.style.display = 'block';
+        });
+
+        const installButton = document.getElementById('install-button');
+
+        installButton.addEventListener('click', () => {
+            if (deferredInstallPrompt) {
+                deferredInstallPrompt.prompt();
+                deferredInstallPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the installation');
+                    } else {
+                        console.log('User dismissed the installation');
+                    }
+                    deferredInstallPrompt = null;
+                });
+            }
+        });
+    </script>
+</body>
+</html>
