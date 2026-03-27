@@ -288,27 +288,6 @@
   color: white;
   padding: 5px 5px;
 }
-
-#homeButton:hover {
-    background-color: #0D323D; /* matches header background */
-    transform: scale(1.3);     /* slightly enlarges the icon */
-    filter: brightness(1.6);   /* makes it glow brighter */
-}
-
-
-/* Add a darker shade of blue on hover */
-#goBackButton:hover,
-#mainMenuButton:hover,
-#indexButton:hover,
-#goForwardButton:hover,
-#install-button:hover,
-#homeButton:hover,
-#inptButton:hover,
-#outptButton:hover,
-#erucButton:hover 
-{
-  background-color: #4db8ff; /* lighter shade of blue */
-}
   #filterDropdown {
     font-family: 'Montserrat Regular', Arial, sans-serif;
     margin-right: 20px;
@@ -337,7 +316,25 @@
     border: none;
     cursor: pointer;
     margin-left: auto;
-    transition: transform 0.2s ease, filter 0.2s ease; /* smooth animation */
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+#homeButton:hover {
+    background-color: #0D323D;
+    transform: scale(1.3);
+    filter: brightness(1.6);
+}
+
+/* Add a darker shade of blue on hover */
+#goBackButton:hover,
+#mainMenuButton:hover,
+#indexButton:hover,
+#goForwardButton:hover,
+#install-button:hover,
+#inptButton:hover,
+#outptButton:hover,
+#erucButton:hover {
+    background-color: #4db8ff;
 }
 
   </style>
