@@ -434,9 +434,6 @@
 </head>
 <body>
 
-<!-- Hamburger button in header -->
-<button id="drawerToggle">&#9776;</button>
-
 <!-- Overlay (darkens background when drawer is open) -->
 <div id="drawerOverlay" onclick="closeDrawer()"></div>
 
@@ -478,7 +475,7 @@
 
 
 	<div id="header">
-		<div class="buttons-container">
+		    <div class="buttons-container">
         <button id="drawerToggle">&#9776;</button>
   		  <button id="goBackButton">&#9664;</button>
       	<button id="mainMenuButton">Ann Arbor Home</button>
@@ -1987,17 +1984,19 @@ window.onload = function() {
 
 
 <script>
-  function openDrawer() {
-    document.getElementById('drawer').classList.add('open');
-    document.getElementById('drawerOverlay').classList.add('open');
-  }
+  document.addEventListener('DOMContentLoaded', function() {
+    
+    document.getElementById('drawerToggle').addEventListener('click', function() {
+      document.getElementById('drawer').classList.add('open');
+      document.getElementById('drawerOverlay').classList.add('open');
+    });
+
+  });
 
   function closeDrawer() {
     document.getElementById('drawer').classList.remove('open');
     document.getElementById('drawerOverlay').classList.remove('open');
   }
-
-  document.getElementById('drawerToggle').addEventListener('click', openDrawer);
 </script>
 
 </body>
