@@ -450,6 +450,19 @@
 }
 
 
+#mainContent {
+  margin-left: 260px;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+@media (max-width: 1024px) {
+  #mainContent {
+    margin-left: 0;
+  }
+}
+
+
 
   #closeDrawer {
     display: block;
@@ -560,56 +573,58 @@ body {
 
 
 	<div id="header">
-		    <div class="buttons-container">
-        <button id="drawerToggle">&#9776;</button>
-  		  <button id="goBackButton">&#9664;</button>
-      	<button id="mainMenuButton">Ann Arbor Home</button>
-      	<button id="indexButton">Index</button>
-      	<button id="goForwardButton">&#9654;</button>
-      	<button id="install-button" style="display: none";>Install App</button>
-<button id="homeButton" onclick="window.location.href='index.html'">
-    <i class="fa-solid fa-house" style="font-size: 15px; color: #D3D3D3;"></i>
-</button>
-      	<!--<button id="homeButton">&#9650;-->
-		</button>
-	</div>
-	<div class="buttons-container2">
-    	<button id="inptButton">Inpatient</button>
-    	<button id="outptButton">Outpatient</button>
-    	<button id="erucButton">ER/UC</button>
-  	</div>	
-    <div class="search-container">
-      <input type="text" id="searchInput" placeholder="&#x1F50D;">
-      <div class="dropbox-container">
-        <select id="filterDropdown"></select>
-      </div>
+  <div class="buttons-container">
+    <button id="drawerToggle">&#9776;</button>
+    <button id="goBackButton">&#9664;</button>
+    <button id="mainMenuButton">Ann Arbor Home</button>
+    <button id="indexButton">Index</button>
+    <button id="goForwardButton">&#9654;</button>
+    <button id="install-button" style="display: none;">Install App</button>
+    <button id="homeButton" onclick="window.location.href='index.html'">
+      <i class="fa-solid fa-house" style="font-size: 15px; color: #D3D3D3;"></i>
+    </button>
+  </div>
+  <div class="buttons-container2">
+    <button id="inptButton">Inpatient</button>
+    <button id="outptButton">Outpatient</button>
+    <button id="erucButton">ER/UC</button>
+  </div>
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="&#x1F50D;">
+    <div class="dropbox-container">
+      <select id="filterDropdown"></select>
     </div>
+  </div>
 </div>
- <table class="table">
-  <div id="resultContainer"></div>
-</table>
-    <div class="buttons-containerVersions">
-      <button id="ChillicotheButton" class="button">Chillicothe</button>
-      <button id="AnnArborButton" class="button">Ann Arbor</button>
-      <button id="CincinnatiButton" class="button">Cincinnati</button>
-      <button id="ClevelandButton" class="button">Cleveland</button>
-      <button id="DaytonButton" class="button">Dayton</button>
-      <button id="IndianapolisButton" class="button">Indianapolis</button>
-      <button id="DetroitButton" class="button">Detroit</button>
-      <button id="BattleCreekButton" class="button">Battle Creek</button>
-      <button id="SaginawButton" class="button">Saginaw</button>
-      <button id="NorthernIndianaButton" class="button">Northern Indiana</button>
-    </div>
-    <div class="picture-container">
-      <img src="CDSSLogo.png" alt="CDSS Logo" id="CDSSlogo" class="CDSSLogo">
-      <img src="VASeal.jpg" alt="VA Seal" id="VASeal" class="VASeal">
-    </div>
-    <div class="buttons-containerDownloads">
-      <a href="#" id="menusLink" class="button2">MenuData</a>
-      <a href="#" id="ordersLink" class="button2">OrderData</a>
-      <a href="#" id="templateFieldsLink" class="button2">TemplateFieldData</a>
-      <a href="#" id="downloadJSONButton" class="button2">CurrentMenuData</a>
-    </div>  
+
+<!-- Wrap everything below header in this div -->
+<div id="mainContent">
+  <table class="table">
+    <div id="resultContainer"></div>
+  </table>
+  <div class="buttons-containerVersions">
+    <button id="ChillicotheButton" class="button">Chillicothe</button>
+    <button id="AnnArborButton" class="button">Ann Arbor</button>
+    <button id="CincinnatiButton" class="button">Cincinnati</button>
+    <button id="ClevelandButton" class="button">Cleveland</button>
+    <button id="DaytonButton" class="button">Dayton</button>
+    <button id="IndianapolisButton" class="button">Indianapolis</button>
+    <button id="DetroitButton" class="button">Detroit</button>
+    <button id="BattleCreekButton" class="button">Battle Creek</button>
+    <button id="SaginawButton" class="button">Saginaw</button>
+    <button id="NorthernIndianaButton" class="button">Northern Indiana</button>
+  </div>
+  <div class="picture-container">
+    <img src="CDSSLogo.png" alt="CDSS Logo" id="CDSSlogo" class="CDSSLogo">
+    <img src="VASeal.jpg" alt="VA Seal" id="VASeal" class="VASeal">
+  </div>
+  <div class="buttons-containerDownloads">
+    <a href="#" id="menusLink" class="button2">MenuData</a>
+    <a href="#" id="ordersLink" class="button2">OrderData</a>
+    <a href="#" id="templateFieldsLink" class="button2">TemplateFieldData</a>
+    <a href="#" id="downloadJSONButton" class="button2">CurrentMenuData</a>
+  </div>
+</div>
     <span id="versionTag"></span>
 <script>
 function adjustFontSize() {
