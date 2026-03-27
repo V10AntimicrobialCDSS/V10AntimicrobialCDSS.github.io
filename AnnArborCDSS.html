@@ -166,23 +166,15 @@
       text-overflow: ellipsis;
     } /* Disable text wrapping within a cell */
     
-/* Header styles */
-#header {
-  position: sticky;
-  margin-top: 0;
-  top: 0;
-  /*background-color: #00aedb;*/
-  background-color: #0D323D;
-  z-index: 1;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  flex-direction: column;
-  /* Set a width to limit the header */
-  min-width: 900px;
-  width: 100%;
-  box-sizing: border-box; /* Include padding and borders in the width calculation */
+
+
+
+ #header {
+    margin-left: 260px;
+    width: calc(100% - 260px);
+  }
 }
+
 
 #footer {
   position: relative;
@@ -431,9 +423,8 @@
 /* Desktop — sidebar always visible */
 @media (min-width: 1025px) {
   body {
-    margin-left: 260px;
+    margin-left: 260px; /* must come AFTER base body rule */
   }
-}
 
 /* Tablet and mobile — sidebar collapsible */
 @media (max-width: 1024px) {
@@ -463,8 +454,8 @@
     margin-left: 0;
   }
 }
+/* Base body — no margins */
 body {
-  /*margin-left: 260px;*/
   margin: 0;
   padding: 0;
 }
