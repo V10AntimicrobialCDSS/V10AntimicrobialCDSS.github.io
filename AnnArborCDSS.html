@@ -37,7 +37,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title id="pageTitle"></title>
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="icon" href="DrawerCdss.png" type="image/x-icon">
+  <link rel="icon" href="CDSSLogo.png" type="image/x-icon">
   <style>
   /* Common styles */
   @font-face {
@@ -469,6 +469,28 @@ body {
   padding: 0;
 }
 
+
+
+.cdss-logo-text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+}
+
+.cdss-logo-label {
+  font-family: 'Montserrat Bold', Arial, sans-serif;
+  font-size: 28px;
+  color: white;
+  letter-spacing: 2px;
+}
+
+.cdss-logo-desc {
+  font-family: 'Montserrat Regular', Arial, sans-serif;
+  font-size: 11px;
+  color: white;
+  line-height: 1.4;
+}
 </style>
 
   <script src="https://kit.fontawesome.com/0f4bc037e4.js" crossorigin="anonymous"></script>
@@ -484,7 +506,14 @@ body {
 
   <!-- Logos -->
   <div class="drawer-logos">
-    <img src="DrawerCdss.png" class="CDSSLogo">
+<!--    <img src="CDSSLogo.png" class="CDSSLogo">-->
+
+<div class="cdss-logo-text">
+  <span class="cdss-logo-label">CDSS</span>
+  <span class="cdss-logo-desc">Antimicrobial Computer<br>Decision Support System <strong>V10</strong></span>
+</div>
+
+
     <img src="VASeal.png" class="VASeal">
   </div>
 
@@ -557,7 +586,7 @@ body {
       <button id="NorthernIndianaButton" class="button">Northern Indiana</button>
     </div>
     <div class="picture-container">
-      <img src="DrawerCdss.png" alt="CDSS Logo" id="CDSSlogo" class="CDSSLogo">
+      <img src="CDSSLogo.png" alt="CDSS Logo" id="CDSSlogo" class="CDSSLogo">
       <img src="VASeal.jpg" alt="VA Seal" id="VASeal" class="VASeal">
     </div>
     <div class="buttons-containerDownloads">
