@@ -289,6 +289,13 @@
   padding: 5px 5px;
 }
 
+#homeButton:hover {
+    background-color: #0D323D; /* matches header background */
+    transform: scale(1.3);     /* slightly enlarges the icon */
+    filter: brightness(1.6);   /* makes it glow brighter */
+}
+
+
 /* Add a darker shade of blue on hover */
 #goBackButton:hover,
 #mainMenuButton:hover,
@@ -329,9 +336,9 @@
     background: transparent;
     border: none;
     cursor: pointer;
-    margin-left: auto; /* pushes it to the far right */
+    margin-left: auto;
+    transition: transform 0.2s ease, filter 0.2s ease; /* smooth animation */
 }
-
 
   </style>
   <script src="https://kit.fontawesome.com/0f4bc037e4.js" crossorigin="anonymous"></script>
