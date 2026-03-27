@@ -473,8 +473,9 @@ body {
 
 .cdss-logo-text {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column; /* stacks vertically */
+  align-items: center;    /* centers both lines */
+  gap: 4px;
   padding: 8px 0;
 }
 
@@ -490,6 +491,7 @@ body {
   font-size: 11px;
   color: white;
   line-height: 1.4;
+  white-space: nowrap; /* prevents wrapping */
 }
 </style>
 
