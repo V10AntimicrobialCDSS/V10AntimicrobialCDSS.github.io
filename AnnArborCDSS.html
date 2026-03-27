@@ -168,13 +168,21 @@
     
 
 
-
- #header {
-    margin-left: 260px;
-    width: calc(100% - 260px);
-  }
+#header {
+  position: sticky;
+  margin-top: 0;
+  top: 0;
+  background-color: #0D323D;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  flex-direction: column;
+  min-width: 900px;
+  width: calc(100% - 260px); /* subtract drawer width on desktop */
+  margin-left: 260px;        /* push header right of drawer */
+  box-sizing: border-box;
 }
-
 
 #footer {
   position: relative;
@@ -426,11 +434,22 @@
     margin-left: 260px; /* must come AFTER base body rule */
   }
 
-/* Tablet and mobile — sidebar collapsible */
+/* Tablet and mobile — sidebar collapsible 
 @media (max-width: 1024px) {
   #drawerToggle {
     display: inline-block;
   }
+    */
+
+@media (max-width: 1024px) {
+  #header {
+    margin-left: 0;
+    width: 100%;
+    min-width: unset; /* allow full flexibility on mobile */
+  }
+}
+
+
 
   #closeDrawer {
     display: block;
