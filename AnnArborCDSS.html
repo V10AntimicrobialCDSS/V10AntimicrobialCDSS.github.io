@@ -473,10 +473,11 @@ body {
 
 .cdss-logo-text {
   display: flex;
-  flex-direction: column; /* stacks vertically */
-  align-items: center;    /* centers both lines */
+  flex-direction: column;
+  align-items: center;
   gap: 4px;
   padding: 8px 0;
+  width: 100%; /* ensures it spans the full sidebar width */
 }
 
 .cdss-logo-label {
@@ -484,6 +485,7 @@ body {
   font-size: 28px;
   color: white;
   letter-spacing: 2px;
+  text-align: center;
 }
 
 .cdss-logo-desc {
@@ -491,7 +493,8 @@ body {
   font-size: 11px;
   color: white;
   line-height: 1.4;
-  white-space: nowrap; /* prevents wrapping */
+  white-space: nowrap;
+  text-align: center; /* add this */
 }
 </style>
 
