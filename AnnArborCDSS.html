@@ -325,7 +325,13 @@
   .blankSpace {
    padding: 20px 30px; 
 }
+#homeButton {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
 	<div id="header">
@@ -335,8 +341,8 @@
       	<button id="indexButton">Index</button>
       	<button id="goForwardButton">&#9654;</button>
       	<button id="install-button" style="display: none";>Install App</button>
-        <button id="homeButton" onclick="window.location.href='index.html'">
-    <img src="Home.png" alt="Home" style="width: 30px; height: auto; vertical-align: middle;">
+<button id="homeButton" onclick="window.location.href='index.html'">
+    <i class="fa-regular fa-house" style="font-size: 30px; color: #D3D3D3;"></i>
 </button>
       	<!--<button id="homeButton">&#9650;-->
 		</button>
