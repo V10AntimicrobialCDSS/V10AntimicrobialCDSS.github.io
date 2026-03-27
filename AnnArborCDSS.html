@@ -341,13 +341,146 @@
     filter: brightness(0.5);*/
 }
 
-  </style>
+
+
+#drawerToggle {
+  font-size: 22px;
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+#drawerToggle:hover {
+  background-color: #4db8ff;
+}
+
+#drawer {
+  position: fixed;
+  top: 0;
+  left: -280px; /* hidden off screen */
+  width: 260px;
+  height: 100%;
+  background-color: #0D323D;
+  z-index: 1000;
+  transition: left 0.3s ease;
+  padding: 20px 15px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+#drawer.open {
+  left: 0; /* slides in */
+}
+
+#drawerOverlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 999;
+}
+
+#drawerOverlay.open {
+  display: block;
+}
+
+#closeDrawer {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  float: right;
+  margin-bottom: 20px;
+}
+
+.drawer-section-title {
+  color: #4db8ff;
+  font-family: 'Montserrat Bold', Arial, sans-serif;
+  font-size: 12px;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.drawer-logos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.drawer-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.drawer-buttons .button {
+  width: 100%;
+  text-align: left;
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+</style>
+
   <script src="https://kit.fontawesome.com/0f4bc037e4.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
+<!-- Hamburger button in header -->
+<button id="drawerToggle">&#9776;</button>
+
+<!-- Overlay (darkens background when drawer is open) -->
+<div id="drawerOverlay" onclick="closeDrawer()"></div>
+
+<!-- Sidebar Drawer -->
+<div id="drawer">
+  <button id="closeDrawer" onclick="closeDrawer()">&#10005;</button>
+
+  <!-- Logos -->
+  <div class="drawer-logos">
+    <img src="CDSSLogo.png" class="CDSSLogo">
+    <img src="VASeal.png" class="VASeal">
+  </div>
+
+  <!-- Location Buttons -->
+  <div class="drawer-section-title">Locations</div>
+  <div class="drawer-buttons">
+    <button class="button">Chillicothe</button>
+    <button class="button">Cincinnati</button>
+    <button class="button">Cleveland</button>
+    <button class="button">Dayton</button>
+    <button class="button">Indianapolis</button>
+    <button class="button">Detroit</button>
+    <button class="button">Battle Creek</button>
+    <button class="button">Saginaw</button>
+    <button class="button">Northern Indiana</button>
+  </div>
+
+  <!-- Data Buttons -->
+  <div class="drawer-section-title">Data Tools</div>
+  <div class="drawer-buttons">
+    <button class="button">MenuData</button>
+    <button class="button">OrderData</button>
+    <button class="button">TemplateFieldData</button>
+    <button class="button">CurrentMenuData</button>
+  </div>
+</div>
+
+
+
+
 	<div id="header">
 		<div class="buttons-container">
-  		<button id="goBackButton">&#9664;</button>
+        <button id="drawerToggle">&#9776;</button>
+  		  <button id="goBackButton">&#9664;</button>
       	<button id="mainMenuButton">Ann Arbor Home</button>
       	<button id="indexButton">Index</button>
       	<button id="goForwardButton">&#9654;</button>
@@ -1851,5 +1984,21 @@ window.onload = function() {
 };
 	
 </script>
+
+
+<script>
+  function openDrawer() {
+    document.getElementById('drawer').classList.add('open');
+    document.getElementById('drawerOverlay').classList.add('open');
+  }
+
+  function closeDrawer() {
+    document.getElementById('drawer').classList.remove('open');
+    document.getElementById('drawerOverlay').classList.remove('open');
+  }
+
+  document.getElementById('drawerToggle').addEventListener('click', openDrawer);
+</script>
+
 </body>
 </html>
