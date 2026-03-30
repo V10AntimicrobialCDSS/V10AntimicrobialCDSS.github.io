@@ -1879,6 +1879,25 @@ function handleInpt() {
   adjustFontSize();
   checkMatchesAndSetButtonAppearance()
 }
+// Function to handle file downloads
+async function downloadFile(filename) {
+  try {
+    const response = await fetch(filename);
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    const element = document.createElement('a');
+    element.setAttribute('href', url);
+    element.setAttribute('download', filename);
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+    window.URL.revokeObjectURL(url);
+  } catch (error) {
+    console.error(`Error downloading ${filename}:`, error);
+  }
+}
+
 // Function to handle the Download JSON button click event
   function handleDownloadJSON() {
     const displayText = selectedData.DisplayText || selectedData.Name;
@@ -1946,16 +1965,23 @@ document.getElementById('searchInput').addEventListener('input', openDropdown);
 document.getElementById('homeButton').addEventListener('click', function() {
     window.location.href = homeButtonUrl;
 });
-  document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('menusLink').setAttribute('href', OMjson);
-      document.getElementById('menusLink').setAttribute('download', OMjson);
+// Attach download handlers to the data tool buttons
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('menusLink').addEventListener('click', (e) => {
+    e.preventDefault();
+    downloadFile(OMjson);
+  });
 
-      document.getElementById('ordersLink').setAttribute('href', ODjson);
-      document.getElementById('ordersLink').setAttribute('download', ODjson);
+  document.getElementById('ordersLink').addEventListener('click', (e) => {
+    e.preventDefault();
+    downloadFile(ODjson);
+  });
 
-      document.getElementById('templateFieldsLink').setAttribute('href', txmlFile);
-      document.getElementById('templateFieldsLink').setAttribute('download', txmlFile);
-    });
+  document.getElementById('templateFieldsLink').addEventListener('click', (e) => {
+    e.preventDefault();
+    downloadFile(txmlFile);
+  });
+});
   
 // Call the adjustFontSize function when the window is resized
 window.addEventListener('resize', adjustFontSize);
