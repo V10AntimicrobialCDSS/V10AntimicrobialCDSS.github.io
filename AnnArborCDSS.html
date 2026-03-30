@@ -616,9 +616,9 @@ body {
   <!-- Data Buttons -->
   <div class="drawer-section-title">Data Tools</div>
   <div class="drawer-buttons">
-    <a href="#" id="menusLink" class="button2">MenuData</a>
-    <a href="#" id="ordersLink" class="button2">OrderData</a>
-    <a href="#" id="templateFieldsLink" class="button2">TemplateFieldData</a>
+    <a href="AnnArborOMJSON.json" download id="menusLink" class="button2">MenuData</a>
+    <a href="AnnArborODJSON.json" download id="ordersLink" class="button2">OrderData</a>
+    <a href="AnnArbor.txml" download id="templateFieldsLink" class="button2">TemplateFieldData</a>
     <a href="#" id="downloadJSONButton" class="button2">CurrentMenuData</a>
   </div>
   
@@ -1879,17 +1879,6 @@ function handleInpt() {
   adjustFontSize();
   checkMatchesAndSetButtonAppearance()
 }
-// Function to handle file downloads
-function downloadFile(filename) {
-  const link = document.createElement('a');
-  link.href = filename;
-  link.download = filename;
-  link.style.display = 'none';
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-}
-
 // Function to handle the Download JSON button click event
   function handleDownloadJSON() {
     const displayText = selectedData.DisplayText || selectedData.Name;
@@ -1959,28 +1948,15 @@ document.getElementById('homeButton').addEventListener('click', function() {
 });
 // Attach download handlers to the data tool buttons
 document.addEventListener('DOMContentLoaded', () => {
-  const menusLink = document.getElementById('menusLink');
-  const ordersLink = document.getElementById('ordersLink');
-  const templateFieldsLink = document.getElementById('templateFieldsLink');
-
-  if (menusLink) {
-    menusLink.addEventListener('click', (e) => {
+  // MenuData, OrderData, and TemplateFieldData buttons work via href/download attributes
+  // No additional handler needed
+  
+  // Only CurrentMenuData needs special handling
+  const downloadJSONButton = document.getElementById('downloadJSONButton');
+  if (downloadJSONButton) {
+    downloadJSONButton.addEventListener('click', (e) => {
       e.preventDefault();
-      downloadFile(OMjson);
-    });
-  }
-
-  if (ordersLink) {
-    ordersLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      downloadFile(ODjson);
-    });
-  }
-
-  if (templateFieldsLink) {
-    templateFieldsLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      downloadFile(txmlFile);
+      handleDownloadJSON();
     });
   }
 });
