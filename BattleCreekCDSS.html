@@ -421,7 +421,8 @@
   gap: 6px;
 }
 
-.drawer-buttons .button {
+.drawer-buttons .button,
+.drawer-buttons .button2 {
   width: 100%;
   text-align: left;
   border-radius: 6px;
@@ -605,10 +606,10 @@ body {
   <!-- Data Buttons -->
   <div class="drawer-section-title">Data Tools</div>
   <div class="drawer-buttons">
-    <button class="button">MenuData</button>
-    <button class="button">OrderData</button>
-    <button class="button">TemplateFieldData</button>
-    <button class="button">CurrentMenuData</button>
+    <a href="#" id="menusLink" class="button2">MenuData</a>
+    <a href="#" id="ordersLink" class="button2">OrderData</a>
+    <a href="#" id="templateFieldsLink" class="button2">TemplateFieldData</a>
+    <a href="#" id="downloadJSONButton" class="button2">CurrentMenuData</a>
   </div>
 
 <!-- VA Seal at the bottom -->
@@ -663,12 +664,12 @@ body {
     <img src="CDSSLogo.png" alt="CDSS Logo" id="CDSSlogo" class="CDSSLogo">
     <img src="VASeal.jpg" alt="VA Seal" id="VASeal" class="VASeal">
   </div>
-  <div class="buttons-containerDownloads">
+  <!--<div class="buttons-containerDownloads">
     <a href="#" id="menusLink" class="button2">MenuData</a>
     <a href="#" id="ordersLink" class="button2">OrderData</a>
     <a href="#" id="templateFieldsLink" class="button2">TemplateFieldData</a>
     <a href="#" id="downloadJSONButton" class="button2">CurrentMenuData</a>
-  </div>
+  </div>-->
 </div>
     <span id="versionTag"></span>
 <script>
