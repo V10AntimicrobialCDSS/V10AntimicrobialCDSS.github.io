@@ -1880,22 +1880,14 @@ function handleInpt() {
   checkMatchesAndSetButtonAppearance()
 }
 // Function to handle file downloads
-async function downloadFile(filename) {
-  try {
-    const response = await fetch(filename);
-    const blob = await response.blob();
-    const url = window.URL.createObjectURL(blob);
-    const element = document.createElement('a');
-    element.setAttribute('href', url);
-    element.setAttribute('download', filename);
-    element.style.display = 'none';
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
-    window.URL.revokeObjectURL(url);
-  } catch (error) {
-    console.error(`Error downloading ${filename}:`, error);
-  }
+function downloadFile(filename) {
+  const link = document.createElement('a');
+  link.href = filename;
+  link.download = filename;
+  link.style.display = 'none';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 }
 
 // Function to handle the Download JSON button click event
@@ -1967,20 +1959,30 @@ document.getElementById('homeButton').addEventListener('click', function() {
 });
 // Attach download handlers to the data tool buttons
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('menusLink').addEventListener('click', (e) => {
-    e.preventDefault();
-    downloadFile(OMjson);
-  });
+  const menusLink = document.getElementById('menusLink');
+  const ordersLink = document.getElementById('ordersLink');
+  const templateFieldsLink = document.getElementById('templateFieldsLink');
 
-  document.getElementById('ordersLink').addEventListener('click', (e) => {
-    e.preventDefault();
-    downloadFile(ODjson);
-  });
+  if (menusLink) {
+    menusLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      downloadFile(OMjson);
+    });
+  }
 
-  document.getElementById('templateFieldsLink').addEventListener('click', (e) => {
-    e.preventDefault();
-    downloadFile(txmlFile);
-  });
+  if (ordersLink) {
+    ordersLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      downloadFile(ODjson);
+    });
+  }
+
+  if (templateFieldsLink) {
+    templateFieldsLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      downloadFile(txmlFile);
+    });
+  }
 });
   
 // Call the adjustFontSize function when the window is resized
