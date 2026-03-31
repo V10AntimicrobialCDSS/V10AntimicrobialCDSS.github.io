@@ -37,38 +37,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title id="pageTitle"></title>
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="icon" href="CDSSLogoApp.png" type="image/x-icon">
+  <link rel="icon" href="CDSSLogo.png" type="image/x-icon">
   <style>
   /* Common styles */
   @font-face {
   font-family: 'PT Serif Bold';
-  src: url('Fonts/PTSerif-Bold.eot');
-  src: url('Fonts/PTSerif-Bold.eot?#iefix') format('embedded-opentype'),
-       url('Fonts/PTSerif-Bold.woff2') format('woff2'),
-       url('Fonts/PTSerif-Bold.woff') format('woff'),
-       url('Fonts/PTSerif-Bold.ttf') format('truetype'),
-       url('Fonts/PTSerif-Bold.svg#PTSerifbold') format('svg');
+  src: url('Fonts/Montserrat-Bold.eot');
+  src: url('Fonts/Montserrat-Bold.eot?#iefix') format('embedded-opentype'),
+       url('Fonts/Montserrat-Bold.woff2') format('woff2'),
+       url('Fonts/Montserrat-Bold.woff') format('woff'),
+       url('Fonts/Montserrat-Bold.ttf') format('truetype'),
+       url('Fonts/Montserrat-Bold.svg#Montserratbold') format('svg');
   font-weight: bold;
 }
 @font-face {
   font-family: 'PT Serif Italic';
-  src: url('Fonts/PTSerif-Italic.eot');
-  src: url('Fonts/PTSerif-Italic.eot?#iefix') format('embedded-opentype'),
-       url('Fonts/PTSerif-Italic.woff2') format('woff2'),
-       url('Fonts/PTSerif-Italic.woff') format('woff'),
-       url('Fonts/PTSerif-Italic.ttf') format('truetype'),
-       url('Fonts/PTSerif-Italic.svg#PTSerifitalic') format('svg');
+  src: url('Fonts/Montserrat-Italic.eot');
+  src: url('Fonts/Montserrat-Italic.eot?#iefix') format('embedded-opentype'),
+       url('Fonts/Montserrat-Italic.woff2') format('woff2'),
+       url('Fonts/Montserrat-Italic.woff') format('woff'),
+       url('Fonts/Montserrat-Italic.ttf') format('truetype'),
+       url('Fonts/Montserrat-Italic.svg#Montserratitalic') format('svg');
   font-weight: normal;
   font-style: italic;
 }
 @font-face {
   font-family: 'PT Serif Regular';
-  src: url('Fonts/PTSerif-Regular.eot');
-  src: url('Fonts/PTSerif-Regular.eot?#iefix') format('embedded-opentype'),
-       url('Fonts/PTSerif-Regular.woff2') format('woff2'),
-       url('Fonts/PTSerif-Regular.woff') format('woff'),
-       url('Fonts/PTSerif-Regular.ttf') format('truetype'),
-       url('Fonts/PTSerif-Regular.svg#PTSerifregular') format('svg');
+  src: url('Fonts/Montserrat-Regular.eot');
+  src: url('Fonts/Montserrat-Regular.eot?#iefix') format('embedded-opentype'),
+       url('Fonts/Montserrat-Regular.woff2') format('woff2'),
+       url('Fonts/Montserrat-Regular.woff') format('woff'),
+       url('Fonts/Montserrat-Regular.ttf') format('truetype'),
+       url('Fonts/Montserrat-Regular.svg#Montserratregular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -323,53 +323,110 @@
    padding: 20px 30px; 
 }
   </style>
+  <script src="https://kit.fontawesome.com/0f4bc037e4.js" crossorigin="anonymous"></script>
 </head>
 <body>
-	<div id="header">
-		<div class="buttons-container">
-  		<button id="goBackButton">&#9664;</button>
-      	<button id="mainMenuButton">Minneapolis Home</button>
-      	<button id="indexButton">Index</button>
-      	<button id="goForwardButton">&#9654;</button>
-      	<button id="install-button" style="display: none";>Install App</button>
-      	<button id="homeButton">
-        	 &#9650;
-		</button>
-	</div>
-	<div class="buttons-container2">
-    	<button id="inptButton">Inpatient</button>
-    	<button id="outptButton">Outpatient</button>
-    	<button id="erucButton">ER/UC</button>
-  	</div>	
-    <div class="search-container">
-      <input type="text" id="searchInput" placeholder="&#x1F50D;">
-      <div class="dropbox-container">
-        <select id="filterDropdown"></select>
-      </div>
-    </div>
+	<!-- Overlay (darkens background when drawer is open) -->
+<div id="drawerOverlay" onclick="closeDrawer()"></div>
+
+<!-- Sidebar Drawer -->
+<div id="drawer">
+  <!-- Logos -->
+  <div class="drawer-logos">
+<!--    <img src="CDSSLogo.png" class="CDSSLogo">-->
+
+<div class="cdss-logo-text">
+  <span class="cdss-logo-label">CDSS</span>
+  <span class="cdss-logo-desc">Antimicrobial Computer<br>Decision Support System <strong>V10</strong></span>
 </div>
- <table class="table">
-  <div id="resultContainer"></div>
-</table>
-    <div class="buttons-containerVersions">
-      <button id="ChillicotheButton" class="button">Chillicothe</button>
-      <button id="blackHillsButton" class="button">TestBlackHills</button>
-      <button id="fargoButton" class="button">Fargo</button>
-      <button id="minneapolisButton" class="button">Minneapolis</button>
-      <button id="omahaButton" class="button">Omaha</button>
-      <button id="stCloudButton" class="button">St. Cloud</button>
-      <button id="siouxFallsButton" class="button">Sioux Falls</button>
+
+
+    <!--<img src="VASeal.png" class="VASeal">-->
+  </div>
+
+  <!-- Location Buttons -->
+  <div class="drawer-section-title">Locations</div>
+  <div class="drawer-buttons">
+    <a href="AnnArborCDSS.html" class="button">Ann Arbor</a>
+    <a href="BattleCreekCDSS.html" class="button">Battle Creek</a>
+    <a href="CincinnatiCDSS.html" class="button">Cincinnati</a>
+    <a href="ClevelandCDSS.html" class="button">Cleveland</a>
+    <a href="DaytonCDSS.html" class="button">Dayton</a>
+    <a href="DetroitCDSS.html" class="button">Detroit</a>
+    <a href="IndianapolisCDSS.html" class="button">Indianapolis</a>
+    <a href="NorthernIndianaCDSS.html" class="button">Northern Indiana</a>
+    <a href="SaginawCDSS.html" class="button">Saginaw</a>
+    <a href="ColumbusCDSS.html" class="button">Columbus</a>
+  </div>
+
+  <!-- Data Buttons -->
+  <div class="drawer-section-title">Data Tools</div>
+  <div class="drawer-buttons">
+    <a href="ChillicotheOMJSON.json" download id="menusLink" class="button2">MenuData</a>
+    <a href="ChillicotheODJSON.json" download id="ordersLink" class="button2">OrderData</a>
+    <a href="Chillicothe.txml" download id="templateFieldsLink" class="button2">TemplateFieldData</a>
+    <a href="#" id="downloadJSONButton" class="button2">CurrentMenuData</a>
+  </div>
+
+<!-- VA Seal at the bottom -->
+<div class="drawer-va-seal">
+    <img src="Wide-Full-Color-on-Dark.png" alt="VA Seal" class="va-seal-icon">
+</div>
+</div>
+
+	<div id="header">
+  <div class="buttons-container">
+    <button id="drawerToggle">&#9776;</button>
+    <button id="goBackButton">&#9664;</button>
+    <button id="mainMenuButton">Chillicothe Home</button>
+    <button id="indexButton">Index</button>
+    <button id="goForwardButton">&#9654;</button>
+    <button id="install-button" style="display: none;">Install App</button>
+    <button id="homeButton" onclick="window.location.href='index.html'">
+      <i class="fa-solid fa-house" style="font-size: 15px; color: #D3D3D3;"></i>
+    </button>
+  </div>
+  <div class="buttons-container2">
+    <button id="inptButton">Inpatient</button>
+    <button id="outptButton">Outpatient</button>
+    <button id="erucButton">ER/UC</button>
+  </div>
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="&#x1F50D;">
+    <div class="dropbox-container">
+      <select id="filterDropdown"></select>
     </div>
-    <div class="picture-container">
-      <img src="CDSSLogo.png" alt="CDSS Logo" id="CDSSlogo" class="CDSSLogo">
-      <img src="VASeal.jpg" alt="VA Seal" id="VASeal" class="VASeal">
-    </div>
-    <div class="buttons-containerDownloads">
-      <a href="#" id="menusLink" class="button2">MenuData</a>
-      <a href="#" id="ordersLink" class="button2">OrderData</a>
-      <a href="#" id="templateFieldsLink" class="button2">TemplateFieldData</a>
-      <a href="#" id="downloadJSONButton" class="button2">CurrentMenuData</a>
-    </div>  
+  </div>
+</div>
+
+<!-- Wrap everything below header in this div -->
+<div id="mainContent">
+  <table class="table">
+    <div id="resultContainer"></div>
+  </table>
+  <div class="buttons-containerVersions">
+    <button id="ChillicotheButton" class="button">Chillicothe</button>
+    <button id="AnnArborButton" class="button">Ann Arbor</button>
+    <button id="CincinnatiButton" class="button">Cincinnati</button>
+    <button id="ClevelandButton" class="button">Cleveland</button>
+    <button id="DaytonButton" class="button">Dayton</button>
+    <button id="IndianapolisButton" class="button">Indianapolis</button>
+    <button id="DetroitButton" class="button">Detroit</button>
+    <button id="BattleCreekButton" class="button">Battle Creek</button>
+    <button id="SaginawButton" class="button">Saginaw</button>
+    <button id="NorthernIndianaButton" class="button">Northern Indiana</button>
+  </div>
+  <!--<div class="picture-container">
+    <img src="CDSSLogo.png" alt="CDSS Logo" id="CDSSlogo" class="CDSSLogo">
+    <img src="VASeal.jpg" alt="VA Seal" id="VASeal" class="VASeal">
+  </div>
+  <div class="buttons-containerDownloads">
+    <a href="#" id="menusLink" class="button2">MenuData</a>
+    <a href="#" id="ordersLink" class="button2">OrderData</a>
+    <a href="#" id="templateFieldsLink" class="button2">TemplateFieldData</a>
+    <a href="#" id="downloadJSONButton" class="button2">CurrentMenuData</a>
+  </div>-->
+</div>
     <span id="versionTag"></span>
 <script>
 function adjustFontSize() {
