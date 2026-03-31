@@ -28,7 +28,7 @@
   const MenuPrefix = 'ORZID'; /*Order menu prefix*/
   const LinkPrefix = 'ORZ GTX'; /*Generic Order prefix for links*/
   var hideButtonsDownloads = 'False'; /*buttons to allow user to download json and txml files*/
-  var hideButtonsVersions = 'False';/*mark as true for non-CDSS systems*/
+  var hideButtonsVersions = 'True';/*mark as true for non-CDSS systems*/
   var hideButtonsIndex = 'False';/*mark as true for non-CDSS systems*/
   var hideButtonsHome = 'False';/*mark as true for non-CDSS systems*/
   var Version = 'V1.2'; /*Text at the bottom of the menu, change to whatever you want*/
@@ -37,48 +37,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title id="pageTitle"></title>
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="icon" href="CDSSLogoApp.png" type="image/x-icon">
+  <link rel="icon" href="CDSSLogo.png" type="image/x-icon">
   <style>
   /* Common styles */
   @font-face {
-  font-family: 'PT Serif Bold';
-  src: url('Fonts/PTSerif-Bold.eot');
-  src: url('Fonts/PTSerif-Bold.eot?#iefix') format('embedded-opentype'),
-       url('Fonts/PTSerif-Bold.woff2') format('woff2'),
-       url('Fonts/PTSerif-Bold.woff') format('woff'),
-       url('Fonts/PTSerif-Bold.ttf') format('truetype'),
-       url('Fonts/PTSerif-Bold.svg#PTSerifbold') format('svg');
+  font-family: 'Montserrat Bold';
+  src: url('Fonts/Montserrat-Bold.eot');
+  src: url('Fonts/Montserrat-Bold.eot?#iefix') format('embedded-opentype'),
+       url('Fonts/Montserrat-Bold.woff2') format('woff2'),
+       url('Fonts/Montserrat-Bold.woff') format('woff'),
+       url('Fonts/Montserrat-Bold.ttf') format('truetype'),
+       url('Fonts/Montserrat-Bold.svg#Montserratbold') format('svg');
   font-weight: bold;
 }
 @font-face {
-  font-family: 'PT Serif Italic';
-  src: url('Fonts/PTSerif-Italic.eot');
-  src: url('Fonts/PTSerif-Italic.eot?#iefix') format('embedded-opentype'),
-       url('Fonts/PTSerif-Italic.woff2') format('woff2'),
-       url('Fonts/PTSerif-Italic.woff') format('woff'),
-       url('Fonts/PTSerif-Italic.ttf') format('truetype'),
-       url('Fonts/PTSerif-Italic.svg#PTSerifitalic') format('svg');
+  font-family: 'Montserrat Italic';
+  src: url('Fonts/Montserrat-Italic.eot');
+  src: url('Fonts/Montserrat-Italic.eot?#iefix') format('embedded-opentype'),
+       url('Fonts/Montserrat-Italic.woff2') format('woff2'),
+       url('Fonts/Montserrat-Italic.woff') format('woff'),
+       url('Fonts/Montserrat-Italic.ttf') format('truetype'),
+       url('Fonts/Montserrat-Italic.svg#Montserratitalic') format('svg');
   font-weight: normal;
   font-style: italic;
 }
 @font-face {
-  font-family: 'PT Serif Regular';
-  src: url('Fonts/PTSerif-Regular.eot');
-  src: url('Fonts/PTSerif-Regular.eot?#iefix') format('embedded-opentype'),
-       url('Fonts/PTSerif-Regular.woff2') format('woff2'),
-       url('Fonts/PTSerif-Regular.woff') format('woff'),
-       url('Fonts/PTSerif-Regular.ttf') format('truetype'),
-       url('Fonts/PTSerif-Regular.svg#PTSerifregular') format('svg');
+  font-family: 'Montserrat Regular';
+  src: url('Fonts/Montserrat-Regular.eot');
+  src: url('Fonts/Montserrat-Regular.eot?#iefix') format('embedded-opentype'),
+       url('Fonts/Montserrat-Regular.woff2') format('woff2'),
+       url('Fonts/Montserrat-Regular.woff') format('woff'),
+       url('Fonts/Montserrat-Regular.ttf') format('truetype'),
+       url('Fonts/Montserrat-Regular.svg#Montserratregular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
     .button {
-      font-family: 'PT Serif Regular', Arial, sans-serif;
+      font-family: 'Montserrat Regular', Arial, sans-serif;
   	  font-size: 12px;
   	  /*padding: 5px 5px;  Adjust the values to your desired padding */
       white-space: nowrap;
       flex: 1;
-      background-color: #00aedb; /* Blue color */
+      background-color: #0D323D; /* Blue color */
       color: white;
       padding: 5px; /* Increased padding for square buttons */
       border: none;
@@ -92,16 +92,18 @@
     
     .button:hover,
     .button2:hover {
-      background-color: #4db8ff; /* Light Blue color */
-    }
-    
+      /*background-color: #4db8ff;  Light Blue color */
+  background-color: #155467;
+}
+
     .button2 {
-      font-family: 'PT Serif Regular', Arial, sans-serif;
+      font-family: 'Montserrat Regular', Arial, sans-serif;
   	  font-size: 12px;
   	  /*padding: 5px 5px;  Adjust the values to your desired padding */
       white-space: nowrap;
       flex: 1;
-      background-color: #00aedb; /* Blue color */
+      /*background-color: #00aedb;  Blue color */
+      background-color: #0D323D;
       color: white;
       padding: 5px; /* Increased padding for square buttons */
       border: none;
@@ -149,7 +151,7 @@
       cursor: pointer;
     }
     .bold {
-      font-family: 'PT Serif Bold', Arial, sans-serif;
+      font-family: 'Montserrat Bold', Arial, sans-serif;
      /*  background-color: lightblue; /* Set your desired background color here */
     }
         /* Table styles */
@@ -158,26 +160,28 @@
       /*width: 100%;*/
     }
     .table td {
-      font-family: 'PT Serif Regular', Arial, sans-serif;
+      font-family: 'Montserrat Regular', Arial, sans-serif;
       white-space: pre-wrap; 
       overflow: hidden;
       text-overflow: ellipsis;
     } /* Disable text wrapping within a cell */
     
-/* Header styles */
+
+
 #header {
   position: sticky;
+  margin-top: 0;
   top: 0;
-  background-color: #00aedb;
+  background-color: #0D323D;
   z-index: 1;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   flex-direction: column;
-  /* Set a width to limit the header */
   min-width: 900px;
-  width: 100%;
-  box-sizing: border-box; /* Include padding and borders in the width calculation */
+  width: calc(100% - 260px); /* subtract drawer width on desktop */
+  margin-left: 260px;        /* push header right of drawer */
+  box-sizing: border-box;
 }
 
 #footer {
@@ -193,23 +197,32 @@
 }
     
 .buttons-container {
-  margin-top: 10px; /* Add the desired margin value */
+  margin-top: 10px;
   margin-bottom: 5px;
-  margin-left: 5px;
+  margin-left: 10px; /* changed from 5px */
   display: flex;
-  align-items: flex-start; 
+  align-items: center; /* changed from flex-start so items align vertically */
   gap: 10px;
   justify-content: flex-start;
 }
-    
+
 .buttons-container2 {
   margin-top: 0px;
   margin-bottom: 5px;
-  margin-left: 50px; 
+  margin-left: 10px; /* changed from 50px — now aligns with row 1 */
   display: flex;
-  align-items: flex-start; 
-  gap: 50px;
+  align-items: flex-start;
+  gap: 15px; /* changed from 50px — tighter spacing */
   justify-content: flex-start;
+}
+
+.search-container {
+  flex-basis: 100%;
+  align-items: left;
+  max-width: 375px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  margin-left: 10px; /* stays the same — now consistent with rows above */
 }
     
 .buttons-containerDownloads,
@@ -222,6 +235,10 @@
   justify-content: flex-start;
 }
 
+.buttons-containerVersions {
+  display: none !important;
+}
+
 .picture-container {
   margin: 10px; /* Add the desired margin value */
   display: flex;
@@ -229,14 +246,7 @@
   /*gap: 15px;*/
   justify-content: flex-start;
 }
-  .search-container{
-    flex-basis: 100%;
-    align-items: Left;
-    max-width: 375px; 
-    margin-bottom: 10px;
-    margin-right: 10px;
-    margin-left: 10px;
-  }
+  
   .dropbox-container{
     display: flex;
     align-items: Left;
@@ -256,7 +266,7 @@
 #inptButton,
 #outptButton,
 #erucButton   {
-  font-family: 'PT Serif Regular', Arial, sans-serif;
+  font-family: 'Montserrat Regular', Arial, sans-serif;
   background-color: transparent; /* Make the background transparent */
   border: none; /* Remove the border */
   border-radius: 10px; /* Adjust border-radius for rounded corners */
@@ -274,7 +284,7 @@
 #goForwardButton,
 #install-button,
 #homeButton  {
-  font-family: 'PT Serif Regular', Arial, sans-serif;
+  font-family: 'Montserrat Regular', Arial, sans-serif;
   background-color: transparent; /* Make the background transparent */
   border: none; /* Remove the border */
   border-radius: 10px; /* Adjust border-radius for rounded corners */
@@ -285,22 +295,8 @@
   color: white;
   padding: 5px 5px;
 }
-
-/* Add a darker shade of blue on hover */
-#goBackButton:hover,
-#mainMenuButton:hover,
-#indexButton:hover,
-#goForwardButton:hover,
-#install-button:hover,
-#homeButton:hover,
-#inptButton:hover,
-#outptButton:hover,
-#erucButton:hover 
-{
-  background-color: #4db8ff; /* lighter shade of blue */
-}
   #filterDropdown {
-    font-family: 'PT Serif Regular', Arial, sans-serif;
+    font-family: 'Montserrat Regular', Arial, sans-serif;
     margin-right: 20px;
     width: 100%;
     z-index: 1;
@@ -312,7 +308,7 @@
     overflow-y: auto; 
     }
   #searchInput {
-    font-family: 'PT Serif Regular', Arial, sans-serif;
+    font-family: 'Montserrat Regular', Arial, sans-serif;
     width: 100%;
     text-align: left;
     max-width: 375px;
@@ -322,54 +318,370 @@
   .blankSpace {
    padding: 20px 30px; 
 }
-  </style>
+#homeButton {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: 20px;
+    /*transition: transform 0.8s ease, filter 0.8s ease;*/
+}
+
+/* Add a darker shade of blue on hover */
+#goBackButton:hover,
+#mainMenuButton:hover,
+#indexButton:hover,
+#goForwardButton:hover,
+#install-button:hover,
+#inptButton:hover,
+#outptButton:hover,
+#erucButton:hover {
+    background-color: #4db8ff;
+}
+
+/* homeButton hover LAST */
+#homeButton:hover {
+    background-color: #0D323D;
+    /*transform: scale(1.3);
+    filter: brightness(0.5);*/
+}
+
+#drawerToggle {
+  display: none; /* hidden on desktop, shown on mobile via media query */
+  font-size: 22px;
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+#drawerToggle:hover {
+  background-color: #4db8ff;
+}
+
+#drawer {
+  position: fixed;
+  top: 0;
+  left: 0; /* always visible on desktop */
+  width: 260px;
+  height: 100%;
+  background-color: #0D323D;
+  z-index: 1000;
+  padding: 20px 15px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  transition: left 0.3s ease;
+}
+
+#drawerOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 999;
+}
+
+#drawerOverlay.open {
+  display: block;
+}
+
+#closeDrawer {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  float: right;
+  margin-bottom: 20px;
+  display: none; /* hidden on desktop */
+}
+
+.drawer-section-title {
+  color: #4db8ff;
+  font-family: 'Montserrat Bold', Arial, sans-serif;
+  font-size: 12px;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.drawer-logos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.drawer-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.drawer-buttons a,
+.drawer-buttons button {
+  width: 100% !important;
+  text-align: left;
+  border-radius: 6px;
+  padding: 8px 10px;
+  display: block !important;
+  flex: none !important;
+}
+
+.drawer-buttons .button,
+.drawer-buttons .button2 {
+  width: 100% !important;
+  text-align: left;
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+
+/* Desktop — sidebar always visible */
+@media (min-width: 1025px) {
+  body {
+    margin-left: 260px; /* must come AFTER base body rule */
+  }
+
+/* Tablet and mobile — sidebar collapsible 
+@media (max-width: 1024px) {
+  #drawerToggle {
+    display: inline-block;
+  }
+    */
+
+@media (max-width: 1024px) {
+  #header {
+    margin-left: 0;
+    width: 100%;
+    min-width: unset; /* allow full flexibility on mobile */
+  }
+}
+
+
+#mainContent {
+  margin-left: 260px;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+@media (max-width: 1024px) {
+  #mainContent {
+    margin-left: 0;
+  }
+}
+
+  #closeDrawer {
+    display: block;
+  }
+
+  #drawer {
+    /*left: -280px;  hidden off screen */
+    position: fixed;
+    top: 0;
+  }
+
+  #drawer.open {
+    left: 0;
+  }
+
+  #drawerOverlay.open {
+    display: block;
+  }
+
+  body {
+    margin-left: 0;
+  }
+}
+/* Base body — no margins */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.cdss-logo-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 0;
+  width: 100%; /* ensures it spans the full sidebar width */
+}
+
+.cdss-logo-label {
+  font-family: 'Montserrat Bold', Arial, sans-serif;
+  font-size: 28px;
+  color: white;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.cdss-logo-desc {
+  font-family: 'Montserrat Regular', Arial, sans-serif;
+  font-size: 11px;
+  color: white;
+  line-height: 1.4;
+  white-space: nowrap;
+  text-align: center; /* add this */
+}
+
+.drawer-va-seal {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  padding-bottom: 10px;
+}
+
+.va-logo-text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.va-logo-label {
+  font-family: 'Montserrat Bold', Arial, sans-serif;
+  font-size: 28px;
+  color: white;
+  letter-spacing: 2px;
+}
+
+.va-logo-divider {
+  width: 1px;
+  height: 40px;
+  background-color: white;
+  opacity: 0.6;
+}
+
+.va-logo-desc {
+  font-family: 'Montserrat Regular', Arial, sans-serif;
+  font-size: 11px;
+  color: white;
+  line-height: 1.6;
+}
+
+.VASeal {
+  width: 180px;
+  height: auto;
+  filter: brightness(0) invert(1); /* turns black text/elements white */
+}
+
+.va-seal-icon {
+  width: 220px; /* adjust to taste — try between 180px and 240px */
+  height: auto;
+}
+
+
+</style>
+  <script src="https://kit.fontawesome.com/0f4bc037e4.js" crossorigin="anonymous"></script>
 </head>
 <body>
-	<div id="header">
-		<div class="buttons-container">
-  		<button id="goBackButton">&#9664;</button>
-      	<button id="mainMenuButton">Cleveland Home</button>
-      	<button id="indexButton">Index</button>
-      	<button id="goForwardButton">&#9654;</button>
-      	<button id="install-button" style="display: none";>Install App</button>
-      	<button id="homeButton">
-        	 &#9650;
-		</button>
-	</div>
-	<div class="buttons-container2">
-    	<button id="inptButton">Inpatient</button>
-    	<button id="outptButton">Outpatient</button>
-    	<button id="erucButton">ER/UC</button>
-  	</div>	
-    <div class="search-container">
-      <input type="text" id="searchInput" placeholder="&#x1F50D;">
-      <div class="dropbox-container">
-        <select id="filterDropdown"></select>
-      </div>
-    </div>
+	<!-- Overlay (darkens background when drawer is open) -->
+<div id="drawerOverlay" onclick="closeDrawer()"></div>
+
+<!-- Sidebar Drawer -->
+<div id="drawer">
+  <!-- Logos -->
+  <div class="drawer-logos">
+<!--    <img src="CDSSLogo.png" class="CDSSLogo">-->
+
+<div class="cdss-logo-text">
+  <span class="cdss-logo-label">CDSS</span>
+  <span class="cdss-logo-desc">Antimicrobial Computer<br>Decision Support System <strong>V10</strong></span>
 </div>
- <table class="table">
-  <div id="resultContainer"></div>
-</table>
-    <div class="buttons-containerVersions">
-      <button id="desMoinesButton" class="button">Des Moines</button>
-      <button id="blackHillsButton" class="button">TestBlackHills</button>
-      <button id="fargoButton" class="button">Fargo</button>
-      <button id="ClevelandButton" class="button">Cleveland</button>
-      <button id="omahaButton" class="button">Omaha</button>
-      <button id="stCloudButton" class="button">St. Cloud</button>
-      <button id="siouxFallsButton" class="button">Sioux Falls</button>
+
+
+    <!--<img src="VASeal.png" class="VASeal">-->
+  </div>
+
+  <!-- Location Buttons -->
+  <div class="drawer-section-title">Locations</div>
+  <div class="drawer-buttons">
+    <a href="AnnArborCDSS.html" class="button">Ann Arbor</a>
+    <a href="BattleCreekCDSS.html" class="button">Battle Creek</a>
+    <a href="ChillicotheCDSS.html" class="button">Chillicothe</a>
+    <a href="CincinnatiCDSS.html" class="button">Cincinnati</a>
+    <a href="DaytonCDSS.html" class="button">Dayton</a>
+    <a href="DetroitCDSS.html" class="button">Detroit</a>
+    <a href="IndianapolisCDSS.html" class="button">Indianapolis</a>
+    <a href="NorthernIndianaCDSS.html" class="button">Northern Indiana</a>
+    <a href="SaginawCDSS.html" class="button">Saginaw</a>
+    <a href="ColumbusCDSS.html" class="button">Columbus</a>
+  </div>
+
+  <!-- Data Buttons -->
+  <div class="drawer-section-title">Data Tools</div>
+  <div class="drawer-buttons">
+    <a href="ClevelandOMJSON.json" download id="menusLink" class="button2">MenuData</a>
+    <a href="ClevelandODJSON.json" download id="ordersLink" class="button2">OrderData</a>
+    <a href="Cleveland.txml" download id="templateFieldsLink" class="button2">TemplateFieldData</a>
+    <a href="#" id="downloadJSONButton" class="button2">CurrentMenuData</a>
+  </div>
+
+<!-- VA Seal at the bottom -->
+<div class="drawer-va-seal">
+    <img src="Wide-Full-Color-on-Dark.png" alt="VA Seal" class="va-seal-icon">
+</div>
+</div>
+
+	<div id="header">
+  <div class="buttons-container">
+    <button id="drawerToggle">&#9776;</button>
+    <button id="goBackButton">&#9664;</button>
+    <button id="mainMenuButton">Cincinnati Home</button>
+    <button id="indexButton">Index</button>
+    <button id="goForwardButton">&#9654;</button>
+    <button id="install-button" style="display: none;">Install App</button>
+    <button id="homeButton" onclick="window.location.href='index.html'">
+      <i class="fa-solid fa-house" style="font-size: 15px; color: #D3D3D3;"></i>
+    </button>
+  </div>
+  <div class="buttons-container2">
+    <button id="inptButton">Inpatient</button>
+    <button id="outptButton">Outpatient</button>
+    <button id="erucButton">ER/UC</button>
+  </div>
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="&#x1F50D;">
+    <div class="dropbox-container">
+      <select id="filterDropdown"></select>
     </div>
-    <div class="picture-container">
-      <img src="CDSSLogo.png" alt="CDSS Logo" id="CDSSlogo" class="CDSSLogo">
-      <img src="VASeal.jpg" alt="VA Seal" id="VASeal" class="VASeal">
-    </div>
-    <div class="buttons-containerDownloads">
-      <a href="#" id="menusLink" class="button2">MenuData</a>
-      <a href="#" id="ordersLink" class="button2">OrderData</a>
-      <a href="#" id="templateFieldsLink" class="button2">TemplateFieldData</a>
-      <a href="#" id="downloadJSONButton" class="button2">CurrentMenuData</a>
-    </div>  
+  </div>
+</div>
+
+<!-- Wrap everything below header in this div -->
+<div id="mainContent">
+  <table class="table">
+    <div id="resultContainer"></div>
+  </table>
+  <div class="buttons-containerVersions">
+    <button id="ChillicotheButton" class="button">Chillicothe</button>
+    <button id="AnnArborButton" class="button">Ann Arbor</button>
+    <button id="CincinnatiButton" class="button">Cincinnati</button>
+    <button id="ClevelandButton" class="button">Cleveland</button>
+    <button id="DaytonButton" class="button">Dayton</button>
+    <button id="IndianapolisButton" class="button">Indianapolis</button>
+    <button id="DetroitButton" class="button">Detroit</button>
+    <button id="BattleCreekButton" class="button">Battle Creek</button>
+    <button id="SaginawButton" class="button">Saginaw</button>
+    <button id="NorthernIndianaButton" class="button">Northern Indiana</button>
+  </div>
+  <!--<div class="picture-container">
+    <img src="CDSSLogo.png" alt="CDSS Logo" id="CDSSlogo" class="CDSSLogo">
+    <img src="VASeal.jpg" alt="VA Seal" id="VASeal" class="VASeal">
+  </div>
+  <div class="buttons-containerDownloads">
+    <a href="#" id="menusLink" class="button2">MenuData</a>
+    <a href="#" id="ordersLink" class="button2">OrderData</a>
+    <a href="#" id="templateFieldsLink" class="button2">TemplateFieldData</a>
+    <a href="#" id="downloadJSONButton" class="button2">CurrentMenuData</a>
+  </div>-->
+</div>
     <span id="versionTag"></span>
 <script>
 function adjustFontSize() {
@@ -464,26 +776,33 @@ let matchedOutptName = null;
 let matchedErucName = null;
 	
 // Function to hide location buttons
-if (CDSSlocation === 'Des Moines') {
-  {document.getElementById("desMoinesButton").style.display="none";};
+
+if (CDSSlocation === 'Ann Arbor') {
+  {document.getElementById("AnnArborButton").style.display="none";};
 }
-if (CDSSlocation === 'Black Hills') {
-  {document.getElementById("blackHillsButton").style.display="none";};
-}
-if (CDSSlocation === 'Fargo') {
-  {document.getElementById("fargoButton").style.display="none";};
+if (CDSSlocation === 'Cincinnati') {
+  {document.getElementById("CincinnatiButton").style.display="none";};
 }
 if (CDSSlocation === 'Cleveland') {
   {document.getElementById("ClevelandButton").style.display="none";};
 }  
-if (CDSSlocation === 'Omaha') {
-  {document.getElementById("omahaButton").style.display="none";};
+if (CDSSlocation === 'Dayton') {
+  {document.getElementById("DaytonButton").style.display="none";};
 }  
-if (CDSSlocation === 'St. Cloud') {
-  {document.getElementById("stCloudButton").style.display="none";};
+if (CDSSlocation === 'Indianapolis') {
+  {document.getElementById("IndianapolisButton").style.display="none";};
 }
-if (CDSSlocation === 'Sioux Falls') {
-  {document.getElementById("siouxFallsButton").style.display="none";};
+if (CDSSlocation === 'Detroit') {
+  {document.getElementById("DetroitButton").style.display="none";};
+}  
+if (CDSSlocation === 'Battle Creek') {
+  {document.getElementById("BattleCreekButton").style.display="none";};
+}  
+if (CDSSlocation === 'Saginaw') {
+  {document.getElementById("SaginawButton").style.display="none";};
+}  
+if (CDSSlocation === 'Northern Indiana') {
+  {document.getElementById("NorthernIndianaButton").style.display="none";};
 }  
 if (hideButtonsIndex === 'True') {
   {document.getElementById("indexButton").style.display="none";};
@@ -1561,18 +1880,18 @@ function handleInpt() {
   checkMatchesAndSetButtonAppearance()
 }
 // Function to handle the Download JSON button click event
-  function handleDownloadJSON() {
-    const displayText = selectedData.DisplayText || selectedData.Name;
-    const data = JSON.stringify(selectedData, null, 2);
-    const filename = `${displayText}.json`;
-    const element = document.createElement('a');
-    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(data));
-    element.setAttribute('download', filename);
-    element.style.display = 'none';
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
-    }
+function handleDownloadJSON() {
+  const displayText = selectedData.DisplayText || selectedData.Name;
+  const data = JSON.stringify(selectedData, null, 2);
+  const filename = `${displayText}.json`;
+  const element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(data));
+  element.setAttribute('download', filename);
+  element.style.display = 'none';
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+}
  
 // Function to open the dropdown when clicking into the search input
 function openDropdown() {
@@ -1586,60 +1905,130 @@ function openDropdown() {
   return element === searchInput || element.parentNode === searchInput;
   }
 
-// JavaScript code to handle button clicks
-document.getElementById('desMoinesButton').addEventListener('click', function () {
-openPageInNewWindow("DesMoinesCDSS.html", { " CI ": " ", " NE ": " ", "GMENU": "CI GMENU" });
-});
-document.getElementById('ClevelandButton').addEventListener('click', function () {
-  openPageInNewWindow("BlackHillsCDSS.html",{ " CI ": " ", " NE ": " " }); // Pass the replacement value
-});
-document.getElementById('fargoButton').addEventListener('click', function () {
-  openPageInNewWindow("FargoCDSS.html",{ " CI ": " ", " NE ": " " }); // Pass the replacement value
-});
-document.getElementById('ClevelandButton').addEventListener('click', function () {
-  openPageInNewWindow("ClevelandCDSS.html",{ " CI ": " ", " NE ": " " }); // Pass the replacement value
-});
-document.getElementById('omahaButton').addEventListener('click', function () {
-  openPageInNewWindow('OmahaCDSS.html', { " CI ": " ", " NE ": " ", "GMENU": "NE GMENU" }); // Pass the replacement value
-});
-document.getElementById('stCloudButton').addEventListener('click', function () {
-  openPageInNewWindow('StCloudCDSS.html', { " CI ": " ", " NE ": " " }); // Pass the replacement value
-});
-document.getElementById('siouxFallsButton').addEventListener('click', function () {
-  openPageInNewWindow('SiouxFallsCDSS.html', { " CI ": " ", " NE ": " " }); // Pass the replacement value
-});
+// JavaScript code to handle button clicks - wrap in try-catch to prevent errors from non-existent buttons
+try {
+  const desMoinesBtn = document.getElementById('desMoinesButton');
+  if (desMoinesBtn) {
+    desMoinesBtn.addEventListener('click', function () {
+      openPageInNewWindow("DesMoinesCDSS.html", { " CI ": " ", " NE ": " ", "GMENU": "CI GMENU" });
+    });
+  }
+  
+  const minneapolisBtn = document.getElementById('minneapolisButton');
+  if (minneapolisBtn) {
+    minneapolisBtn.addEventListener('click', function () {
+      openPageInNewWindow("BlackHillsCDSS.html",{ " CI ": " ", " NE ": " " });
+    });
+  }
+  
+  const fargoBtn = document.getElementById('fargoButton');
+  if (fargoBtn) {
+    fargoBtn.addEventListener('click', function () {
+      openPageInNewWindow("FargoCDSS.html",{ " CI ": " ", " NE ": " " });
+    });
+  }
+  
+  const omahaBtn = document.getElementById('omahaButton');
+  if (omahaBtn) {
+    omahaBtn.addEventListener('click', function () {
+      openPageInNewWindow('OmahaCDSS.html', { " CI ": " ", " NE ": " ", "GMENU": "NE GMENU" });
+    });
+  }
+  
+  const stCloudBtn = document.getElementById('stCloudButton');
+  if (stCloudBtn) {
+    stCloudBtn.addEventListener('click', function () {
+      openPageInNewWindow('StCloudCDSS.html', { " CI ": " ", " NE ": " " });
+    });
+  }
+  
+  const siouxFallsBtn = document.getElementById('siouxFallsButton');
+  if (siouxFallsBtn) {
+    siouxFallsBtn.addEventListener('click', function () {
+      openPageInNewWindow('SiouxFallsCDSS.html', { " CI ": " ", " NE ": " " });
+    });
+  }
+} catch (error) {
+  console.warn('Some location buttons were not found:', error);
+}
 
 // Attach event listeners
-document.getElementById('downloadJSONButton').addEventListener('click', handleDownloadJSON);
-document.getElementById('goBackButton').addEventListener('click', handleGoBack);
-document.getElementById('goForwardButton').addEventListener('click', handleGoForward);
-document.getElementById('mainMenuButton').addEventListener('click', handleMainMenu);
-document.getElementById('indexButton').addEventListener('click', handleIndex);
-document.getElementById('outptButton').addEventListener('click', handleOutpt);
-document.getElementById('inptButton').addEventListener('click', handleInpt);
-document.getElementById('erucButton').addEventListener('click', handleEruc);
-document.getElementById('filterDropdown').addEventListener('change', filterData);
+const downloadBtn = document.getElementById('downloadJSONButton');
+if (downloadBtn) {
+  downloadBtn.addEventListener('click', handleDownloadJSON);
+}
+
+const goBackBtn = document.getElementById('goBackButton');
+if (goBackBtn) {
+  goBackBtn.addEventListener('click', handleGoBack);
+}
+
+const goForwardBtn = document.getElementById('goForwardButton');
+if (goForwardBtn) {
+  goForwardBtn.addEventListener('click', handleGoForward);
+}
+
+const mainMenuBtn = document.getElementById('mainMenuButton');
+if (mainMenuBtn) {
+  mainMenuBtn.addEventListener('click', handleMainMenu);
+}
+
+const indexBtn = document.getElementById('indexButton');
+if (indexBtn) {
+  indexBtn.addEventListener('click', handleIndex);
+}
+
+const outptBtn = document.getElementById('outptButton');
+if (outptBtn) {
+  outptBtn.addEventListener('click', handleOutpt);
+}
+
+const inptBtn = document.getElementById('inptButton');
+if (inptBtn) {
+  inptBtn.addEventListener('click', handleInpt);
+}
+
+const erucBtn = document.getElementById('erucButton');
+if (erucBtn) {
+  erucBtn.addEventListener('click', handleEruc);
+}
+
+const filterDropdownEl = document.getElementById('filterDropdown');
+if (filterDropdownEl) {
+  filterDropdownEl.addEventListener('change', filterData);
+}
+
 window.addEventListener('resize', adjustFontSize);
 window.addEventListener('DOMContentLoaded', adjustFontSize);
-document.getElementById('searchInput').addEventListener('input', searchData);
-document.getElementById('searchInput').addEventListener('click', openDropdown);
-document.getElementById('searchInput').addEventListener('input', openDropdown);
-document.getElementById('homeButton').addEventListener('click', function() {
+
+const searchInputEl = document.getElementById('searchInput');
+if (searchInputEl) {
+  searchInputEl.addEventListener('input', searchData);
+  searchInputEl.addEventListener('click', openDropdown);
+  searchInputEl.addEventListener('input', openDropdown);
+}
+
+const homeBtn = document.getElementById('homeButton');
+if (homeBtn) {
+  homeBtn.addEventListener('click', function() {
     window.location.href = homeButtonUrl;
-});
-  document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('menusLink').setAttribute('href', OMjson);
-      document.getElementById('menusLink').setAttribute('download', OMjson);
+  });
+}
 
-      document.getElementById('ordersLink').setAttribute('href', ODjson);
-      document.getElementById('ordersLink').setAttribute('download', ODjson);
-
-      document.getElementById('templateFieldsLink').setAttribute('href', txmlFile);
-      document.getElementById('templateFieldsLink').setAttribute('download', txmlFile);
-    });
+// Attach download handlers to the data tool buttons
+document.addEventListener('DOMContentLoaded', () => {
+  // MenuData, OrderData, and TemplateFieldData buttons work via href/download attributes
+  // No additional handler needed
   
-// Call the adjustFontSize function when the window is resized
-window.addEventListener('resize', adjustFontSize);
+  // Only CurrentMenuData needs special handling
+  const downloadJSONButton = document.getElementById('downloadJSONButton');
+  if (downloadJSONButton) {
+    downloadJSONButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      handleDownloadJSON();
+    });
+  }
+});
   
 // Function to hide broken images if they are not in repository
 document.addEventListener("DOMContentLoaded", function(event) {
