@@ -813,15 +813,17 @@ if (hideButtonsDownloads === 'True') {
 }
 
 // Function to hide or remove buttons based on the value of hideVersionButtons
-var buttonsContainerVersions = document.querySelector('.buttons-containerVersions');
-if (hideButtonsVersions === 'True') {
-buttonsContainerVersions.style.display = 'none';
-}
-    
-document.getElementById('versionTag').textContent = Version;
-document.getElementById('pageTitle').textContent = Title;
-document.getElementById('mainMenuButton').textContent = MainMenuButton;
-document.getElementById('indexButton').textContent = IndexButton;
+document.addEventListener('DOMContentLoaded', function() {
+  var buttonsContainerVersions = document.querySelector('.buttons-containerVersions');
+  if (hideButtonsVersions === 'True' && buttonsContainerVersions) {
+    buttonsContainerVersions.style.display = 'none';
+  }
+  
+  document.getElementById('versionTag').textContent = Version;
+  document.getElementById('pageTitle').textContent = Title;
+  document.getElementById('mainMenuButton').textContent = MainMenuButton;
+  document.getElementById('indexButton').textContent = IndexButton;
+});
   
 function populateDropdown(omData) {
   const dropdown = document.getElementById('filterDropdown');
