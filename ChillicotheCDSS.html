@@ -816,8 +816,23 @@ if (hideButtonsDownloads === 'True') {
 document.addEventListener('DOMContentLoaded', function() {
   var buttonsContainerVersions = document.querySelector('.buttons-containerVersions');
   if (hideButtonsVersions === 'True' && buttonsContainerVersions) {
-    buttonsContainerVersions.style.display = 'none';
+    buttonsContainerVersions.style.display = 'none !important';
+    buttonsContainerVersions.style.visibility = 'hidden';
+    buttonsContainerVersions.style.height = '0';
+    buttonsContainerVersions.style.overflow = 'hidden';
   }
+  
+  setTimeout(function() {
+    if (hideButtonsVersions === 'True') {
+      var bv = document.querySelector('.buttons-containerVersions');
+      if (bv) {
+        bv.style.display = 'none !important';
+        bv.style.visibility = 'hidden';
+        bv.style.height = '0';
+        bv.style.overflow = 'hidden';
+      }
+    }
+  }, 100);
   
   document.getElementById('versionTag').textContent = Version;
   document.getElementById('pageTitle').textContent = Title;
