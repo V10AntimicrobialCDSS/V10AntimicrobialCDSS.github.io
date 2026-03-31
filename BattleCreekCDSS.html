@@ -1880,10 +1880,6 @@ function handleInpt() {
 }
 // Function to handle the Download JSON button click event
 function handleDownloadJSON() {
-  if (!selectedData) {
-    alert('Please select a menu item first before downloading.');
-    return;
-  }
   const displayText = selectedData.DisplayText || selectedData.Name;
   const data = JSON.stringify(selectedData, null, 2);
   const filename = `${displayText}.json`;
@@ -1908,47 +1904,116 @@ function openDropdown() {
   return element === searchInput || element.parentNode === searchInput;
   }
 
-// JavaScript code to handle button clicks
-document.getElementById('desMoinesButton').addEventListener('click', function () {
-openPageInNewWindow("DesMoinesCDSS.html", { " CI ": " ", " NE ": " ", "GMENU": "CI GMENU" });
-});
-document.getElementById('minneapolisButton').addEventListener('click', function () {
-  openPageInNewWindow("BlackHillsCDSS.html",{ " CI ": " ", " NE ": " " }); // Pass the replacement value
-});
-document.getElementById('fargoButton').addEventListener('click', function () {
-  openPageInNewWindow("FargoCDSS.html",{ " CI ": " ", " NE ": " " }); // Pass the replacement value
-});
-document.getElementById('minneapolisButton').addEventListener('click', function () {
-  openPageInNewWindow("MinneapolisCDSS.html",{ " CI ": " ", " NE ": " " }); // Pass the replacement value
-});
-document.getElementById('omahaButton').addEventListener('click', function () {
-  openPageInNewWindow('OmahaCDSS.html', { " CI ": " ", " NE ": " ", "GMENU": "NE GMENU" }); // Pass the replacement value
-});
-document.getElementById('stCloudButton').addEventListener('click', function () {
-  openPageInNewWindow('StCloudCDSS.html', { " CI ": " ", " NE ": " " }); // Pass the replacement value
-});
-document.getElementById('siouxFallsButton').addEventListener('click', function () {
-  openPageInNewWindow('SiouxFallsCDSS.html', { " CI ": " ", " NE ": " " }); // Pass the replacement value
-});
+// JavaScript code to handle button clicks - wrap in try-catch to prevent errors from non-existent buttons
+try {
+  const desMoinesBtn = document.getElementById('desMoinesButton');
+  if (desMoinesBtn) {
+    desMoinesBtn.addEventListener('click', function () {
+      openPageInNewWindow("DesMoinesCDSS.html", { " CI ": " ", " NE ": " ", "GMENU": "CI GMENU" });
+    });
+  }
+  
+  const minneapolisBtn = document.getElementById('minneapolisButton');
+  if (minneapolisBtn) {
+    minneapolisBtn.addEventListener('click', function () {
+      openPageInNewWindow("BlackHillsCDSS.html",{ " CI ": " ", " NE ": " " });
+    });
+  }
+  
+  const fargoBtn = document.getElementById('fargoButton');
+  if (fargoBtn) {
+    fargoBtn.addEventListener('click', function () {
+      openPageInNewWindow("FargoCDSS.html",{ " CI ": " ", " NE ": " " });
+    });
+  }
+  
+  const omahaBtn = document.getElementById('omahaButton');
+  if (omahaBtn) {
+    omahaBtn.addEventListener('click', function () {
+      openPageInNewWindow('OmahaCDSS.html', { " CI ": " ", " NE ": " ", "GMENU": "NE GMENU" });
+    });
+  }
+  
+  const stCloudBtn = document.getElementById('stCloudButton');
+  if (stCloudBtn) {
+    stCloudBtn.addEventListener('click', function () {
+      openPageInNewWindow('StCloudCDSS.html', { " CI ": " ", " NE ": " " });
+    });
+  }
+  
+  const siouxFallsBtn = document.getElementById('siouxFallsButton');
+  if (siouxFallsBtn) {
+    siouxFallsBtn.addEventListener('click', function () {
+      openPageInNewWindow('SiouxFallsCDSS.html', { " CI ": " ", " NE ": " " });
+    });
+  }
+} catch (error) {
+  console.warn('Some location buttons were not found:', error);
+}
 
 // Attach event listeners
-document.getElementById('downloadJSONButton').addEventListener('click', handleDownloadJSON);
-document.getElementById('goBackButton').addEventListener('click', handleGoBack);
-document.getElementById('goForwardButton').addEventListener('click', handleGoForward);
-document.getElementById('mainMenuButton').addEventListener('click', handleMainMenu);
-document.getElementById('indexButton').addEventListener('click', handleIndex);
-document.getElementById('outptButton').addEventListener('click', handleOutpt);
-document.getElementById('inptButton').addEventListener('click', handleInpt);
-document.getElementById('erucButton').addEventListener('click', handleEruc);
-document.getElementById('filterDropdown').addEventListener('change', filterData);
+const downloadBtn = document.getElementById('downloadJSONButton');
+if (downloadBtn) {
+  downloadBtn.addEventListener('click', handleDownloadJSON);
+}
+
+const goBackBtn = document.getElementById('goBackButton');
+if (goBackBtn) {
+  goBackBtn.addEventListener('click', handleGoBack);
+}
+
+const goForwardBtn = document.getElementById('goForwardButton');
+if (goForwardBtn) {
+  goForwardBtn.addEventListener('click', handleGoForward);
+}
+
+const mainMenuBtn = document.getElementById('mainMenuButton');
+if (mainMenuBtn) {
+  mainMenuBtn.addEventListener('click', handleMainMenu);
+}
+
+const indexBtn = document.getElementById('indexButton');
+if (indexBtn) {
+  indexBtn.addEventListener('click', handleIndex);
+}
+
+const outptBtn = document.getElementById('outptButton');
+if (outptBtn) {
+  outptBtn.addEventListener('click', handleOutpt);
+}
+
+const inptBtn = document.getElementById('inptButton');
+if (inptBtn) {
+  inptBtn.addEventListener('click', handleInpt);
+}
+
+const erucBtn = document.getElementById('erucButton');
+if (erucBtn) {
+  erucBtn.addEventListener('click', handleEruc);
+}
+
+const filterDropdownEl = document.getElementById('filterDropdown');
+if (filterDropdownEl) {
+  filterDropdownEl.addEventListener('change', filterData);
+}
+
 window.addEventListener('resize', adjustFontSize);
 window.addEventListener('DOMContentLoaded', adjustFontSize);
-document.getElementById('searchInput').addEventListener('input', searchData);
-document.getElementById('searchInput').addEventListener('click', openDropdown);
-document.getElementById('searchInput').addEventListener('input', openDropdown);
-document.getElementById('homeButton').addEventListener('click', function() {
+
+const searchInputEl = document.getElementById('searchInput');
+if (searchInputEl) {
+  searchInputEl.addEventListener('input', searchData);
+  searchInputEl.addEventListener('click', openDropdown);
+  searchInputEl.addEventListener('input', openDropdown);
+}
+
+const homeBtn = document.getElementById('homeButton');
+if (homeBtn) {
+  homeBtn.addEventListener('click', function() {
     window.location.href = homeButtonUrl;
-});
+  });
+}
+
 // Attach download handlers to the data tool buttons
 document.addEventListener('DOMContentLoaded', () => {
   // MenuData, OrderData, and TemplateFieldData buttons work via href/download attributes
@@ -1963,9 +2028,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
-  
-// Call the adjustFontSize function when the window is resized
-window.addEventListener('resize', adjustFontSize);
   
 // Function to hide broken images if they are not in repository
 document.addEventListener("DOMContentLoaded", function(event) {
