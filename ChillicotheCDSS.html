@@ -1960,66 +1960,7 @@ try {
 }
 
 // Attach event listeners with safety checks
-document.addEventListener('DOMContentLoaded', function() {
-  const downloadBtn = document.getElementById('downloadJSONButton');
-  if (downloadBtn) {
-    downloadBtn.addEventListener('click', handleDownloadJSON);
-  }
-
-  const goBackBtn = document.getElementById('goBackButton');
-  if (goBackBtn) {
-    goBackBtn.addEventListener('click', handleGoBack);
-  }
-
-  const goForwardBtn = document.getElementById('goForwardButton');
-  if (goForwardBtn) {
-    goForwardBtn.addEventListener('click', handleGoForward);
-  }
-
-  const mainMenuBtn = document.getElementById('mainMenuButton');
-  if (mainMenuBtn) {
-    mainMenuBtn.addEventListener('click', handleMainMenu);
-  }
-
-  const indexBtn = document.getElementById('indexButton');
-  if (indexBtn) {
-    indexBtn.addEventListener('click', handleIndex);
-  }
-
-  const outptBtn = document.getElementById('outptButton');
-  if (outptBtn) {
-    outptBtn.addEventListener('click', handleOutpt);
-  }
-
-  const inptBtn = document.getElementById('inptButton');
-  if (inptBtn) {
-    inptBtn.addEventListener('click', handleInpt);
-  }
-
-  const erucBtn = document.getElementById('erucButton');
-  if (erucBtn) {
-    erucBtn.addEventListener('click', handleEruc);
-  }
-
-  const filterDropdownEl = document.getElementById('filterDropdown');
-  if (filterDropdownEl) {
-    filterDropdownEl.addEventListener('change', filterData);
-  }
-
-  const searchInputEl = document.getElementById('searchInput');
-  if (searchInputEl) {
-    searchInputEl.addEventListener('input', searchData);
-    searchInputEl.addEventListener('click', openDropdown);
-    searchInputEl.addEventListener('input', openDropdown);
-  }
-
-  const homeBtn = document.getElementById('homeButton');
-  if (homeBtn) {
-    homeBtn.addEventListener('click', function() {
-      window.location.href = homeButtonUrl;
-    });
-  }
-});
+// (Moved to inside Promise.all .then() to ensure data is loaded first)
 
 window.addEventListener('resize', adjustFontSize);
 window.addEventListener('DOMContentLoaded', adjustFontSize);
@@ -2098,6 +2039,66 @@ Promise.all([fetchOMData(), fetchODData(), fetchAbxLink()]) // Add fetchIndex()
     filterData({ target: dropdown });
     scrollToTop()    
     adjustFontSize();
+    
+    // Attach event listeners after data is loaded
+    const downloadBtn = document.getElementById('downloadJSONButton');
+    if (downloadBtn) {
+      downloadBtn.addEventListener('click', handleDownloadJSON);
+    }
+
+    const goBackBtn = document.getElementById('goBackButton');
+    if (goBackBtn) {
+      goBackBtn.addEventListener('click', handleGoBack);
+    }
+
+    const goForwardBtn = document.getElementById('goForwardButton');
+    if (goForwardBtn) {
+      goForwardBtn.addEventListener('click', handleGoForward);
+    }
+
+    const mainMenuBtn = document.getElementById('mainMenuButton');
+    if (mainMenuBtn) {
+      mainMenuBtn.addEventListener('click', handleMainMenu);
+    }
+
+    const indexBtn = document.getElementById('indexButton');
+    if (indexBtn) {
+      indexBtn.addEventListener('click', handleIndex);
+    }
+
+    const outptBtn = document.getElementById('outptButton');
+    if (outptBtn) {
+      outptBtn.addEventListener('click', handleOutpt);
+    }
+
+    const inptBtn = document.getElementById('inptButton');
+    if (inptBtn) {
+      inptBtn.addEventListener('click', handleInpt);
+    }
+
+    const erucBtn = document.getElementById('erucButton');
+    if (erucBtn) {
+      erucBtn.addEventListener('click', handleEruc);
+    }
+
+    const filterDropdownEl = document.getElementById('filterDropdown');
+    if (filterDropdownEl) {
+      filterDropdownEl.addEventListener('change', filterData);
+    }
+
+    const searchInputEl = document.getElementById('searchInput');
+    if (searchInputEl) {
+      searchInputEl.addEventListener('input', searchData);
+      searchInputEl.addEventListener('click', openDropdown);
+      searchInputEl.addEventListener('input', openDropdown);
+    }
+
+    const homeBtn = document.getElementById('homeButton');
+    if (homeBtn) {
+      homeBtn.addEventListener('click', function() {
+        window.location.href = homeButtonUrl;
+      });
+    }
   })
   .catch(error => {
     console.error('Error:', error);
