@@ -1,5 +1,5 @@
 <CPRS_TEMPLATE>
-  <TEMPLATE NAME="SiouxFalls">
+  <TEMPLATE NAME="Detroit">
     <TYPE>T</TYPE>
     <STATUS>A</STATUS>
     <BOILERPLATE_TEXT>
@@ -693,7 +693,7 @@
       <MIN_VALUE>0</MIN_VALUE>
       <MAX_VALUE>0</MAX_VALUE>
       <INCREMENT>0</INCREMENT>
-      <URL>https://antimicrobialcdss.github.io/Resources/AntibiogramSiouxFalls.pdf</URL>
+      <URL>https://antimicrobialcdss.github.io/Resources/AntibiogramDetroit.pdf</URL>
     </FIELD>
     <FIELD NAME="ABX CLICK LINK BELOW INFECT CTRL">
       <TYPE>T</TYPE>
