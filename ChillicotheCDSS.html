@@ -776,6 +776,7 @@ let matchedOutptName = null;
 let matchedErucName = null;
 	
 // Function to hide location buttons
+
 if (CDSSlocation === 'Ann Arbor') {
   {document.getElementById("AnnArborButton").style.display="none";};
 }
@@ -808,7 +809,8 @@ if (hideButtonsIndex === 'True') {
 }
 if (hideButtonsHome === 'True') {
   {document.getElementById("homeButton").style.display="none";};
-}  
+}
+  
 // Function to hide or remove buttons based on the value of hideButtons
 if (hideButtonsDownloads === 'True') {
   {document.getElementById("menusLink").style.display="none";};
@@ -817,17 +819,15 @@ if (hideButtonsDownloads === 'True') {
 }
 
 // Function to hide or remove buttons based on the value of hideVersionButtons
-document.addEventListener('DOMContentLoaded', function() {
-  var buttonsContainerVersions = document.querySelector('.buttons-containerVersions');
-  if (hideButtonsVersions === 'True' && buttonsContainerVersions) {
-    buttonsContainerVersions.style.display = 'none';
-  }
-  
-  document.getElementById('versionTag').textContent = Version;
-  document.getElementById('pageTitle').textContent = Title;
-  document.getElementById('mainMenuButton').textContent = MainMenuButton;
-  document.getElementById('indexButton').textContent = IndexButton;
-});
+var buttonsContainerVersions = document.querySelector('.buttons-containerVersions');
+if (hideButtonsVersions === 'True') {
+buttonsContainerVersions.style.display = 'none';
+}
+    
+document.getElementById('versionTag').textContent = Version;
+document.getElementById('pageTitle').textContent = Title;
+document.getElementById('mainMenuButton').textContent = MainMenuButton;
+document.getElementById('indexButton').textContent = IndexButton;
   
 function populateDropdown(omData) {
   const dropdown = document.getElementById('filterDropdown');
@@ -1880,18 +1880,18 @@ function handleInpt() {
   checkMatchesAndSetButtonAppearance()
 }
 // Function to handle the Download JSON button click event
-  function handleDownloadJSON() {
-    const displayText = selectedData.DisplayText || selectedData.Name;
-    const data = JSON.stringify(selectedData, null, 2);
-    const filename = `${displayText}.json`;
-    const element = document.createElement('a');
-    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(data));
-    element.setAttribute('download', filename);
-    element.style.display = 'none';
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
-    }
+function handleDownloadJSON() {
+  const displayText = selectedData.DisplayText || selectedData.Name;
+  const data = JSON.stringify(selectedData, null, 2);
+  const filename = `${displayText}.json`;
+  const element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(data));
+  element.setAttribute('download', filename);
+  element.style.display = 'none';
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+}
  
 // Function to open the dropdown when clicking into the search input
 function openDropdown() {
@@ -1905,19 +1905,19 @@ function openDropdown() {
   return element === searchInput || element.parentNode === searchInput;
   }
 
-// JavaScript code to handle button clicks with safety checks
+// JavaScript code to handle button clicks - wrap in try-catch to prevent errors from non-existent buttons
 try {
-  const chillicotheBtn = document.getElementById('ChillicotheButton');
-  if (chillicotheBtn) {
-    chillicotheBtn.addEventListener('click', function () {
-      openPageInNewWindow("ChillicotheCDSS.html", { " CI ": " ", " NE ": " ", "GMENU": "CI GMENU" });
+  const desMoinesBtn = document.getElementById('desMoinesButton');
+  if (desMoinesBtn) {
+    desMoinesBtn.addEventListener('click', function () {
+      openPageInNewWindow("DesMoinesCDSS.html", { " CI ": " ", " NE ": " ", "GMENU": "CI GMENU" });
     });
   }
   
   const minneapolisBtn = document.getElementById('minneapolisButton');
   if (minneapolisBtn) {
     minneapolisBtn.addEventListener('click', function () {
-      openPageInNewWindow("MinneapolisCDSS.html",{ " CI ": " ", " NE ": " " });
+      openPageInNewWindow("BlackHillsCDSS.html",{ " CI ": " ", " NE ": " " });
     });
   }
   
@@ -1925,13 +1925,6 @@ try {
   if (fargoBtn) {
     fargoBtn.addEventListener('click', function () {
       openPageInNewWindow("FargoCDSS.html",{ " CI ": " ", " NE ": " " });
-    });
-  }
-  
-  const blackHillsBtn = document.getElementById('blackHillsButton');
-  if (blackHillsBtn) {
-    blackHillsBtn.addEventListener('click', function () {
-      openPageInNewWindow("BlackHillsCDSS.html",{ " CI ": " ", " NE ": " " });
     });
   }
   
@@ -1960,54 +1953,83 @@ try {
 }
 
 // Attach event listeners
-document.getElementById('downloadJSONButton').addEventListener('click', handleDownloadJSON);
-document.getElementById('goBackButton').addEventListener('click', handleGoBack);
-document.getElementById('goForwardButton').addEventListener('click', handleGoForward);
-document.getElementById('mainMenuButton').addEventListener('click', handleMainMenu);
-document.getElementById('indexButton').addEventListener('click', handleIndex);
-document.getElementById('outptButton').addEventListener('click', handleOutpt);
-document.getElementById('inptButton').addEventListener('click', handleInpt);
-document.getElementById('erucButton').addEventListener('click', handleEruc);
-document.getElementById('filterDropdown').addEventListener('change', filterData);
+const downloadBtn = document.getElementById('downloadJSONButton');
+if (downloadBtn) {
+  downloadBtn.addEventListener('click', handleDownloadJSON);
+}
+
+const goBackBtn = document.getElementById('goBackButton');
+if (goBackBtn) {
+  goBackBtn.addEventListener('click', handleGoBack);
+}
+
+const goForwardBtn = document.getElementById('goForwardButton');
+if (goForwardBtn) {
+  goForwardBtn.addEventListener('click', handleGoForward);
+}
+
+const mainMenuBtn = document.getElementById('mainMenuButton');
+if (mainMenuBtn) {
+  mainMenuBtn.addEventListener('click', handleMainMenu);
+}
+
+const indexBtn = document.getElementById('indexButton');
+if (indexBtn) {
+  indexBtn.addEventListener('click', handleIndex);
+}
+
+const outptBtn = document.getElementById('outptButton');
+if (outptBtn) {
+  outptBtn.addEventListener('click', handleOutpt);
+}
+
+const inptBtn = document.getElementById('inptButton');
+if (inptBtn) {
+  inptBtn.addEventListener('click', handleInpt);
+}
+
+const erucBtn = document.getElementById('erucButton');
+if (erucBtn) {
+  erucBtn.addEventListener('click', handleEruc);
+}
+
+const filterDropdownEl = document.getElementById('filterDropdown');
+if (filterDropdownEl) {
+  filterDropdownEl.addEventListener('change', filterData);
+}
+
 window.addEventListener('resize', adjustFontSize);
 window.addEventListener('DOMContentLoaded', adjustFontSize);
-document.getElementById('searchInput').addEventListener('input', searchData);
-document.getElementById('searchInput').addEventListener('click', openDropdown);
-document.getElementById('searchInput').addEventListener('input', openDropdown);
-document.getElementById('homeButton').addEventListener('click', function() {
+
+const searchInputEl = document.getElementById('searchInput');
+if (searchInputEl) {
+  searchInputEl.addEventListener('input', searchData);
+  searchInputEl.addEventListener('click', openDropdown);
+  searchInputEl.addEventListener('input', openDropdown);
+}
+
+const homeBtn = document.getElementById('homeButton');
+if (homeBtn) {
+  homeBtn.addEventListener('click', function() {
     window.location.href = homeButtonUrl;
-});
+  });
+}
 
 // Attach download handlers to the data tool buttons
 document.addEventListener('DOMContentLoaded', () => {
-  const menusLink = document.getElementById('menusLink');
-  const ordersLink = document.getElementById('ordersLink');
-  const templateFieldsLink = document.getElementById('templateFieldsLink');
+  // MenuData, OrderData, and TemplateFieldData buttons work via href/download attributes
+  // No additional handler needed
+  
+  // Only CurrentMenuData needs special handling
   const downloadJSONButton = document.getElementById('downloadJSONButton');
-
-  if (menusLink) {
-    menusLink.setAttribute('href', OMjson);
-    menusLink.setAttribute('download', OMjson);
-  }
-
-  if (ordersLink) {
-    ordersLink.setAttribute('href', ODjson);
-    ordersLink.setAttribute('download', ODjson);
-  }
-
-  if (templateFieldsLink) {
-    templateFieldsLink.setAttribute('href', txmlFile);
-    templateFieldsLink.setAttribute('download', txmlFile);
-  }
-
   if (downloadJSONButton) {
     downloadJSONButton.addEventListener('click', (e) => {
       e.preventDefault();
       handleDownloadJSON();
     });
   }
-
-
+});
+  
 // Function to hide broken images if they are not in repository
 document.addEventListener("DOMContentLoaded", function(event) {
   document.querySelectorAll('img').forEach(function(img){
@@ -2052,7 +2074,6 @@ Promise.all([fetchOMData(), fetchODData(), fetchAbxLink()]) // Add fetchIndex()
     filterData({ target: dropdown });
     scrollToTop()    
     adjustFontSize();
-
   })
   .catch(error => {
     console.error('Error:', error);
