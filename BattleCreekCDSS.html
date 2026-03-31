@@ -1880,6 +1880,10 @@ function handleInpt() {
 }
 // Function to handle the Download JSON button click event
 function handleDownloadJSON() {
+  if (!selectedData) {
+    alert('Please select a menu item first before downloading.');
+    return;
+  }
   const displayText = selectedData.DisplayText || selectedData.Name;
   const data = JSON.stringify(selectedData, null, 2);
   const filename = `${displayText}.json`;
