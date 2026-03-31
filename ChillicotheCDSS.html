@@ -38,10 +38,10 @@
   <title id="pageTitle"></title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="CDSSLogo.png" type="image/x-icon">
-  <style>
+<style>
   /* Common styles */
   @font-face {
-  font-family: 'PT Serif Bold';
+  font-family: 'Montserrat Bold';
   src: url('Fonts/Montserrat-Bold.eot');
   src: url('Fonts/Montserrat-Bold.eot?#iefix') format('embedded-opentype'),
        url('Fonts/Montserrat-Bold.woff2') format('woff2'),
@@ -51,7 +51,7 @@
   font-weight: bold;
 }
 @font-face {
-  font-family: 'PT Serif Italic';
+  font-family: 'Montserrat Italic';
   src: url('Fonts/Montserrat-Italic.eot');
   src: url('Fonts/Montserrat-Italic.eot?#iefix') format('embedded-opentype'),
        url('Fonts/Montserrat-Italic.woff2') format('woff2'),
@@ -62,7 +62,7 @@
   font-style: italic;
 }
 @font-face {
-  font-family: 'PT Serif Regular';
+  font-family: 'Montserrat Regular';
   src: url('Fonts/Montserrat-Regular.eot');
   src: url('Fonts/Montserrat-Regular.eot?#iefix') format('embedded-opentype'),
        url('Fonts/Montserrat-Regular.woff2') format('woff2'),
@@ -73,12 +73,12 @@
   font-style: normal;
 }
     .button {
-      font-family: 'PT Serif Regular', Arial, sans-serif;
+      font-family: 'Montserrat Regular', Arial, sans-serif;
   	  font-size: 12px;
   	  /*padding: 5px 5px;  Adjust the values to your desired padding */
       white-space: nowrap;
       flex: 1;
-      background-color: #00aedb; /* Blue color */
+      background-color: #0D323D; /* Blue color */
       color: white;
       padding: 5px; /* Increased padding for square buttons */
       border: none;
@@ -92,16 +92,18 @@
     
     .button:hover,
     .button2:hover {
-      background-color: #4db8ff; /* Light Blue color */
-    }
-    
+      /*background-color: #4db8ff;  Light Blue color */
+  background-color: #155467;
+}
+
     .button2 {
-      font-family: 'PT Serif Regular', Arial, sans-serif;
+      font-family: 'Montserrat Regular', Arial, sans-serif;
   	  font-size: 12px;
   	  /*padding: 5px 5px;  Adjust the values to your desired padding */
       white-space: nowrap;
       flex: 1;
-      background-color: #00aedb; /* Blue color */
+      /*background-color: #00aedb;  Blue color */
+      background-color: #0D323D;
       color: white;
       padding: 5px; /* Increased padding for square buttons */
       border: none;
@@ -149,7 +151,7 @@
       cursor: pointer;
     }
     .bold {
-      font-family: 'PT Serif Bold', Arial, sans-serif;
+      font-family: 'Montserrat Bold', Arial, sans-serif;
      /*  background-color: lightblue; /* Set your desired background color here */
     }
         /* Table styles */
@@ -158,26 +160,28 @@
       /*width: 100%;*/
     }
     .table td {
-      font-family: 'PT Serif Regular', Arial, sans-serif;
+      font-family: 'Montserrat Regular', Arial, sans-serif;
       white-space: pre-wrap; 
       overflow: hidden;
       text-overflow: ellipsis;
     } /* Disable text wrapping within a cell */
     
-/* Header styles */
+
+
 #header {
   position: sticky;
+  margin-top: 0;
   top: 0;
-  background-color: #00aedb;
+  background-color: #0D323D;
   z-index: 1;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   flex-direction: column;
-  /* Set a width to limit the header */
   min-width: 900px;
-  width: 100%;
-  box-sizing: border-box; /* Include padding and borders in the width calculation */
+  width: calc(100% - 260px); /* subtract drawer width on desktop */
+  margin-left: 260px;        /* push header right of drawer */
+  box-sizing: border-box;
 }
 
 #footer {
@@ -193,23 +197,32 @@
 }
     
 .buttons-container {
-  margin-top: 10px; /* Add the desired margin value */
+  margin-top: 10px;
   margin-bottom: 5px;
-  margin-left: 5px;
+  margin-left: 10px; /* changed from 5px */
   display: flex;
-  align-items: flex-start; 
+  align-items: center; /* changed from flex-start so items align vertically */
   gap: 10px;
   justify-content: flex-start;
 }
-    
+
 .buttons-container2 {
   margin-top: 0px;
   margin-bottom: 5px;
-  margin-left: 50px; 
+  margin-left: 10px; /* changed from 50px — now aligns with row 1 */
   display: flex;
-  align-items: flex-start; 
-  gap: 50px;
+  align-items: flex-start;
+  gap: 15px; /* changed from 50px — tighter spacing */
   justify-content: flex-start;
+}
+
+.search-container {
+  flex-basis: 100%;
+  align-items: left;
+  max-width: 375px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  margin-left: 10px; /* stays the same — now consistent with rows above */
 }
     
 .buttons-containerDownloads,
@@ -229,14 +242,7 @@
   /*gap: 15px;*/
   justify-content: flex-start;
 }
-  .search-container{
-    flex-basis: 100%;
-    align-items: Left;
-    max-width: 375px; 
-    margin-bottom: 10px;
-    margin-right: 10px;
-    margin-left: 10px;
-  }
+  
   .dropbox-container{
     display: flex;
     align-items: Left;
@@ -256,7 +262,7 @@
 #inptButton,
 #outptButton,
 #erucButton   {
-  font-family: 'PT Serif Regular', Arial, sans-serif;
+  font-family: 'Montserrat Regular', Arial, sans-serif;
   background-color: transparent; /* Make the background transparent */
   border: none; /* Remove the border */
   border-radius: 10px; /* Adjust border-radius for rounded corners */
@@ -274,7 +280,7 @@
 #goForwardButton,
 #install-button,
 #homeButton  {
-  font-family: 'PT Serif Regular', Arial, sans-serif;
+  font-family: 'Montserrat Regular', Arial, sans-serif;
   background-color: transparent; /* Make the background transparent */
   border: none; /* Remove the border */
   border-radius: 10px; /* Adjust border-radius for rounded corners */
@@ -285,22 +291,8 @@
   color: white;
   padding: 5px 5px;
 }
-
-/* Add a darker shade of blue on hover */
-#goBackButton:hover,
-#mainMenuButton:hover,
-#indexButton:hover,
-#goForwardButton:hover,
-#install-button:hover,
-#homeButton:hover,
-#inptButton:hover,
-#outptButton:hover,
-#erucButton:hover 
-{
-  background-color: #4db8ff; /* lighter shade of blue */
-}
   #filterDropdown {
-    font-family: 'PT Serif Regular', Arial, sans-serif;
+    font-family: 'Montserrat Regular', Arial, sans-serif;
     margin-right: 20px;
     width: 100%;
     z-index: 1;
@@ -312,7 +304,7 @@
     overflow-y: auto; 
     }
   #searchInput {
-    font-family: 'PT Serif Regular', Arial, sans-serif;
+    font-family: 'Montserrat Regular', Arial, sans-serif;
     width: 100%;
     text-align: left;
     max-width: 375px;
@@ -322,7 +314,266 @@
   .blankSpace {
    padding: 20px 30px; 
 }
-  </style>
+#homeButton {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: 20px;
+    /*transition: transform 0.8s ease, filter 0.8s ease;*/
+}
+
+/* Add a darker shade of blue on hover */
+#goBackButton:hover,
+#mainMenuButton:hover,
+#indexButton:hover,
+#goForwardButton:hover,
+#install-button:hover,
+#inptButton:hover,
+#outptButton:hover,
+#erucButton:hover {
+    background-color: #4db8ff;
+}
+
+/* homeButton hover LAST */
+#homeButton:hover {
+    background-color: #0D323D;
+    /*transform: scale(1.3);
+    filter: brightness(0.5);*/
+}
+
+#drawerToggle {
+  display: none; /* hidden on desktop, shown on mobile via media query */
+  font-size: 22px;
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+#drawerToggle:hover {
+  background-color: #4db8ff;
+}
+
+#drawer {
+  position: fixed;
+  top: 0;
+  left: 0; /* always visible on desktop */
+  width: 260px;
+  height: 100%;
+  background-color: #0D323D;
+  z-index: 1000;
+  padding: 20px 15px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  transition: left 0.3s ease;
+}
+
+#drawerOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 999;
+}
+
+#drawerOverlay.open {
+  display: block;
+}
+
+#closeDrawer {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  float: right;
+  margin-bottom: 20px;
+  display: none; /* hidden on desktop */
+}
+
+.drawer-section-title {
+  color: #4db8ff;
+  font-family: 'Montserrat Bold', Arial, sans-serif;
+  font-size: 12px;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.drawer-logos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.drawer-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.drawer-buttons a,
+.drawer-buttons button {
+  width: 100% !important;
+  text-align: left;
+  border-radius: 6px;
+  padding: 8px 10px;
+  display: block !important;
+  flex: none !important;
+}
+
+.drawer-buttons .button,
+.drawer-buttons .button2 {
+  width: 100% !important;
+  text-align: left;
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+
+/* Desktop — sidebar always visible */
+@media (min-width: 1025px) {
+  body {
+    margin-left: 260px; /* must come AFTER base body rule */
+  }
+
+/* Tablet and mobile — sidebar collapsible 
+@media (max-width: 1024px) {
+  #drawerToggle {
+    display: inline-block;
+  }
+    */
+
+@media (max-width: 1024px) {
+  #header {
+    margin-left: 0;
+    width: 100%;
+    min-width: unset; /* allow full flexibility on mobile */
+  }
+}
+
+
+#mainContent {
+  margin-left: 260px;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+@media (max-width: 1024px) {
+  #mainContent {
+    margin-left: 0;
+  }
+}
+
+  #closeDrawer {
+    display: block;
+  }
+
+  #drawer {
+    /*left: -280px;  hidden off screen */
+    position: fixed;
+    top: 0;
+  }
+
+  #drawer.open {
+    left: 0;
+  }
+
+  #drawerOverlay.open {
+    display: block;
+  }
+
+  body {
+    margin-left: 0;
+  }
+}
+/* Base body — no margins */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.cdss-logo-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 0;
+  width: 100%; /* ensures it spans the full sidebar width */
+}
+
+.cdss-logo-label {
+  font-family: 'Montserrat Bold', Arial, sans-serif;
+  font-size: 28px;
+  color: white;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.cdss-logo-desc {
+  font-family: 'Montserrat Regular', Arial, sans-serif;
+  font-size: 11px;
+  color: white;
+  line-height: 1.4;
+  white-space: nowrap;
+  text-align: center; /* add this */
+}
+
+.drawer-va-seal {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  padding-bottom: 10px;
+}
+
+.va-logo-text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.va-logo-label {
+  font-family: 'Montserrat Bold', Arial, sans-serif;
+  font-size: 28px;
+  color: white;
+  letter-spacing: 2px;
+}
+
+.va-logo-divider {
+  width: 1px;
+  height: 40px;
+  background-color: white;
+  opacity: 0.6;
+}
+
+.va-logo-desc {
+  font-family: 'Montserrat Regular', Arial, sans-serif;
+  font-size: 11px;
+  color: white;
+  line-height: 1.6;
+}
+
+.VASeal {
+  width: 180px;
+  height: auto;
+  filter: brightness(0) invert(1); /* turns black text/elements white */
+}
+
+.va-seal-icon {
+  width: 220px; /* adjust to taste — try between 180px and 240px */
+  height: auto;
+}
+
+
+</style>
   <script src="https://kit.fontawesome.com/0f4bc037e4.js" crossorigin="anonymous"></script>
 </head>
 <body>
