@@ -1960,67 +1960,23 @@ try {
 }
 
 // Attach event listeners
-const downloadBtn = document.getElementById('downloadJSONButton');
-if (downloadBtn) {
-  downloadBtn.addEventListener('click', handleDownloadJSON);
-}
-
-const goBackBtn = document.getElementById('goBackButton');
-if (goBackBtn) {
-  goBackBtn.addEventListener('click', handleGoBack);
-}
-
-const goForwardBtn = document.getElementById('goForwardButton');
-if (goForwardBtn) {
-  goForwardBtn.addEventListener('click', handleGoForward);
-}
-
-const mainMenuBtn = document.getElementById('mainMenuButton');
-if (mainMenuBtn) {
-  mainMenuBtn.addEventListener('click', handleMainMenu);
-}
-
-const indexBtn = document.getElementById('indexButton');
-if (indexBtn) {
-  indexBtn.addEventListener('click', handleIndex);
-}
-
-const outptBtn = document.getElementById('outptButton');
-if (outptBtn) {
-  outptBtn.addEventListener('click', handleOutpt);
-}
-
-const inptBtn = document.getElementById('inptButton');
-if (inptBtn) {
-  inptBtn.addEventListener('click', handleInpt);
-}
-
-const erucBtn = document.getElementById('erucButton');
-if (erucBtn) {
-  erucBtn.addEventListener('click', handleEruc);
-}
-
-const filterDropdownEl = document.getElementById('filterDropdown');
-if (filterDropdownEl) {
-  filterDropdownEl.addEventListener('change', filterData);
-}
-
+document.getElementById('downloadJSONButton').addEventListener('click', handleDownloadJSON);
+document.getElementById('goBackButton').addEventListener('click', handleGoBack);
+document.getElementById('goForwardButton').addEventListener('click', handleGoForward);
+document.getElementById('mainMenuButton').addEventListener('click', handleMainMenu);
+document.getElementById('indexButton').addEventListener('click', handleIndex);
+document.getElementById('outptButton').addEventListener('click', handleOutpt);
+document.getElementById('inptButton').addEventListener('click', handleInpt);
+document.getElementById('erucButton').addEventListener('click', handleEruc);
+document.getElementById('filterDropdown').addEventListener('change', filterData);
 window.addEventListener('resize', adjustFontSize);
 window.addEventListener('DOMContentLoaded', adjustFontSize);
-
-const searchInputEl = document.getElementById('searchInput');
-if (searchInputEl) {
-  searchInputEl.addEventListener('input', searchData);
-  searchInputEl.addEventListener('click', openDropdown);
-  searchInputEl.addEventListener('input', openDropdown);
-}
-
-const homeBtn = document.getElementById('homeButton');
-if (homeBtn) {
-  homeBtn.addEventListener('click', function() {
+document.getElementById('searchInput').addEventListener('input', searchData);
+document.getElementById('searchInput').addEventListener('click', openDropdown);
+document.getElementById('searchInput').addEventListener('input', openDropdown);
+document.getElementById('homeButton').addEventListener('click', function() {
     window.location.href = homeButtonUrl;
-  });
-}
+});
 
 // Attach download handlers to the data tool buttons
 document.addEventListener('DOMContentLoaded', () => {
