@@ -357,10 +357,10 @@
   background-color: #4db8ff;
 }
 
-#drawer {
+/*#drawer {
   position: fixed;
   top: 0;
-  left: 0; /* always visible on desktop */
+  left: 0; 
   width: 260px;
   height: 100%;
   background-color: #0D323D;
@@ -370,6 +370,27 @@
   overflow-y: auto;
   transition: left 0.3s ease;
 }
+*/
+
+#drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100%;
+  background-color: #0D323D;
+  z-index: 1000;
+  padding: 20px 15px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;  /* ADD THIS */
+  transition: left 0.3s ease;
+
+  /* ADD THESE: */
+  display: flex;
+  flex-direction: column;
+}
+
 
 #drawerOverlay {
   display: none;
@@ -623,7 +644,7 @@ body {
 <!-- VA Seal at the bottom -->
 <div class="drawer-va-seal">
     <a href="https://www.va.gov" target="_blank" title="U.S. Department of Veterans Affairs">
-        <img src="VASeal.jpg" alt="VA Seal" id="VASeal" title="U.S. Department of Veterans Affairs">
+        <img src="Wide-Full-Color-on-Dark.png" alt="VA Seal" id="VASeal" title="U.S. Department of Veterans Affairs" height="55px" width="220px">
     </a>
 </div>
 </div>
