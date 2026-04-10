@@ -1,12 +1,41 @@
 {
   "sections": [
+
+{
+      "title": "Important Links",
+      "buttons": [
+        { "label": "Antimicrobial Stewardship Guidance in EHRM", "url": "your-link-here" },
+        { "label": "Restricted Antimicrobials 2026",  "url": "your-link-here" },
+        { "label": "Staph Aureus Bacteremia ID Consult Policy",  "url": "your-link-here" },
+        { "label": "Extended Infusion Anti-Pseudomonal Beta-Lactams",  "url": "your-link-here" },
+        { "label": "Penicillin and Cephalosporin Cross Reactivity Chart",  "url": "your-link-here" }
+      ]
+    },
+
+
+    {
+      "title": "Clinical Guidelines",
+      "buttons": [
+        { "label": "Diabetic Foot Infection Guideline", "url": "your-link-here" },
+        { "label": "C difficile Treatment Guideline",  "url": "your-link-here" },
+        { "label": "Bloodstream Infection Treatment Guideline",  "url": "your-link-here" },
+        { "label": "Meningitis Encephalitis (MEPAN) Treatment Guideline",  "url": "your-link-here" },
+        { "label": "Penicillin Allergy Testing Algorithm",  "url": "your-link-here" },
+        { "label": "Cefazolin Surgical Prophylaxis Dosing",  "url": "your-link-here" },
+        { "label": "Genitourinary Surgical Antimicrobial Prophylaxis",  "url": "your-link-here" },
+        { "label": "Radiology Antimicrobial Prophylaxis Protocol",  "url": "your-link-here" }
+      ]
+    },
+
+
+
     {
       "title": "Diagnostic Stewardship",
       "buttons": [
         { "label": "Positive Blood Culture Interpretation", "url": "your-link-here" },
         { "label": "Infectious Diarrhea Testing Algorithm",  "url": "your-link-here" },
         { "label": "Kicking UTI Urine Culturing Algorithm",  "url": "your-link-here" },
-        { "label": "Procalcitonin Guidance",                 "url": "your-link-here" }
+        { "label": "Procalcitonin Guidance", "url": "your-link-here" }
       ]
     },
     {
