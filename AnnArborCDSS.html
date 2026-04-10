@@ -793,6 +793,16 @@ function renderStewardshipButtons(data) {
   container.innerHTML = '';
   container.style.display = 'block';
 
+
+// Render header if present
+  if (data.header) {
+    const header = document.createElement('h2');
+    header.textContent = data.header;
+    header.style.cssText = 'font-family:"Montserrat Bold",Arial,sans-serif; color:#0D323D; font-size:18px; text-align:center; margin: 10px 0 20px 0;';
+    container.appendChild(header);
+  }
+
+
   data.sections.forEach((section, i) => {
     const title = document.createElement('p');
     title.textContent = section.title;
