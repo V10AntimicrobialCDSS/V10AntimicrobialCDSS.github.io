@@ -829,8 +829,8 @@ function renderStewardshipButtons(data) {
  section.buttons.forEach(item => {
       const btn = document.createElement('button');
       btn.innerHTML = item.submenu && item.submenu.length > 0
-        ? item.label + '  <i class="fa fa-chevron-down" style="float:right; margin-top:2px;"></i>'
-        : item.label;
+      ? '<i class="fa fa-chevron-down" style="margin-right:6px;"></i>' + item.label
+      : item.label;
       btn.title = item.label;
       btn.className = 'button';
       btn.style.cssText = 'width:100%; white-space:normal; text-align:left; padding:8px; height:auto;';
