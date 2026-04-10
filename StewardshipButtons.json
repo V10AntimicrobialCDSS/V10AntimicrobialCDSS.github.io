@@ -4,11 +4,11 @@
     {
       "title": "Important Links",
       "buttons": [
-        { "label": "Antimicrobial Stewardship Guidance in EHRM", "url": "your-link-here"},
-        { "label": "Restricted Antimicrobials 2026", "url": "your-link-here"},
-        { "label": "Staph Aureus Bacteremia ID Consult Policy", "url": "your-link-here"},
-        { "label": "Extended Infusion Anti-Pseudomonal Beta-Lactams", "url": "your-link-here"},
-        { "label": "Penicillin and Cephalosporin Cross Reactivity Chart", "url": "your-link-here"}
+        { "label": "Antimicrobial Stewardship Guidance in EHRM", "url": "AnnArborFiles/Restricted-Abx-Memo--3-2026-update-.pdf"},
+        { "label": "Restricted Antimicrobials 2026", "url": "#"},
+        { "label": "Staph Aureus Bacteremia ID Consult Policy", "url": "AnnArborFiles/Staphylococcus-Aureus-Bacteremia-ID-Consult-Policy.pdf"},
+        { "label": "Extended Infusion Anti-Pseudomonal Beta-Lactams", "url": "AnnArborFiles/Extended-Infusion-Anti-Pseudomonal-Beta-Lactams-SOP119-006.pdf"},
+        { "label": "Penicillin and Cephalosporin Cross Reactivity Chart", "url": "AnnArborFiles/Penicillin-and-Cephalosporin-Cross-Reactivity-Chart.pdf"}
       ]
     },
     {
