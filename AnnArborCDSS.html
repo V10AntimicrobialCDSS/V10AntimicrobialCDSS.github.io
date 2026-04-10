@@ -805,6 +805,7 @@ function renderStewardshipButtons(data) {
     section.buttons.forEach(item => {
       const btn = document.createElement('button');
       btn.textContent = item.label;
+      btn.title = item.label;  // ADD THIS LINE
       btn.className = 'button';
       btn.style.cssText = 'width:100%; white-space:normal; text-align:left; padding:8px; height:auto;';
       btn.addEventListener('click', () => {
