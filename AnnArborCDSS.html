@@ -689,11 +689,11 @@ body {
 
 <!-- Wrap everything below header in this div -->
 <div id="mainContent">
+  <!-- Stewardship Buttons Section -->
+  <div id="stewardshipButtons" style="padding: 10px; max-width: 960px;"></div>
   <table class="table">
     <div id="resultContainer"></div>
   </table>
-  <!-- Stewardship Buttons Section -->
-  <div id="stewardshipButtons" style="padding: 10px; max-width: 960px;"></div>
   <div class="buttons-containerVersions">
     <button id="ChillicotheButton" class="button">Chillicothe</button>
     <button id="AnnArborButton" class="button">Ann Arbor</button>
@@ -791,6 +791,7 @@ function renderStewardshipButtons(data) {
   const container = document.getElementById('stewardshipButtons');
   if (!container) return;
   container.innerHTML = '';
+  container.style.display = 'block';
 
   data.sections.forEach((section, i) => {
     const title = document.createElement('p');
@@ -1317,6 +1318,7 @@ function createOMTable(selectedData) {
   resultContainer.innerHTML = '';
   if (selectedData) {
     resultContainer.appendChild(table);
+    document.getElementById('stewardshipButtons').style.display = 'none';
   }
 checkMatchesAndSetButtonAppearance()
 forwardBackButtonActivate()
@@ -1815,6 +1817,8 @@ function handleGoForward() {
 
 // Function to handle the Main Menu button click event
 function handleMainMenu() {
+  document.getElementById('resultContainer').innerHTML = '';
+  document.getElementById('stewardshipButtons').style.display = 'block';
   const dropdown = document.getElementById('filterDropdown');
   document.getElementById('searchInput').value = null;
   document.getElementById('searchInput').placeholder = "\u{1F50D}";
@@ -2240,7 +2244,3 @@ window.onload = function() {
     document.getElementById('drawer').classList.remove('open');
     document.getElementById('drawerOverlay').classList.remove('open');
   }
-</script>
-
-</body>
-</html>
