@@ -2087,8 +2087,13 @@ Promise.all([fetchOMData(), fetchODData(), fetchAbxLink()]) // Add fetchIndex()
   if (dropdownValue) {
     dropdown.value = decodeURIComponent(dropdownValue);
   } else {
-    // If no dropdown value is provided in the URL, set a default value
+    // If no dropdown value is provided in the URL, show stewardship buttons as home screen
     dropdown.value = MainMenu;
+    pushHistory(dropdown.value);
+    // Do NOT call filterData on startup — stewardshipButtons serves as the home screen
+    scrollToTop();
+    adjustFontSize();
+    return; // skip filterData so resultContainer stays empty
   }
     pushHistory(dropdown.value);
     filterData({ target: dropdown });
