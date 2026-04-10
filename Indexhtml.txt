@@ -692,8 +692,6 @@ body {
   <table class="table">
     <div id="resultContainer"></div>
   </table>
-  <!-- Stewardship Buttons Section -->
-  <div id="stewardshipButtons" style="padding: 10px; max-width: 960px;"></div>
   <div class="buttons-containerVersions">
     <button id="ChillicotheButton" class="button">Chillicothe</button>
     <button id="AnnArborButton" class="button">Ann Arbor</button>
@@ -773,55 +771,8 @@ function adjustFontSize() {
 // Call the adjustFontSize function when the DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
   adjustFontSize();
-  fetchStewardshipButtons();
 });
   
-// Fetch and render Stewardship Buttons
-async function fetchStewardshipButtons() {
-  try {
-    const response = await fetch('StewardshipButtons.json');
-    const data = await response.json();
-    renderStewardshipButtons(data);
-  } catch(e) {
-    console.warn('StewardshipButtons.json not found or invalid.', e);
-  }
-}
-
-function renderStewardshipButtons(data) {
-  const container = document.getElementById('stewardshipButtons');
-  if (!container) return;
-  container.innerHTML = '';
-
-  data.sections.forEach((section, i) => {
-    const title = document.createElement('p');
-    title.textContent = section.title;
-    title.style.cssText = 'font-family:"Montserrat Bold",Arial,sans-serif; color:#0D323D; font-size:14px; margin: 12px 0 6px 0;';
-    container.appendChild(title);
-
-    const grid = document.createElement('div');
-    grid.style.cssText = 'display:grid; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)); gap:6px;';
-
-    section.buttons.forEach(item => {
-      const btn = document.createElement('button');
-      btn.textContent = item.label;
-      btn.className = 'button';
-      btn.style.cssText = 'width:100%; white-space:normal; text-align:left; padding:8px; height:auto;';
-      btn.addEventListener('click', () => {
-        if (item.url && item.url !== '#') window.open(item.url, '_blank');
-      });
-      grid.appendChild(btn);
-    });
-
-    container.appendChild(grid);
-
-    if (i < data.sections.length - 1) {
-      const hr = document.createElement('hr');
-      hr.style.cssText = 'border:none; border-top:1px solid #ccc; margin:12px 0;';
-      container.appendChild(hr);
-    }
-  });
-}
-
 // Fetch OMJSON Data
 async function fetchOMData() {
     const response = await fetch(OMjson);
