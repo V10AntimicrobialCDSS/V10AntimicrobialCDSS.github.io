@@ -793,15 +793,13 @@ function renderStewardshipButtons(data) {
   container.innerHTML = '';
   container.style.display = 'block';
 
-
-// Render header if present
+  // Render header if present
   if (data.header) {
     const header = document.createElement('h2');
     header.textContent = data.header;
     header.style.cssText = 'font-family:"Montserrat Bold",Arial,sans-serif; color:#0D323D; font-size:18px; text-align:center; margin: 10px 0 20px 0;';
     container.appendChild(header);
   }
-
 
   data.sections.forEach((section, i) => {
     const title = document.createElement('p');
@@ -815,11 +813,15 @@ function renderStewardshipButtons(data) {
     section.buttons.forEach(item => {
       const btn = document.createElement('button');
       btn.textContent = item.label;
-      btn.title = item.label;  // ADD THIS LINE
+      btn.title = item.label;
       btn.className = 'button';
       btn.style.cssText = 'width:100%; white-space:normal; text-align:left; padding:8px; height:auto;';
-      btn.addEventListener('click', () => {
-        if (item.url && item.url !== '#') window.open(item.url, '_blank');
+      btn.addEventListener('click', (e) => {
+        if (item.submenu && item.submenu.length > 0) {
+          showSubmenu(e, item.label, item.submenu);  // CHANGED
+        } else if (item.url && item.url !== '#') {
+          window.open(item.url, '_blank');
+        }
       });
       grid.appendChild(btn);
     });
@@ -828,11 +830,72 @@ function renderStewardshipButtons(data) {
 
     if (i < data.sections.length - 1) {
       const hr = document.createElement('hr');
-      hr.style.cssText = 'border:none; border-top:1px solid #ccc; margin:12px 0; margin-bottom:40px;'
+      hr.style.cssText = 'border:none; border-top:1px solid #ccc; margin:12px 0; margin-bottom:40px;';
       container.appendChild(hr);
     }
   });
 }
+
+
+function showSubmenu(e, title, submenuItems) {
+  // Remove any existing popup
+  const existing = document.getElementById('stewardshipPopup');
+  if (existing) existing.remove();
+
+  const popup = document.createElement('div');
+  popup.id = 'stewardshipPopup';
+  popup.style.cssText = `
+    position: fixed;
+    z-index: 9999;
+    background: #fff;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    padding: 8px;
+    min-width: 280px;
+    max-width: 420px;
+  `;
+
+  // Position near the clicked button
+  const rect = e.target.getBoundingClientRect();
+  popup.style.left = rect.left + 'px';
+  popup.style.top = (rect.bottom + 4) + 'px';
+
+  // Popup title
+  const popupTitle = document.createElement('p');
+  popupTitle.textContent = title;
+  popupTitle.style.cssText = 'font-family:"Montserrat Bold",Arial,sans-serif; color:#0D323D; font-size:12px; margin: 0 0 6px 0; padding-bottom:6px; border-bottom:1px solid #ccc;';
+  popup.appendChild(popupTitle);
+
+  // Submenu buttons
+  submenuItems.forEach(subItem => {
+    const subBtn = document.createElement('button');
+    subBtn.textContent = subItem.label;
+    subBtn.title = subItem.label;
+    subBtn.className = 'button';
+    subBtn.style.cssText = 'display:block; width:100%; text-align:left; padding:8px; margin-bottom:4px; white-space:normal; height:auto;';
+    subBtn.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      if (subItem.url && subItem.url !== '#') window.open(subItem.url, '_blank');
+      popup.remove();
+    });
+    popup.appendChild(subBtn);
+  });
+
+  // Close when clicking anywhere outside
+  setTimeout(() => {
+    document.addEventListener('click', function closePopup(ev) {
+      if (!popup.contains(ev.target)) {
+        popup.remove();
+        document.removeEventListener('click', closePopup);
+      }
+    });
+  }, 0);
+
+  document.body.appendChild(popup);
+}
+
+
 
 // Fetch OMJSON Data
 async function fetchOMData() {
