@@ -858,9 +858,11 @@ function renderStewardshipButtons(data) {
 
 
 function showSubmenu(e, title, submenuItems) {
-  // Remove any existing popup
+  // Remove any existing popup and backdrop
   const existing = document.getElementById('stewardshipPopup');
   if (existing) existing.remove();
+  const existingBackdrop = document.getElementById('stewardshipBackdrop');
+  if (existingBackdrop) existingBackdrop.remove();
 
   const popup = document.createElement('div');
   popup.id = 'stewardshipPopup';
@@ -898,8 +900,18 @@ function showSubmenu(e, title, submenuItems) {
       ev.stopPropagation();
       if (subItem.url && subItem.url !== '#') window.open(subItem.url, '_blank');
       popup.remove();
+      backdrop.remove();
     });
     popup.appendChild(subBtn);
+  });
+
+  // Create backdrop
+  const backdrop = document.createElement('div');
+  backdrop.id = 'stewardshipBackdrop';
+  backdrop.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4); z-index:9998;';
+  backdrop.addEventListener('click', () => {
+    popup.remove();
+    backdrop.remove();
   });
 
   // Close when clicking anywhere outside
@@ -907,14 +919,15 @@ function showSubmenu(e, title, submenuItems) {
     document.addEventListener('click', function closePopup(ev) {
       if (!popup.contains(ev.target)) {
         popup.remove();
+        document.getElementById('stewardshipBackdrop')?.remove();
         document.removeEventListener('click', closePopup);
       }
     });
   }, 0);
 
+  document.body.appendChild(backdrop);
   document.body.appendChild(popup);
 }
-
 
 
 // Fetch OMJSON Data
