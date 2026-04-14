@@ -9,23 +9,23 @@
           "submenu": [
             {
               "label": "AAVA Antibiotic Formulary and Restrictions_April 2026",
-              "url": "your-link-here"
+              "url": "AnnArborFiles/AAVA-Antibiotic-Formulary-and-Restrictions_April-2026.pdf?web=1"
             },
             {
               "label": "Antimicrobial Restrictions Inpatient",
-              "url": "your-link-here"
+              "url": "AnnArborFiles/ASP-One-Pager_inpatient.jpg"
             },
             {
               "label": "Antimicrobial Restrictions Outpatient",
-              "url": "your-link-here"
+              "url": "AnnArborFiles/ASP-One-Pager_outpatient.jpg"
             },
             {
               "label": "Memo on Infection PowerPlans",
-              "url": "your-link-here"
+              "url": "AnnArborFiles/Memo-Oracle-Infection-PowerPlans.pdf?web=1"
             },
             {
               "label": "How to add the AAVA stewardship site to your EHRM toolbar",
-              "url": "your-link-here"
+              "url": "AnnArborFiles/Adding-the-stewardship-site-to-your-EHRM-toolbar.pdf?web=1"
             }
           ]
         },
