@@ -12,7 +12,7 @@
   <script>
   var CDSSlocation = 'Ann Arbor'; /*Only important to CDSS program functions, can be left as it for other systems*/
   var Title = 'Ann Arbor Antimicrobial CDSS'; /*Name of the tab on the website*/
-  var MainMenuButton = 'Ann Arbor Home'; /*Main menu button name*/
+  /*var MainMenuButton = 'Ann Arbor Home'; /*Main menu button name*/
   const MainMenu = 'ORZID2 GMENU ABX INPT MAIN'; /*the menu the website starts at*/
   const outptMenu = 'ORZID3 GMENU ABX OUTPT MAIN'; /*the menu the website starts at*/
   const erucMenu = 'ORZID GMENU ER/UC EMERGENCY DEPARTMENT MAIN MENU'; /*the menu the website starts at*/	  
@@ -275,7 +275,7 @@
 }
 
 #goBackButton,
-#mainMenuButton,
+/*#mainMenuButton,*/
 #indexButton,
 #goForwardButton,
 #install-button,
@@ -325,7 +325,7 @@
 
 /* Add a darker shade of blue on hover */
 #goBackButton:hover,
-#mainMenuButton:hover,
+/*#mainMenuButton:hover,*/
 #indexButton:hover,
 #goForwardButton:hover,
 #install-button:hover,
@@ -666,7 +666,7 @@ body {
   <div class="buttons-container">
     <button id="drawerToggle">&#9776;</button>
     <button id="goBackButton">&#9664;</button>
-    <button id="mainMenuButton">Ann Arbor Home</button>
+    <!--<button id="mainMenuButton">Ann Arbor Home</button>-->
     <button id="indexButton">Index</button>
     <button id="goForwardButton">&#9654;</button>
     <button id="install-button" style="display: none;">Install App</button>
@@ -1018,7 +1018,7 @@ buttonsContainerVersions.style.display = 'none';
     
 document.getElementById('versionTag').textContent = Version;
 document.getElementById('pageTitle').textContent = Title;
-document.getElementById('mainMenuButton').textContent = MainMenuButton;
+/*document.getElementById('mainMenuButton').textContent = MainMenuButton;*/
 document.getElementById('indexButton').textContent = IndexButton;
   
 function populateDropdown(omData) {
@@ -2127,7 +2127,7 @@ document.getElementById('DetroitButton').addEventListener('click', function () {
 document.getElementById('downloadJSONButton').addEventListener('click', handleDownloadJSON);
 document.getElementById('goBackButton').addEventListener('click', handleGoBack);
 document.getElementById('goForwardButton').addEventListener('click', handleGoForward);
-document.getElementById('mainMenuButton').addEventListener('click', handleMainMenu);
+/*document.getElementById('mainMenuButton').addEventListener('click', handleMainMenu);*/
 document.getElementById('indexButton').addEventListener('click', handleIndex);
 document.getElementById('outptButton').addEventListener('click', handleOutpt);
 document.getElementById('inptButton').addEventListener('click', handleInpt);
