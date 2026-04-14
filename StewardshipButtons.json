@@ -49,14 +49,14 @@
     {
       "title": "Clinical Guidelines",
       "buttons": [
-        { "label": "Diabetic Foot Infection Guideline", "url": "your-link-here" },
-        { "label": "C difficile Treatment Guideline", "url": "your-link-here" },
-        { "label": "Bloodstream Infection Treatment Guideline", "url": "your-link-here" },
-        { "label": "Meningitis Encephalitis (MEPAN) Treatment Guideline", "url": "your-link-here" },
-        { "label": "Penicillin Allergy Testing Algorithm", "url": "your-link-here" },
-        { "label": "Cefazolin Surgical Prophylaxis Dosing", "url": "your-link-here" },
-        { "label": "Genitourinary Surgical Antimicrobial Prophylaxis", "url": "your-link-here" },
-        { "label": "Radiology Antimicrobial Prophylaxis Protocol", "url": "your-link-here" }
+        { "label": "Bloodstream Infection Treatment Recommendations from BioFire BCID2 Panel Results", "url": "AnnArborFiles/AAVA-BioFire-BCID2-Panel-Suggested-Therapy-Guideline-2025.pdf" },
+        { "label": "Diabetic Foot Infection Guideline", "url": "AnnArborFiles/Diabetic-Foot-Infection-Workflow-FINAL---approved-December-2024.pdf?web=1" },
+        { "label": "C difficile Treatment Guideline", "url": "AnnArborFiles/Infectious-Diarrhea-Testing-and-C-difficile-Treatment-Guideline-2025_FINAL.pdf" },
+        { "label": "Meningitis Encephalitis (MEPAN) Treatment Guideline", "url": "AnnArborFiles/957836777MEPAN-AAVA-guidance-document-FINAL.pdf" },
+        { "label": "Penicillin Allergy Testing Algorithm", "url": "AnnArborFiles/2025-PCN-Allergy-Algorithm-ID-Stewardship-and-P-T-Approved.pdf?web=1" },
+        { "label": "Cefazolin Surgical Prophylaxis Dosing", "url": "AnnArborFiles/Cefazolin-for-Surgical-Prophylaxis.pdf?web=1" },
+        { "label": "Genitourinary Surgical Antimicrobial Prophylaxis", "url": "AnnArborFiles/Pre-Operative-Urologic-Antimicrobial-Prophylaxis-Guidelines-.pdf?web=1" },
+        { "label": "Radiology Antimicrobial Prophylaxis Protocol", "url": "Radiology-Antibiotic-Prophylaxis-Protocol-at-AAVA.pdf?web=1" }
       ]
     },
     {
