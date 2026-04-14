@@ -71,15 +71,15 @@
     {
       "title": "Additional Resources",
       "buttons": [
-        { "label": "Sanford Guide", "url": "your-link-here" },
-        { "label": "Infection Control", "url": "your-link-here" },
-        { "label": "PCN Allergy Testing", "url": "your-link-here" },
-        { "label": "Cefazolin for Perioperative Patients with Penicillin Allergy", "url": "your-link-here" },
-        { "label": "Drug Allergy Review Clin Immunol 2022", "url": "your-link-here" },
-        { "label": "OPAT Drug Reference", "url": "your-link-here" },
-        { "label": "OPAT Flowchart", "url": "your-link-here" },
-        { "label": "AAVA Antimicrobial Stewardship Program Charter", "url": "your-link-here" },
-        { "label": "Antimicrobial Stewardship VHA Directive 1031", "url": "your-link-here" }
+        { "label": "Sanford Guide", "url": "https://web.sanfordguide.com/" },
+        { "label": "Infection Control", "url": "#" },
+        { "label": "PCN Allergy Testing", "url": "#" },
+        { "label": "Cefazolin for Perioperative Patients with Penicillin Allergy", "url": "AnnArborFiles/Cefazolin%20for%20Perioperative%20Patients%20with%20Penicillin%20Allergy_VAAAHS%20ASP%20Recommendations.pdf?web=1" },
+        { "label": "Drug Allergy Review Clin Immunol 2022", "url": "Drug-Allergy_JAllergyClinImmunol_2022.pdf?web=1" },
+        { "label": "OPAT Drug Reference", "url": "AnnArborFiles/IV-Home-Abx-Reference-Document.pdf?web=1" },
+        { "label": "OPAT Flowchart", "url": "AnnArborFiles/Home%20IV%20Antibiotics%20at%20Ann%20Arbor%20VA%20Guidance.pdf?web=1" },
+        { "label": "AAVA Antimicrobial Stewardship Program Charter", "url": "AnnArborFiles/Antimicrobial%20Stewardship%20Committee%20and%20Program.pdf?web=1" },
+        { "label": "Antimicrobial Stewardship VHA Directive 1031", "url": "AnnArborFiles/VHA-Directive-1031---Antimicrobial-Stewardship-Programs--ASP-_9-22-23-update.pdf?web=1" }
       ]
     }
   ]
