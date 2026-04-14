@@ -16,7 +16,7 @@
   const MainMenu = 'ORZID2 GMENU ABX INPT MAIN'; /*the menu the website starts at*/
   const outptMenu = 'ORZID3 GMENU ABX OUTPT MAIN'; /*the menu the website starts at*/
   const erucMenu = 'ORZID GMENU ER/UC EMERGENCY DEPARTMENT MAIN MENU'; /*the menu the website starts at*/	  
-  var IndexButton = 'Index'; /*Only important to CDSS program functions, can be left as it for other systems*/
+  /*var IndexButton = 'Index'; /*Only important to CDSS program functions, can be left as it for other systems*/
   var homeButtonUrl = 'https://v10antimicrobialcdss.github.io/'; /*Only important to CDSS program functions, home URL*/
   const Index = 'ORZID2 GMENU ABX INDEX INPATIENT';/*Only important to CDSS program functions, can be left as it for other systems*/
   const outptIndex = 'ORZID3 GMENU ABX INDEX OUTPATIENT';/*Only important to CDSS program functions, can be left as it for other systems*/
@@ -275,8 +275,8 @@
 }
 
 #goBackButton,
-/*#mainMenuButton,*/
-#indexButton,
+/*#mainMenuButton,
+#indexButton,*/
 #goForwardButton,
 #install-button,
 #homeButton  {
@@ -325,8 +325,8 @@
 
 /* Add a darker shade of blue on hover */
 #goBackButton:hover,
-/*#mainMenuButton:hover,*/
-#indexButton:hover,
+/*#mainMenuButton:hover,
+#indexButton:hover,*/
 #goForwardButton:hover,
 #install-button:hover,
 #inptButton:hover,
@@ -666,8 +666,8 @@ body {
   <div class="buttons-container">
     <button id="drawerToggle">&#9776;</button>
     <button id="goBackButton">&#9664;</button>
-    <!--<button id="mainMenuButton">Ann Arbor Home</button>-->
-    <button id="indexButton">Index</button>
+    <!--<button id="mainMenuButton">Ann Arbor Home</button>
+    <button id="indexButton">Index</button>-->
     <button id="goForwardButton">&#9654;</button>
     <button id="install-button" style="display: none;">Install App</button>
     <button id="homeButton" onclick="window.location.href='index.html'">
@@ -996,9 +996,9 @@ if (CDSSlocation === 'Saginaw') {
 if (CDSSlocation === 'Northern Indiana') {
   {document.getElementById("NorthernIndianaButton").style.display="none";};
 }  
-if (hideButtonsIndex === 'True') {
+/*if (hideButtonsIndex === 'True') {
   {document.getElementById("indexButton").style.display="none";};
-}
+}*/
 if (hideButtonsHome === 'True') {
   {document.getElementById("homeButton").style.display="none";};
 }
@@ -1019,7 +1019,7 @@ buttonsContainerVersions.style.display = 'none';
 document.getElementById('versionTag').textContent = Version;
 document.getElementById('pageTitle').textContent = Title;
 /*document.getElementById('mainMenuButton').textContent = MainMenuButton;*/
-document.getElementById('indexButton').textContent = IndexButton;
+/*document.getElementById('indexButton').textContent = IndexButton;*/
   
 function populateDropdown(omData) {
   const dropdown = document.getElementById('filterDropdown');
@@ -2127,8 +2127,8 @@ document.getElementById('DetroitButton').addEventListener('click', function () {
 document.getElementById('downloadJSONButton').addEventListener('click', handleDownloadJSON);
 document.getElementById('goBackButton').addEventListener('click', handleGoBack);
 document.getElementById('goForwardButton').addEventListener('click', handleGoForward);
-/*document.getElementById('mainMenuButton').addEventListener('click', handleMainMenu);*/
-document.getElementById('indexButton').addEventListener('click', handleIndex);
+/*document.getElementById('mainMenuButton').addEventListener('click', handleMainMenu);
+document.getElementById('indexButton').addEventListener('click', handleIndex);*/
 document.getElementById('outptButton').addEventListener('click', handleOutpt);
 document.getElementById('inptButton').addEventListener('click', handleInpt);
 document.getElementById('erucButton').addEventListener('click', handleEruc);
@@ -2252,7 +2252,7 @@ function checkMatchesAndSetButtonAppearance() {
   const outptButton = document.getElementById('outptButton');
   const erucButton = document.getElementById('erucButton');
   const inptButton = document.getElementById('inptButton');
-  const indexButton = document.getElementById('indexButton');
+  /*const indexButton = document.getElementById('indexButton');*/
   matchedOutptName = null;
   matchedErucName = null;
 	
@@ -2299,17 +2299,17 @@ if (currentVersion === 'inpt'){
 	setButtonBackground(inptButton, true);
 	setButtonBackground(outptButton, false);
 	setButtonBackground(erucButton, false);
-	setButtonAppearance(indexButton, true);
+	/*setButtonAppearance(indexButton, true);*/
 } else if (currentVersion === 'outpt') {
   	setButtonBackground(inptButton, false);
 	setButtonBackground(outptButton, true);
 	setButtonBackground(erucButton, false);
-	setButtonAppearance(indexButton, true);
+/*	setButtonAppearance(indexButton, true);*/
 } else if (currentVersion === 'eruc') {
   	setButtonBackground(inptButton, false);
 	setButtonBackground(outptButton, false);
 	setButtonBackground(erucButton, true);
-	setButtonAppearance(indexButton, false);
+	/*setButtonAppearance(indexButton, false);*/
 	}
 }
 // Function to set the button appearance
