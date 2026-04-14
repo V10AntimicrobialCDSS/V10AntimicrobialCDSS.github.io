@@ -62,10 +62,10 @@
     {
       "title": "Diagnostic Stewardship",
       "buttons": [
-        { "label": "Positive Blood Culture Interpretation", "url": "your-link-here" },
-        { "label": "Infectious Diarrhea Testing Algorithm", "url": "your-link-here" },
-        { "label": "Kicking UTI Urine Culturing Algorithm", "url": "your-link-here" },
-        { "label": "Procalcitonin Guidance", "url": "your-link-here" }
+        { "label": "Positive Blood Culture Interpretation", "url": "AnnArborFiles/Blood-culture-Interpretation.pdf" },
+        { "label": "Infectious Diarrhea Testing Algorithm", "url": "AnnArborFiles/133419248Infectious-Diarrhea-Testing-2025-alone.pdf" },
+        { "label": "Kicking UTI Urine Culturing Algorithm", "url": "AnnArborFiles/Kicking%20UTI%20Urine%20Culturing%20Algorithm.pdf?web=1" },
+        { "label": "Procalcitonin Guidance", "url": "AnnArborFiles/Procalcitonin-Guidance.pdf?web=1" }
       ]
     },
     {
