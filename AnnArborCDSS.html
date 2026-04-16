@@ -860,17 +860,22 @@ function renderStewardshipButtons(data) {
 
 
 function showSubmenu(e, title, submenuItems, isNested = false) {
-  // Remove any existing popup and backdrop
-  const existing = document.getElementById('stewardshipPopup');
+  // Remove any existing nested popups (but keep parent popup visible)
+  let popupId = isNested ? 'stewardshipPopupNested' : 'stewardshipPopup';
+  const existing = document.getElementById(popupId);
   if (existing) existing.remove();
-  const existingBackdrop = document.getElementById('stewardshipBackdrop');
-  if (existingBackdrop) existingBackdrop.remove();
+  
+  // Only remove backdrop for nested popups, not the main one
+  if (isNested) {
+    const nestedBackdrop = document.getElementById('stewardshipBackdropNested');
+    if (nestedBackdrop) nestedBackdrop.remove();
+  }
 
   const popup = document.createElement('div');
-  popup.id = 'stewardshipPopup';
+  popup.id = popupId;
   popup.style.cssText = `
     position: fixed;
-    z-index: 9999;
+    z-index: ${isNested ? 10000 : 9999};
     background: #fff;
     border: 1px solid #aaa;
     border-radius: 4px;
@@ -881,7 +886,7 @@ function showSubmenu(e, title, submenuItems, isNested = false) {
   `;
 
   // Position near the clicked button
-  const rect = e.target.getBoundingClientRect();
+  const rect = e.currentTarget ? e.currentTarget.getBoundingClientRect() : e.target.getBoundingClientRect();
   
   if (isNested) {
     // Position nested popup to the right of the clicked button
@@ -923,20 +928,24 @@ function showSubmenu(e, title, submenuItems, isNested = false) {
   });
 
   // Create backdrop
+  const backdropId = isNested ? 'stewardshipBackdropNested' : 'stewardshipBackdrop';
   const backdrop = document.createElement('div');
-  backdrop.id = 'stewardshipBackdrop';
-  backdrop.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4); z-index:9998;';
-  backdrop.addEventListener('click', () => {
-    popup.remove();
-    backdrop.remove();
-  });
+  backdrop.id = backdropId;
+  backdrop.style.cssText = `position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4); z-index:${isNested ? 9999 : 9998};`;
+  
+  if (!isNested) {
+    backdrop.addEventListener('click', () => {
+      popup.remove();
+      backdrop.remove();
+    });
+  }
 
   // Close when clicking anywhere outside
   setTimeout(() => {
     document.addEventListener('click', function closePopup(ev) {
       if (!popup.contains(ev.target)) {
         popup.remove();
-        document.getElementById('stewardshipBackdrop')?.remove();
+        document.getElementById(backdropId)?.remove();
         document.removeEventListener('click', closePopup);
       }
     });
