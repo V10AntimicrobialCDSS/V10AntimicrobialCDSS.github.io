@@ -149,11 +149,20 @@
 
     .stewardship-heading {
       font-family: 'Montserrat Bold', Arial, sans-serif;
-      color: #0D323D;
-      font-size: 22px;
+      color: #ffffff;
+      font-size: 24px;
       text-align: center;
-      margin: 0 0 20px 0;
+      margin: 0;
       letter-spacing: 0.5px;
+    }
+
+    #pageHeading {
+      width: 100%;
+      padding-left: 0;
+      padding-right: 0;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: center;
     }
 
     .submenu-popup {
@@ -830,6 +839,7 @@ body {
 </div>
 
 	<div id="header">
+  <div id="pageHeading"></div>
   <div class="buttons-container">
     <button id="drawerToggle">&#9776;</button>
     <!--<button id="goBackButton">&#9664;</button>
@@ -963,11 +973,20 @@ function renderStewardshipButtons(data) {
   container.style.display = 'block';
 
   // Render header if present
+  const pageHeadingContainer = document.getElementById('pageHeading');
+  if (pageHeadingContainer) {
+    pageHeadingContainer.innerHTML = '';
+  }
+
   if (data.header) {
     const header = document.createElement('h2');
     header.textContent = data.header;
     header.className = 'stewardship-heading';
-    container.appendChild(header);
+    if (pageHeadingContainer) {
+      pageHeadingContainer.appendChild(header);
+    } else {
+      container.appendChild(header);
+    }
   }
 
   data.sections.forEach((section, i) => {
