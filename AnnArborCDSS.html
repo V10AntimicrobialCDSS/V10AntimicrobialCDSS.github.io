@@ -157,12 +157,14 @@
     }
 
     #pageHeading {
+      flex: 1;
       width: 100%;
       padding-left: 0;
       padding-right: 0;
-      margin-bottom: 12px;
+      margin: 0;
       display: flex;
       justify-content: center;
+      align-items: center;
     }
 
     .submenu-popup {
@@ -311,8 +313,9 @@
   z-index: 1;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
   width: calc(100% - 260px);
   margin-left: 260px;
   padding: 14px 24px;
@@ -333,12 +336,11 @@
 }
     
 .buttons-container {
-  margin-top: 10px;
-  margin-bottom: 5px;
-  margin-left: 10px; /* changed from 5px */
-  display: flex;
-  align-items: center; /* changed from flex-start so items align vertically */
-  gap: 10px;
+      margin-top: 0;
+      margin-bottom: 0;
+      margin-left: 0;
+      display: flex;
+      align-items: center;
   justify-content: flex-start;
 }
 
