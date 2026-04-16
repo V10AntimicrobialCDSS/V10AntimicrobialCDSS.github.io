@@ -79,15 +79,15 @@
               "submenu": [
                 {
               "label": "COVID Procedures April 2025",
-              "url": "AnnArborFiles/COVID Procedures 4.2025.pdf"
+              "url": "AnnArborFiles/COVID%20Procedures%204.2025.pdf"
                 },
                   {
               "label": "End of Masking Memo Signed",
-              "url": "AnnArborFiles/End of Masking Memo 11/19.24 signed.pdf"
+              "url": "AnnArborFiles/End%20of%20Masking%20Memo%2011/19.24%20signed.pdf"
                 },
                   {
               "label": "VHA COVID-19 Operational Plan",
-              "url": "AnnArborFiles/VHA COVID-19 Operational Plan v1.8.pdf"
+              "url": "AnnArborFiles/VHA%20COVID-19%20Operational%20Plan%20v1.8.pdf"
                 }
               ]
             },
