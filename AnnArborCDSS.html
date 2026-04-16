@@ -1133,27 +1133,29 @@ function showSubmenu(e, title, submenuItems, isNested = false) {
   const viewportWidth = window.innerWidth;
   let adjustedTop = parseFloat(popup.style.top || '0');
   let adjustedLeft = parseFloat(popup.style.left || '0');
+  const padding = 12;
 
-  if (popupRect.bottom > viewportHeight - 12) {
-    adjustedTop = Math.max(12, adjustedTop - (popupRect.bottom - viewportHeight) - 8);
+  if (popupRect.bottom > viewportHeight - padding) {
+    adjustedTop = Math.max(padding, adjustedTop - (popupRect.bottom - viewportHeight) - 8);
   }
-  if (popupRect.top < 12) {
-    adjustedTop = 12;
+  if (popupRect.top < padding) {
+    adjustedTop = padding;
   }
 
-  if (popupRect.right > viewportWidth - 12) {
+  if (popupRect.right > viewportWidth - padding) {
     if (isNested) {
-      adjustedLeft = Math.max(12, rect.left - popupRect.width - 8);
+      adjustedLeft = Math.max(padding, rect.left - popupRect.width - 8);
     } else {
-      adjustedLeft = Math.max(12, viewportWidth - popupRect.width - 12);
+      adjustedLeft = Math.max(padding, viewportWidth - popupRect.width - padding);
     }
   }
-  if (popupRect.left < 12) {
-    adjustedLeft = 12;
+  if (popupRect.left < padding) {
+    adjustedLeft = padding;
   }
 
   popup.style.top = adjustedTop + 'px';
   popup.style.left = adjustedLeft + 'px';
+  popup.style.maxHeight = (viewportHeight - padding * 2) + 'px';
 }
 
 
