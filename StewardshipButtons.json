@@ -93,7 +93,12 @@
             },
             {
               "label": "Infectious Diarrhea and C Difficile",
-              "url": "AnnArborFiles/ASP-One-Pager_inpatient.jpg"
+              "submenu": [
+                {
+              "label": "Infectious Diarrhea Algorithm",
+              "url": "AnnArborFiles/Infectious-Diarhea-Testing-and-C-difficile-Treatment-Guideline-2025_FINAL.pdf"
+                }
+              ]
             },
             {
               "label": "Inpatient Isolation Guidance",
