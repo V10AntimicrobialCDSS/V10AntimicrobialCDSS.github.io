@@ -102,7 +102,16 @@
             },
             {
               "label": "Inpatient Isolation Guidance",
-              "url": "AnnArborFiles/ASP-One-Pager_outpatient.jpg"
+              "submenu": [
+                {
+              "label": "GI Panel",
+              "url": "AnnArborFiles/GI%20panel.pdf"
+                },
+                  {
+              "label": "R-Pan Isolation June 2025",
+              "url": "AnnArborFiles/R-Pan%20isolation%206.2025.pdf"
+                }
+              ]
             },
             {
               "label": "Measles",
