@@ -216,7 +216,16 @@
   justify-content: flex-start;
 }
 
-<!-- Removed .search-container, .dropbox-container, #searchInput -->
+.search-container {
+  flex-basis: 100%;
+  align-items: left;
+  max-width: 375px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  margin-left: 10px; /* stays the same — now consistent with rows above */
+}
+    
+.buttons-containerDownloads,
 .buttons-containerVersions,
 .buttons-containerMenuJson {
   width: 800px;
@@ -239,6 +248,14 @@
     align-items: Left;
     max-width: 375px; 
   } 
+  #searchInput {
+    font-family: 'Montserrat Regular', Arial, sans-serif;
+    width: 100%;
+    text-align: left;
+    max-width: 375px;
+    font-size: 14px;
+    font-family: "Times New Roman", serif;
+  }
 .CDSSLogo {
   width: 200px; /* Set the maximum width for the image */
   height: auto;
@@ -664,7 +681,12 @@ body {
     <button id="erucButton">ER/UC</button>
   </div>-->
 
-  <!-- Removed search-container div -->
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="&#x1F50D;">
+    <div class="dropbox-container">
+      <select id="filterDropdown"></select>
+    </div>
+  </div>
 </div>
 
 <!-- Wrap everything below header in this div -->
@@ -1045,9 +1067,113 @@ function populateDropdown(omData) {
   //console.log('Dropdown population complete');
 }
 	
-// Removed searchData function
+// Function to search and sort data based on the input
+function searchData() {
+  const searchInput = document.getElementById('searchInput');
+  const dropdown = document.getElementById('filterDropdown');
+  const searchText = searchInput.value.trim().toLowerCase();
 
-// Removed searchAndOpenDropdown function
+  if (searchText === '') {
+    populateDropdown(omData);
+    sortDropdownByTerm();
+  } else {
+    const searchTerms = searchText.split(' ');
+
+    let filteredData = omData.map(item => {
+      let relevanceScore = 0;
+      let matchingTerm = ''
+      let closestMatchingTerm = '';
+      let sortTerm = '';
+      const contentTexts = (item.Contents || []).map(content => content.Text ? content.Text.toLowerCase() : '').filter(Boolean);
+      const Term1 = item.Term1 ? item.Term1.trim() : '';
+      
+      for (let i = 1; i <= 99; i++) {
+        const termKey = `Term${i}`;
+        if (item[termKey]) {
+          const termText = item[termKey].trim();
+          const termTextLower = termText.toLowerCase();
+
+          // Check for exact match with the entire searchText
+          if (termTextLower === searchText) {
+            relevanceScore += 10000;
+            matchingTerm = termText;
+          } else {
+            searchTerms.forEach(term => {
+              if (termTextLower === term) {
+                relevanceScore += 1000;
+                if (!closestMatchingTerm || termText.length < closestMatchingTerm.length) {
+                  closestMatchingTerm = termText;
+                }
+              } else if (termTextLower.includes(term)) {
+                relevanceScore += 100;
+                if (!closestMatchingTerm || 
+                    termTextLower.indexOf(term) < closestMatchingTerm.toLowerCase().indexOf(term) || 
+                    (termTextLower.indexOf(term) === closestMatchingTerm.toLowerCase().indexOf(term) && termText.length < closestMatchingTerm.length) ||
+                    (termTextLower.startsWith(searchText) && !closestMatchingTerm.toLowerCase().startsWith(searchText))) {
+                  closestMatchingTerm = termText;
+                }
+              }
+
+              contentTexts.forEach(text => {
+                const regex = new RegExp(`\\b${term}\\b`, 'i'); // Match whole words only
+                if (regex.test(text)) {
+                  relevanceScore += 10; // Increase relevance score if search term is found as a whole word in contentTexts
+                }
+                if (text.includes(term)) {
+                  relevanceScore += 1; // Increase relevance score if search term is found in contentTexts
+                }
+              });
+            });
+          }
+        }
+      }
+
+      if (matchingTerm === "" && closestMatchingTerm === "") {
+        sortTerm = Term1;
+      } else if (matchingTerm === "") {
+        sortTerm = closestMatchingTerm;
+        } else {
+        sortTerm = matchingTerm;
+          }
+      
+      return {
+        ...item,
+        relevanceScore,
+        sortTerm
+      };
+    })
+    .filter(item => item.relevanceScore > 0)
+    .sort((a, b) => b.relevanceScore - a.relevanceScore);
+    
+    filteredData = filteredData.filter(item => !(item.sortTerm).toLowerCase().includes('index'));
+   
+    dropdown.innerHTML = '';
+
+    filteredData.forEach(item => {
+      const option = document.createElement('option');
+      option.value = item.Name;
+      option.textContent = item.sortTerm; //+ item.relevanceScore;
+      dropdown.appendChild(option);
+    });
+
+    const matchCount = dropdown.length;
+    const firstLine = document.createElement('option');
+    if (matchCount === 0) {
+      firstLine.textContent = 'No Matches';
+      firstLine.style.color = 'red';
+    } else {
+      firstLine.textContent = `Matches: ${matchCount}`;
+      firstLine.style.color = 'green';
+    }
+    firstLine.disabled = true;
+    firstLine.selected = true;
+    dropdown.insertBefore(firstLine, dropdown.firstChild);
+  }
+  
+  dropdown.scrollTop = 0;
+}
+    
+function searchAndOpenDropdown() {
   var searchInput = document.getElementById('searchInput');
   var dropdown = document.getElementById('filterDropdown');
   var isDropdownOpen = false;
@@ -1710,7 +1836,19 @@ function filterData(event, sortByTerm = false) {
   }
 }
 
-// Removed sortDropdownByTerm function
+// Function to sort the dropdown options alphabetically by term
+function sortDropdownByTerm() {
+  const dropdown = document.getElementById('filterDropdown');
+  const options = Array.from(dropdown.options);
+  const sortedOptions = options.sort((a, b) => {
+    return a.textContent.localeCompare(b.textContent, undefined, { sensitivity: 'base' });
+  });
+  dropdown.innerHTML = ''; // Clear existing options
+  // Add sorted options back to the dropdown
+  for (const option of sortedOptions) {
+    dropdown.appendChild(option);
+  }
+}
 
 // Function to push the current selection to the history
 function pushHistory(item) {
@@ -1734,6 +1872,8 @@ function handleGoBack() {
     const matchingData = omData.find(item => item.Name === selectedItem)
     if (matchingData) {
     const dropdown = document.getElementById('filterDropdown');
+    document.getElementById('searchInput').value = null;
+    document.getElementById('searchInput').placeholder = "\u{1F50D}";
     populateDropdown(omData);
     dropdown.value = selectedItem;
     filterData({ target: dropdown });
@@ -1765,6 +1905,8 @@ function handleGoForward() {
         const matchingData = omData.find(item => item.Name === selectedItem);
         if (matchingData) {
            const dropdown = document.getElementById('filterDropdown');
+            document.getElementById('searchInput').value = null;
+            document.getElementById('searchInput').placeholder = "\u{1F50D}";
             populateDropdown(omData);
             dropdown.value = selectedItem;
             filterData({ target: dropdown });
@@ -1787,6 +1929,8 @@ function handleMainMenu() {
   document.getElementById('resultContainer').innerHTML = '';
   document.getElementById('stewardshipButtons').style.display = 'block';
   const dropdown = document.getElementById('filterDropdown');
+  document.getElementById('searchInput').value = null;
+  document.getElementById('searchInput').placeholder = "\u{1F50D}";
   populateDropdown(omData);
   if (currentVersion === 'inpt') {	
   	dropdown.value = MainMenu;
@@ -1803,6 +1947,8 @@ function handleMainMenu() {
 // Function to handle the Index button click event
 function handleIndex() {
   const dropdown = document.getElementById('filterDropdown');
+  document.getElementById('searchInput').value = null;
+  document.getElementById('searchInput').placeholder = "\u{1F50D}";
   populateDropdown(omData);
   if (currentVersion === 'inpt') {	
   	dropdown.value = Index;
@@ -1816,6 +1962,9 @@ function handleIndex() {
 // Function to handle the OutPt button click event
  function handleOutpt() {
   const dropdown = document.getElementById('filterDropdown');
+  const searchInput = document.getElementById('searchInput');
+  searchInput.value = null;
+  searchInput.placeholder = "\u{1F50D}";
   currentVersion = 'outpt';
   populateDropdown(omData);
   const selectedDataName = selectedData.Name;
@@ -1853,6 +2002,9 @@ function handleIndex() {
 
 function handleEruc() {
   const dropdown = document.getElementById('filterDropdown');
+  const searchInput = document.getElementById('searchInput');
+  searchInput.value = null;
+  searchInput.placeholder = "\u{1F50D}";
   populateDropdown(omData);
   currentVersion = 'eruc';
   const selectedDataName = selectedData.Name;
@@ -1890,6 +2042,9 @@ function handleEruc() {
 	
 function handleInpt() {
   const dropdown = document.getElementById('filterDropdown');
+  const searchInput = document.getElementById('searchInput');
+  searchInput.value = null;
+  searchInput.placeholder = "\u{1F50D}";
   populateDropdown(omData);
   currentVersion = 'inpt';
   const selectedDataName = selectedData.Name;
@@ -1933,9 +2088,17 @@ function handleInpt() {
     document.body.removeChild(element);
     }
  
-// Removed openDropdown function
-
-// Removed isSearchInput function
+// Function to open the dropdown when clicking into the search input
+function openDropdown() {
+  const dropdown = document.getElementById('filterDropdown');
+  dropdown.size = dropdown.options.length;
+  dropdown.style.display = 'block';
+  }
+// Function to check if the target element or its parent is the search input
+  function isSearchInput(element) {
+  const searchInput = document.getElementById('searchInput');
+  return element === searchInput || element.parentNode === searchInput;
+  }
 
 // JavaScript code to handle button clicks
 document.getElementById('ChillicotheButton').addEventListener('click', function () {
@@ -1970,9 +2133,11 @@ document.getElementById('outptButton').addEventListener('click', handleOutpt);
 document.getElementById('inptButton').addEventListener('click', handleInpt);
 document.getElementById('erucButton').addEventListener('click', handleEruc);
 document.getElementById('filterDropdown').addEventListener('change', filterData);
-// Removed event listeners for searchInput
 window.addEventListener('resize', adjustFontSize);
 window.addEventListener('DOMContentLoaded', adjustFontSize);
+document.getElementById('searchInput').addEventListener('input', searchData);
+document.getElementById('searchInput').addEventListener('click', openDropdown);
+document.getElementById('searchInput').addEventListener('input', openDropdown);
 document.getElementById('homeButton').addEventListener('click', function() {
     window.location.href = homeButtonUrl;
 });
