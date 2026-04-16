@@ -900,9 +900,14 @@ function showSubmenu(e, title, submenuItems) {
     subBtn.style.cssText = 'display:block; width:100%; text-align:left; padding:8px; margin-bottom:4px; white-space:normal; height:auto;';
     subBtn.addEventListener('click', (ev) => {
       ev.stopPropagation();
-      if (subItem.url && subItem.url !== '#') window.open(subItem.url, '_blank');
-      popup.remove();
-      backdrop.remove();
+      if (subItem.submenu && subItem.submenu.length > 0) {
+        // Recursively show nested submenu
+        showSubmenu(ev, subItem.label, subItem.submenu);
+      } else if (subItem.url && subItem.url !== '#') {
+        window.open(subItem.url, '_blank');
+        popup.remove();
+        backdrop.remove();
+      }
     });
     popup.appendChild(subBtn);
   });
