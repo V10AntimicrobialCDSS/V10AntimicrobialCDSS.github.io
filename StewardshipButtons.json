@@ -115,7 +115,16 @@
             },
             {
               "label": "Measles",
-              "url": "AnnArborFiles/Memo-Oracle-EHRM-Infection-PowerPlans.pdf"
+              "submenu": [
+                {
+              "label": "Measles FAQ Flyer",
+              "url": "AnnArborFiles/Measles%20FAQ%20flyer%208.5x11.pdf"
+                },
+                  {
+              "label": "PCP Measles Vaccine Guidance",
+              "url": "AnnArborFiles/PCP%20measles%20vaccine%20guidance.pdf"
+                }
+              ]
             }
          ]
       },
