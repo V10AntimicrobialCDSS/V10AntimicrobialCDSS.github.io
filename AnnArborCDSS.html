@@ -72,58 +72,101 @@
   font-weight: normal;
   font-style: normal;
 }
-    .button {
-      font-family: 'Montserrat Regular', Arial, sans-serif;
-  	  font-size: 12px;
-  	  /*padding: 5px 5px;  Adjust the values to your desired padding */
-      white-space: nowrap;
-      flex: 1;
-      background-color: #0D323D; /* Blue color */
-      color: white;
-      padding: 5px; /* Increased padding for square buttons */
-      border: none;
-      cursor: pointer;
-      text-align: center;
-      text-decoration: none; /* Remove underline from links */
-      border-radius: 6px; /* Slightly rounded corners */
-      display: inline-block; /* Make links behave like buttons */
-      width: 12%; /* Take up 75% of the screen */
-    }
-    
-    .button:hover,
-    .button2:hover {
-      /*background-color: #4db8ff;  Light Blue color */
-  background-color: #155467;
-}
-
+    .button,
     .button2 {
       font-family: 'Montserrat Regular', Arial, sans-serif;
-  	  font-size: 12px;
-  	  /*padding: 5px 5px;  Adjust the values to your desired padding */
-      white-space: nowrap;
-      flex: 1;
-      /*background-color: #00aedb;  Blue color */
+      font-size: 14px;
+      white-space: normal;
       background-color: #0D323D;
       color: white;
-      padding: 5px; /* Increased padding for square buttons */
+      padding: 14px 16px;
       border: none;
       cursor: pointer;
       text-align: center;
-      text-decoration: none; /* Remove underline from links */
-      border-radius: 6px; /* Slightly rounded corners */
-      display: inline-block; /* Make links behave like buttons */
-      width: 16%; /* Take up 75% of the screen */
+      text-decoration: none;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: auto;
+      min-width: 140px;
+      min-height: 48px;
+      box-shadow: 0 12px 24px rgba(13, 50, 61, 0.12);
+      transition: transform 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease;
     }
-	  
-    .inactive-button {
-    pointer-events: none; /* Prevent clicks */
-    background-color: #00aedb; /* Inactive color */
-    color: grey; /* Inactive text color */
-  }
 
-  .inactive-button:hover {
-    background-color: #00aedb; /* Prevent hover effect */
-  }
+    .button:hover,
+    .button2:hover,
+    .button:focus,
+    .button2:focus {
+      background-color: #155467;
+      transform: translateY(-1px);
+      box-shadow: 0 16px 32px rgba(13, 50, 61, 0.16);
+      outline: none;
+    }
+
+    .button:active,
+    .button2:active {
+      transform: translateY(0);
+    }
+
+    .button.steward-button,
+    .button2.steward-button {
+      width: 100%;
+      justify-content: flex-start;
+      text-align: left;
+    }
+
+    .inactive-button {
+      pointer-events: none;
+      background-color: #bfdce7;
+      color: #6e7a84;
+      box-shadow: none;
+    }
+
+    .inactive-button:hover {
+      background-color: #bfdce7;
+    }
+
+    .section-card {
+      background: #ffffff;
+      border: 1px solid rgba(13, 50, 61, 0.08);
+      border-radius: 22px;
+      box-shadow: 0 24px 60px rgba(13, 50, 61, 0.05);
+      padding: 22px;
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      font-family: 'Montserrat Bold', Arial, sans-serif;
+      color: #0D323D;
+      font-size: 16px;
+      margin: 0 0 16px 0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .stewardship-heading {
+      font-family: 'Montserrat Bold', Arial, sans-serif;
+      color: #0D323D;
+      font-size: 24px;
+      text-align: center;
+      margin: 0 0 24px 0;
+      letter-spacing: 0.5px;
+    }
+
+    .stewardship-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 14px;
+    }
+
+    #stewardshipButtons {
+      padding: 22px 12px 32px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
     .no-term {
       display: none;
     }
@@ -172,16 +215,17 @@
   position: sticky;
   margin-top: 0;
   top: 0;
-  background-color: #0D323D;
+  background: rgba(13, 50, 61, 0.96);
   z-index: 1;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   flex-direction: column;
-  min-width: 900px;
-  width: calc(100% - 260px); /* subtract drawer width on desktop */
-  margin-left: 260px;        /* push header right of drawer */
+  width: calc(100% - 260px);
+  margin-left: 260px;
+  padding: 14px 24px;
   box-sizing: border-box;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
 }
 
 #footer {
@@ -469,42 +513,38 @@
     margin-left: 260px; /* must come AFTER base body rule */
   }
 
-/* Tablet and mobile — sidebar collapsible 
+  #header {
+    margin-left: 260px;
+    width: calc(100% - 260px);
+  }
+
+  #mainContent {
+    margin-left: 260px;
+    box-sizing: border-box;
+    padding: 10px;
+  }
+}
+
+/* Tablet and mobile — sidebar collapsible */
 @media (max-width: 1024px) {
   #drawerToggle {
     display: inline-block;
   }
-    */
 
-@media (max-width: 1024px) {
   #header {
     margin-left: 0;
     width: 100%;
     min-width: unset; /* allow full flexibility on mobile */
   }
-}
 
-
-#mainContent {
-  margin-left: 260px;
-  box-sizing: border-box;
-  padding: 10px;
-}
-
-@media (max-width: 1024px) {
   #mainContent {
     margin-left: 0;
-  }
-}
-
-  #closeDrawer {
-    display: block;
+    box-sizing: border-box;
+    padding: 18px 16px 32px;
   }
 
   #drawer {
-    /*left: -280px;  hidden off screen */
-    position: fixed;
-    top: 0;
+    left: -280px;
   }
 
   #drawer.open {
@@ -515,14 +555,37 @@
     display: block;
   }
 
+  #closeDrawer {
+    display: block;
+  }
+
   body {
     margin-left: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .stewardship-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-card {
+    padding: 18px;
+  }
+
+  .button,
+  .button2 {
+    min-width: unset;
+    width: 100%;
   }
 }
 /* Base body — no margins */
 body {
   margin: 0;
   padding: 0;
+  font-family: 'Montserrat Regular', Arial, sans-serif;
+  background: #eef4f7;
+  color: #172b3a;
 }
 
 .cdss-logo-text {
@@ -799,18 +862,21 @@ function renderStewardshipButtons(data) {
   if (data.header) {
     const header = document.createElement('h2');
     header.textContent = data.header;
-    header.style.cssText = 'font-family:"Montserrat Bold",Arial,sans-serif; color:#0D323D; font-size:18px; text-align:center; margin: 10px 0 20px 0;';
+    header.className = 'stewardship-heading';
     container.appendChild(header);
   }
 
   data.sections.forEach((section, i) => {
+    const sectionCard = document.createElement('div');
+    sectionCard.className = 'section-card';
+
     const title = document.createElement('p');
     title.textContent = section.title;
-    title.style.cssText = 'font-family:"Montserrat Bold",Arial,sans-serif; color:#0D323D; font-size:14px; margin: 12px 0 6px 0;';
-    container.appendChild(title);
+    title.className = 'section-title';
+    sectionCard.appendChild(title);
 
     const grid = document.createElement('div');
-    grid.style.cssText = 'display:grid; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)); gap:6px;';
+    grid.className = 'stewardship-grid';
 
     /*section.buttons.forEach(item => {
       const btn = document.createElement('button');
@@ -834,8 +900,7 @@ function renderStewardshipButtons(data) {
       ? '<i class="fa fa-chevron-down" style="margin-right:6px;"></i>' + item.label
       : item.label;
       btn.title = item.label;
-      btn.className = 'button';
-      btn.style.cssText = 'width:100%; white-space:normal; text-align:left; padding:8px; height:auto;';
+      btn.className = 'button steward-button';
       btn.addEventListener('click', (e) => {
         if (item.submenu && item.submenu.length > 0) {
           showSubmenu(e, item.label, item.submenu);
@@ -848,13 +913,8 @@ function renderStewardshipButtons(data) {
 
 
 
-    container.appendChild(grid);
-
-    if (i < data.sections.length - 1) {
-      const hr = document.createElement('hr');
-      hr.style.cssText = 'border:none; border-top:1px solid #ccc; margin:12px 0; margin-bottom:40px;';
-      container.appendChild(hr);
-    }
+    sectionCard.appendChild(grid);
+    container.appendChild(sectionCard);
   });
 }
 
@@ -2386,3 +2446,4 @@ window.onload = function() {
 
 </body>
 </html>
+
