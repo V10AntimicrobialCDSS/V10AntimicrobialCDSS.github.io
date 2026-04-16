@@ -859,7 +859,7 @@ function renderStewardshipButtons(data) {
 }
 
 
-function showSubmenu(e, title, submenuItems) {
+function showSubmenu(e, title, submenuItems, isNested = false) {
   // Remove any existing popup and backdrop
   const existing = document.getElementById('stewardshipPopup');
   if (existing) existing.remove();
@@ -882,9 +882,8 @@ function showSubmenu(e, title, submenuItems) {
 
   // Position near the clicked button
   const rect = e.target.getBoundingClientRect();
-  const isNestedPopup = document.getElementById('stewardshipPopup') !== null;
   
-  if (isNestedPopup) {
+  if (isNested) {
     // Position nested popup to the right of the clicked button
     popup.style.left = (rect.right + 8) + 'px';
     popup.style.top = rect.top + 'px';
@@ -913,7 +912,7 @@ function showSubmenu(e, title, submenuItems) {
       ev.stopPropagation();
       if (subItem.submenu && subItem.submenu.length > 0) {
         // Recursively show nested submenu
-        showSubmenu(ev, subItem.label, subItem.submenu);
+        showSubmenu(ev, subItem.label, subItem.submenu, true);
       } else if (subItem.url && subItem.url !== '#') {
         window.open(subItem.url, '_blank');
         popup.remove();
