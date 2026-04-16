@@ -72,7 +72,39 @@
       "title": "Additional Resources",
       "buttons": [
         { "label": "Sanford Guide", "url": "https://web.sanfordguide.com/" },
-        { "label": "Infection Control", "url": "#" },
+        { "label": "Infection Control",
+          "submenu": [
+            {
+              "label": "COVID-19",
+              "submenu": [
+                {
+              "label": "COVID Procedures April 2025",
+              "url": "AnnArborFiles/COVID Procedures 4.2025.pdf"
+                },
+                  {
+              "label": "End of Masking Memo Signed",
+              "url": "AnnArborFiles/End of Masking Memo 11/19.24 signed.pdf"
+                },
+                  {
+              "label": "VHA COVID-19 Operational Plan",
+              "url": "AnnArborFiles/VHA COVID-19 Operational Plan v1.8.pdf"
+                }
+              ]
+            },
+            {
+              "label": "Infectious Diarrhea and C Difficile",
+              "url": "AnnArborFiles/ASP-One-Pager_inpatient.jpg"
+            },
+            {
+              "label": "Inpatient Isolation Guidance",
+              "url": "AnnArborFiles/ASP-One-Pager_outpatient.jpg"
+            },
+            {
+              "label": "Measles",
+              "url": "AnnArborFiles/Memo-Oracle-EHRM-Infection-PowerPlans.pdf"
+            }
+         ]
+      },
         { "label": "PCN Allergy Testing", "url": "#" },
         { "label": "Cefazolin for Perioperative Patients with Penicillin Allergy", "url": "AnnArborFiles/Cefazolin%20for%20Perioperative%20Patients%20with%20Penicillin%20Allergy_VAAAHS%20ASP%20Recommendations.pdf?web=1" },
         { "label": "Drug Allergy Review Clin Immunol 2022", "url": "Drug-Allergy_JAllergyClinImmunol_2022.pdf?web=1" },
