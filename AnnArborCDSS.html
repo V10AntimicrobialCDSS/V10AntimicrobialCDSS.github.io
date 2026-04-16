@@ -882,8 +882,17 @@ function showSubmenu(e, title, submenuItems) {
 
   // Position near the clicked button
   const rect = e.target.getBoundingClientRect();
-  popup.style.left = rect.left + 'px';
-  popup.style.top = (rect.bottom + 4) + 'px';
+  const isNestedPopup = document.getElementById('stewardshipPopup') !== null;
+  
+  if (isNestedPopup) {
+    // Position nested popup to the right of the clicked button
+    popup.style.left = (rect.right + 8) + 'px';
+    popup.style.top = rect.top + 'px';
+  } else {
+    // Position first-level popup below the clicked button
+    popup.style.left = rect.left + 'px';
+    popup.style.top = (rect.bottom + 4) + 'px';
+  }
 
   // Popup title
   const popupTitle = document.createElement('p');
@@ -894,7 +903,9 @@ function showSubmenu(e, title, submenuItems) {
   // Submenu buttons
   submenuItems.forEach(subItem => {
     const subBtn = document.createElement('button');
-    subBtn.textContent = subItem.label;
+    subBtn.innerHTML = (subItem.submenu && subItem.submenu.length > 0)
+      ? '<i class="fa fa-chevron-right" style="margin-right:6px;"></i>' + subItem.label
+      : subItem.label;
     subBtn.title = subItem.label;
     subBtn.className = 'button';
     subBtn.style.cssText = 'display:block; width:100%; text-align:left; padding:8px; margin-bottom:4px; white-space:normal; height:auto;';
