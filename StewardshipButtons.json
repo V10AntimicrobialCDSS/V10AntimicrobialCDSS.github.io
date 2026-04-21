@@ -191,37 +191,8 @@
               "url": "AnnArborFiles/Testing-Steps-Overview.pdf"
                 }
               ]
-            },
-            {
-              "label": "Inpatient Isolation Guidance",
-              "submenu": [
-                {
-              "label": "GI Panel",
-              "url": "AnnArborFiles/GI%20panel.pdf"
-                },
-                  {
-              "label": "R-Pan Isolation June 2025",
-              "url": "AnnArborFiles/R-Pan%20isolation%206.2025.pdf"
-                }
-              ]
-            },
-            {
-              "label": "Measles",
-              "submenu": [
-                {
-              "label": "Measles FAQ Flyer",
-              "url": "AnnArborFiles/Measles%20FAQ%20flyer%208.5x11.pdf"
-                },
-                  {
-              "label": "PCP Measles Vaccine Guidance",
-              "url": "AnnArborFiles/PCP%20measles%20vaccine%20guidance.pdf"
-                }
-              ]
             }
          ]
-      
-      
-      
       },
         { "label": "Cefazolin for Perioperative Patients with Penicillin Allergy", "url": "AnnArborFiles/Cefazolin%20for%20Perioperative%20Patients%20with%20Penicillin%20Allergy_VAAAHS%20ASP%20Recommendations.pdf?web=1" },
         { "label": "Drug Allergy Review Clin Immunol 2022", "url": "Drug-Allergy_JAllergyClinImmunol_2022.pdf?web=1" },
