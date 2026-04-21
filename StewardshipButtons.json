@@ -128,7 +128,101 @@
             }
          ]
       },
-        { "label": "PCN Allergy Testing", "url": "#" },
+        { "label": "PCN Allergy Testing", 
+                "submenu": [
+            {
+              "label": "PCN Allergy Skin Test Checklist",
+              "submenu": [
+                {
+              "label": "PCN Allergy Skin Test Checklist for Pharmacists",
+              "url": "AnnArborFiles/PCN%20Allergy%20Skin%20Test%20Checklist%20for%20Pharmacists.pdf"
+                     }
+              ]
+            },
+            {
+              "label": "Resources",
+              "submenu": [
+                {
+              "label": "Allergy History Screening Questions",
+              "url": "AnnArborFiles/Allergy%20History%20Screening%20Questions.pdf"
+                },
+              {
+              "label": "Benzylpenicilloyl Polylysine (Pre-Pen) National Drug Monograph (ARCHIVED June 2018)",
+              "url": "AnnArborFiles/Benzylpenicilloyl%20Polylysine%20(Pre-Pen)%20National%20Drug%20Monograph%20(ARCHIVED%20June%202018).pdf"
+                },
+               {
+              "label": "Consent - Intradermal Skin Test",
+              "url": "AnnArborFiles/Consent%20-%20Intradermal%20Skin%20Test.pdf"
+                },
+                {
+              "label": "Consent - Medication Challenge Test",
+              "url": "AnnArborFiles/Consent%20-%20Medication%20Challenge%20Test.pdf"
+                },
+                {
+              "label": "Consent - Pick and Scratch Test",
+              "url": "AnnArborFiles/Consent%20-%20Pick%20and%20Scratch%20Test.pdf"
+                },
+                 {
+              "label": "Histamin and Syringe Storage",
+              "url": "AnnArborFiles/Histamine%20and%20Syringe%20Storage.pdf"
+                },
+                 {
+              "label": "Histatrol PI",
+              "url": "AnnArborFiles/Histatrol%20PI.pdf"
+                },
+                 {
+              "label": "How to Dilute Penicillin G for PCN Allergy Testing 1",
+              "url": "AnnArborFiles/How%20to%20Dilute%20Penicillin%20G%20for%20PCN%20Allergy%20Testing%201.pdf"
+                },
+                 {
+              "label": "Penicillin Allergy Brochure 1",
+              "url": "AnnArborFiles/Penicillin%20Allergy%20Brochure%201.pdf"
+                 },
+                  {
+              "label": "PRP Instruction for Test Preparation Card",
+              "url": "AnnArborFiles/PRP%20Instruction%20for%20test%20Preparation%20Card.pdf"
+                },
+                 {
+              "label": "PRP Instructional Guide",
+              "url": "AnnArborFiles/PRP%20Instructional%20Guide.pdf"
+                },
+                 {
+              "label": "Testing-Steps-Overview",
+              "url": "AnnArborFiles/Testing-Steps-Overview.pdf"
+                }
+              ]
+            },
+            {
+              "label": "Inpatient Isolation Guidance",
+              "submenu": [
+                {
+              "label": "GI Panel",
+              "url": "AnnArborFiles/GI%20panel.pdf"
+                },
+                  {
+              "label": "R-Pan Isolation June 2025",
+              "url": "AnnArborFiles/R-Pan%20isolation%206.2025.pdf"
+                }
+              ]
+            },
+            {
+              "label": "Measles",
+              "submenu": [
+                {
+              "label": "Measles FAQ Flyer",
+              "url": "AnnArborFiles/Measles%20FAQ%20flyer%208.5x11.pdf"
+                },
+                  {
+              "label": "PCP Measles Vaccine Guidance",
+              "url": "AnnArborFiles/PCP%20measles%20vaccine%20guidance.pdf"
+                }
+              ]
+            }
+         ]
+      
+      
+      
+      },
         { "label": "Cefazolin for Perioperative Patients with Penicillin Allergy", "url": "AnnArborFiles/Cefazolin%20for%20Perioperative%20Patients%20with%20Penicillin%20Allergy_VAAAHS%20ASP%20Recommendations.pdf?web=1" },
         { "label": "Drug Allergy Review Clin Immunol 2022", "url": "Drug-Allergy_JAllergyClinImmunol_2022.pdf?web=1" },
         { "label": "OPAT Drug Reference", "url": "AnnArborFiles/IV-Home-Abx-Reference-Document.pdf?web=1" },
