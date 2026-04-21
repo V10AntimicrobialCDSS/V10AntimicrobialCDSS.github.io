@@ -162,6 +162,15 @@
       transform: translateY(0);
     }
 
+    .button.steward-button {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .button.steward-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(45, 67, 115, 0.25);
+    }
+
     .button.steward-button,
     .button2.steward-button {
       width: 100%;
@@ -183,15 +192,18 @@
     .section-card {
       background: #ffffff;
       border: 1px solid rgba(44, 62, 80, 0.08);
+      border-left: 4px solid #3b5998;
       border-radius: 12px;
       box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
       padding: 22px;
       margin-bottom: 20px;
-      transition: all 0.2s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .section-card:hover {
-      box-shadow: 0 4px 16px rgba(44, 62, 80, 0.12);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(59, 89, 152, 0.15);
+      border-left-color: #2d4373;
     }
 
     .section-title {
@@ -200,17 +212,22 @@
       font-size: 13px;
       font-weight: 700;
       margin: 0 0 16px 0;
+      padding-bottom: 8px;
       text-transform: uppercase;
       letter-spacing: 0.8px;
+      border-bottom: 3px solid #3b5998;
+      display: inline-block;
     }
 
     .stewardship-heading {
       font-family: 'Montserrat Bold', Arial, sans-serif;
       color: #ffffff;
-      font-size: 24px;
+      font-size: 28px;
       text-align: center;
       margin: 0;
       letter-spacing: 0.5px;
+      font-weight: 700;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     #pageHeading {
@@ -290,11 +307,13 @@
       color: white;
       font-size: 14px;
       cursor: pointer;
-      transition: background-color 0.18s ease;
+      transition: all 0.25s ease;
     }
 
     .submenu-popup button:hover {
       background: linear-gradient(135deg, #2d4373 0%, #1e2f52 100%);
+      transform: translateX(4px);
+      box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.1);
     }
 
     .submenu-backdrop {
@@ -310,7 +329,7 @@
     .stewardship-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 14px;
+      gap: 16px;
     }
 
     #stewardshipButtons {
@@ -326,9 +345,17 @@
       color: black;
     }
     .AbxLink {
-      color: green;
+      color: #3b5998;
       cursor: pointer;
       text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      border-bottom: 2px solid rgba(59, 89, 152, 0.3);
+    }
+
+    .AbxLink:hover {
+      color: #2d4373;
+      border-bottom-color: #2d4373;
     }
     table {
       border-collapse: collapse;
@@ -341,8 +368,17 @@
       padding: 4px; /* Reduce cell padding */
     }
     .clickable {
-      color: blue;
+      color: #3b5998;
       cursor: pointer;
+      font-weight: 600;
+      transition: color 0.2s ease;
+      text-decoration: underline;
+      text-decoration-color: rgba(59, 89, 152, 0.3);
+    }
+
+    .clickable:hover {
+      color: #2d4373;
+      text-decoration-color: rgba(45, 67, 115, 0.6);
     }
     .bold {
       font-family: 'Montserrat Bold', Arial, sans-serif;
@@ -654,12 +690,19 @@
 .drawer-buttons .button2 {
   width: 100% !important;
   text-align: left;
-  border-radius: 3px;
-  padding: 1px 1px;
-}
+      border-radius: 8px;
+      padding: 10px 12px;
+      display: block !important;
+      flex: none !important;
+      font-size: 13px;
+      margin-bottom: 6px;
+      transition: all 0.25s ease;
+    }
 
-/* Desktop — sidebar always visible */
-@media (min-width: 1025px) {
+    .drawer-buttons .button:hover,
+    .drawer-buttons .button2:hover {
+      transform: translateX(4px);
+      background: linear-gradient(135deg, #2d4373 0%, #1e2f52 100%);
   body {
     margin-left: 260px; /* must come AFTER base body rule */
   }
