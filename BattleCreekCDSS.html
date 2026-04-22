@@ -333,10 +333,22 @@
       gap: 16px;
     }
 
+    .stewardship-grid:empty {
+      display: none;
+    }
+
     #stewardshipButtons {
       padding: 22px 12px 32px;
       max-width: 1180px;
       margin: 0 auto;
+    }
+
+    #mainContent {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: calc(100vh - 74px);
     }
     .no-term {
       display: none;
