@@ -191,33 +191,33 @@
     }
 
     .section-card {
-      background: #ffffff;
-      border: 1px solid rgba(44, 62, 80, 0.08);
-      border-left: 4px solid #3b5998;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
-      padding: 22px;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      padding: 0;
       margin-bottom: 20px;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .section-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 24px rgba(59, 89, 152, 0.15);
-      border-left-color: #2d4373;
+      transform: none;
+      box-shadow: none;
+      border-left-color: transparent;
     }
 
     .section-title {
       font-family: 'Montserrat Bold', Arial, sans-serif;
       color: #3b5998;
-      font-size: 13px;
+      font-size: 24px;
       font-weight: 700;
-      margin: 0 0 16px 0;
-      padding-bottom: 8px;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      border-bottom: 3px solid #3b5998;
-      display: inline-block;
+      margin: 0;
+      padding-bottom: 0;
+      text-transform: none;
+      letter-spacing: 0;
+      border-bottom: none;
+      display: block;
+      text-align: center;
     }
 
     .stewardship-heading {
@@ -333,10 +333,22 @@
       gap: 16px;
     }
 
+    .stewardship-grid:empty {
+      display: none;
+    }
+
     #stewardshipButtons {
       padding: 22px 12px 32px;
       max-width: 1180px;
       margin: 0 auto;
+    }
+
+    #mainContent {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: calc(100vh - 74px);
     }
     .no-term {
       display: none;
@@ -358,6 +370,29 @@
       color: #2d4373;
       border-bottom-color: #2d4373;
     }
+
+    .data-indicator {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background-color: #4caf50;
+      border-radius: 50%;
+      margin-left: 6px;
+      vertical-align: middle;
+      position: relative;
+      top: -1px;
+      animation: pulse 2s infinite;
+    }
+
+    .data-indicator.unavailable {
+      background-color: #ffc107;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
     table {
       border-collapse: collapse;
       padding: 0; /* Reduce table padding */
@@ -912,27 +947,27 @@ body {
   <!-- Location Buttons -->
   <div class="drawer-section-title">Locations</div>
   <div class="drawer-buttons">
+  <a href="AnnArborCDSS.html" class="button">Ann Arbor<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(506) Ann Arbor, MI</span></a>
   <a href="BattleCreekCDSS.html" class="button">Battle Creek<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(515) Battle Creek, MI</span></a>
   <a href="ChillicotheCDSS.html" class="button">Chillicothe<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(538) Chillicothe, OH</span></a>
-  <a href="CincinnatiCDSS.html" class="button">Cincinnati<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(539) Cincinnati, OH</span></a>
-  <a href="ClevelandCDSS.html" class="button">Cleveland<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(541) Cleveland, OH</span></a>
-    <a href="ColumbusCDSS.html" class="button">Columbus<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(757) Columbus, OH</span></a>
-    <a href="DaytonCDSS.html" class="button">Dayton<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(552) Dayton, OH</span></a>
-    <a href="DetroitCDSS.html" class="button">Detroit<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(553) Detroit, MI</span></a>
-    <a href="IndianapolisCDSS.html" class="button">Indianapolis<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(583) Indianapolis, IN</span></a>
-    <a href="NorthernIndianaCDSS.html" class="button">Northern Indiana<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(610) Northern Indiana HCS (Marion, IN)</span></a>
-    <a href="SaginawCDSS.html" class="button">Saginaw<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(655) Saginaw, MI</span></a>
+  <a href="CincinnatiCDSS.html" class="button">Cincinnati<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(539) Cincinnati, OH</span></a>    
+  <a href="ColumbusCDSS.html" class="button">Columbus<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(757) Columbus, OH</span></a>
+  <a href="DaytonCDSS.html" class="button">Dayton<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(552) Dayton, OH</span></a>
+  <a href="DetroitCDSS.html" class="button">Detroit<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(553) Detroit, MI</span></a>
+  <a href="IndianapolisCDSS.html" class="button">Indianapolis<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(583) Indianapolis, IN</span></a>
+  <a href="NorthernIndianaCDSS.html" class="button">Northern Indiana<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(610) Northern Indiana HCS (Marion, IN)</span></a>
+  <a href="SaginawCDSS.html" class="button">Saginaw<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(655) Saginaw, MI</span></a>
   </div>
 
   <!-- Data Buttons 
   <div class="drawer-section-title">Data Tools</div>
   <div class="drawer-buttons">
-    <a href="AnnArborOMJSON.json" download id="menusLink" class="button2">MenuData</a>
-    <a href="AnnArborODJSON.json" download id="ordersLink" class="button2">OrderData</a>
-    <a href="AnnArbor.txml" download id="templateFieldsLink" class="button2">TemplateFieldData</a>
+    <a href="Ann ArborOMJSON.json" download id="menusLink" class="button2">MenuData</a>
+    <a href="Ann ArborODJSON.json" download id="ordersLink" class="button2">OrderData</a>
+    <a href="Ann Arbor.txml" download id="templateFieldsLink" class="button2">TemplateFieldData</a>
     <a href="#" id="downloadJSONButton" class="button2">CurrentMenuData</a>
-  </div>
-  -->
+  </div>-->
+  
 
 <!-- VA Seal at the bottom -->
 <div class="drawer-va-seal">
@@ -978,14 +1013,14 @@ body {
     <div id="resultContainer"></div>
   </table>
   <div class="buttons-containerVersions">
-    <button id="ChillicotheButton" class="button">Chillicothe</button>
-    <button id="AnnArborButton" class="button">Ann Arbor</button>
-    <button id="CincinnatiButton" class="button">Cincinnati</button>
-    <button id="ClevelandButton" class="button">Cleveland</button>
+    <button id="Ann ArborButton" class="button">Ann Arbor</button>
+    <button id="Ann ArborButton" class="button">Ann Arbor</button>
+    <button id="Ann ArborButton" class="button">Ann Arbor</button>
+    <button id="Ann ArborButton" class="button">Ann Arbor</button>
     <button id="DaytonButton" class="button">Dayton</button>
     <button id="IndianapolisButton" class="button">Indianapolis</button>
     <button id="DetroitButton" class="button">Detroit</button>
-    <button id="BattleCreekButton" class="button">Battle Creek</button>
+    <button id="Ann ArborButton" class="button">Ann Arbor</button>
     <button id="SaginawButton" class="button">Saginaw</button>
     <button id="NorthernIndianaButton" class="button">Northern Indiana</button>
   </div>
@@ -1057,12 +1092,70 @@ function adjustFontSize() {
 document.addEventListener('DOMContentLoaded', function() {
   adjustFontSize();
   fetchStewardshipButtons();
+  checkLocationDataAvailability();
 });
+
+// Check location data availability and add indicators
+async function checkLocationDataAvailability() {
+  const locationDataMap = {
+    'AnnArborCDSS.html': 'StewardshipButtonsAnnArbor.json',
+    'BattleCreekCDSS.html': 'StewardshipButtonsBattleCreek.json',
+    'ChillicotheCDSS.html': 'StewardshipButtonsChillicothe.json',
+    'CincinnatiCDSS.html': 'StewardshipButtonsCincinnati.json',
+    'ColumbusCDSS.html': 'StewardshipButtonsColumbus.json',
+    'DaytonCDSS.html': 'StewardshipButtonsDayton.json',
+    'DetroitCDSS.html': 'StewardshipButtonsDetroit.json',
+    'IndianapolisCDSS.html': 'StewardshipButtonsIndianapolis.json',
+    'NorthernIndianaCDSS.html': 'StewardshipButtonsNorthernIndiana.json',
+    'SaginawCDSS.html': 'StewardshipButtonsSaginaw.json'
+  };
+
+  const unavailableText = 'Pharmacy Antimicrobial Resources Temporarily Unavailable';
+
+  // Get all location buttons
+  const buttons = document.querySelectorAll('.drawer-buttons .button');
+  
+  buttons.forEach(async (button) => {
+    const href = button.getAttribute('href');
+    if (locationDataMap[href]) {
+      const dataFile = locationDataMap[href];
+      try {
+        const response = await fetch(dataFile);
+        if (response.ok) {
+          const jsonData = await response.json();
+          const jsonString = JSON.stringify(jsonData);
+          
+          // Check if the unavailable text is in the data
+          if (jsonString.includes(unavailableText)) {
+            // Data unavailable, add yellow indicator
+            if (!button.querySelector('.data-indicator')) {
+              const indicator = document.createElement('span');
+              indicator.className = 'data-indicator unavailable';
+              indicator.title = 'Resources temporarily unavailable for this location';
+              button.appendChild(indicator);
+            }
+          } else {
+            // Data available, add green indicator
+            if (!button.querySelector('.data-indicator')) {
+              const indicator = document.createElement('span');
+              indicator.className = 'data-indicator';
+              indicator.title = 'Data available for this location';
+              button.appendChild(indicator);
+            }
+          }
+        }
+      } catch (e) {
+        // Data not found, no indicator added
+        console.debug(`No data found for ${href}`);
+      }
+    }
+  });
+}
   
 // Fetch and render Stewardship Buttons
 async function fetchStewardshipButtons() {
   try {
-    const response = await fetch('StewardshipButtons.json');
+    const response = await fetch('StewardshipButtonsAnn Arbor.json');
     const data = await response.json();
     renderStewardshipButtons(data);
   } catch(e) {
@@ -1319,13 +1412,13 @@ let matchedErucName = null;
 // Function to hide location buttons
 
 if (CDSSlocation === 'Ann Arbor') {
-  {document.getElementById("AnnArborButton").style.display="none";};
+  {document.getElementById("Ann ArborButton").style.display="none";};
 }
-if (CDSSlocation === 'Cincinnati') {
-  {document.getElementById("CincinnatiButton").style.display="none";};
+if (CDSSlocation === 'Ann Arbor') {
+  {document.getElementById("Ann ArborButton").style.display="none";};
 }
-if (CDSSlocation === 'Cleveland') {
-  {document.getElementById("ClevelandButton").style.display="none";};
+if (CDSSlocation === 'Ann Arbor') {
+  {document.getElementById("Ann ArborButton").style.display="none";};
 }  
 if (CDSSlocation === 'Dayton') {
   {document.getElementById("DaytonButton").style.display="none";};
@@ -1336,8 +1429,8 @@ if (CDSSlocation === 'Indianapolis') {
 if (CDSSlocation === 'Detroit') {
   {document.getElementById("DetroitButton").style.display="none";};
 }  
-if (CDSSlocation === 'Battle Creek') {
-  {document.getElementById("BattleCreekButton").style.display="none";};
+if (CDSSlocation === 'Ann Arbor') {
+  {document.getElementById("Ann ArborButton").style.display="none";};
 }  
 if (CDSSlocation === 'Saginaw') {
   {document.getElementById("SaginawButton").style.display="none";};
@@ -2450,17 +2543,17 @@ function openDropdown() {
   }
 
 // JavaScript code to handle button clicks
-document.getElementById('ChillicotheButton').addEventListener('click', function () {
-openPageInNewWindow("ChillicotheCDSS.html", { " CI ": " ", " NE ": " ", "GMENU": "CI GMENU" });
+document.getElementById('Ann ArborButton').addEventListener('click', function () {
+openPageInNewWindow("Ann ArborCDSS.html", { " CI ": " ", " NE ": " ", "GMENU": "CI GMENU" });
 });
-document.getElementById('AnnArborButton').addEventListener('click', function () {
-  openPageInNewWindow("AnnArborCDSS.html",{ " CI ": " ", " NE ": " " }); // Pass the replacement value
+document.getElementById('Ann ArborButton').addEventListener('click', function () {
+  openPageInNewWindow("Ann ArborCDSS.html",{ " CI ": " ", " NE ": " " }); // Pass the replacement value
 });
-document.getElementById('CincinnatiButton').addEventListener('click', function () {
-  openPageInNewWindow("CincinnatiCDSS.html",{ " CI ": " ", " NE ": " " }); // Pass the replacement value
+document.getElementById('Ann ArborButton').addEventListener('click', function () {
+  openPageInNewWindow("Ann ArborCDSS.html",{ " CI ": " ", " NE ": " " }); // Pass the replacement value
 });
-document.getElementById('ClevelandButton').addEventListener('click', function () {
-  openPageInNewWindow("ClevelandCDSS.html",{ " CI ": " ", " NE ": " " }); // Pass the replacement value
+document.getElementById('Ann ArborButton').addEventListener('click', function () {
+  openPageInNewWindow("Ann ArborCDSS.html",{ " CI ": " ", " NE ": " " }); // Pass the replacement value
 });
 document.getElementById('DaytonButton').addEventListener('click', function () {
   openPageInNewWindow('DaytonCDSS.html', { " CI ": " ", " NE ": " ", "GMENU": "NE GMENU" }); // Pass the replacement value
@@ -2708,62 +2801,7 @@ window.onload = function() {
     document.getElementById('drawerOverlay').classList.remove('open');
   }
 </script>
-<div id="scroll-indicator">
-  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" 
-       fill="none" stroke="currentColor" stroke-width="2.5" 
-       stroke-linecap="round" stroke-linejoin="round">
-    <polyline points="6 9 12 15 18 9"></polyline>
-  </svg>
-</div>
-<style>
-  #scroll-indicator {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #1a3a5c;
-  background: rgba(255,255,255,0.85);
-  border: 2px solid #1a3a5c;
-  border-radius: 50%;
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  animation: bounce 1.6s ease-in-out infinite;
-  transition: opacity 0.4s ease;
-  z-index: 999;
-}
-
-#scroll-indicator.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50%       { transform: translateX(-50%) translateY(6px); }
-}
-</style>
-<script>
-  const indicator = document.getElementById('scroll-indicator');
-
-// Hide it once user scrolls down
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 80) {
-    indicator.classList.add('hidden');
-  } else {
-    indicator.classList.remove('hidden');
-  }
-});
-
-// Clicking it scrolls down smoothly
-indicator.addEventListener('click', () => {
-  window.scrollBy({ top: 400, behavior: 'smooth' });
-});
-</script>
+<script></script>
 </body>
 </html>
 
