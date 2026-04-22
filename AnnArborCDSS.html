@@ -687,6 +687,24 @@
   flex: none !important;
 }
 
+.data-indicator {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background-color: #4caf50;
+      border-radius: 50%;
+      margin-left: 6px;
+      vertical-align: middle;
+      position: relative;
+      top: -1px;
+      animation: pulse 2s infinite;
+    }
+
+    .data-indicator.unavailable {
+      background-color: #ffc107;
+    }
+
+
 .drawer-buttons .button,
 .drawer-buttons .button2 {
   width: 100% !important;
