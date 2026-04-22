@@ -1062,7 +1062,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Fetch and render Stewardship Buttons
 async function fetchStewardshipButtons() {
   try {
-    const response = await fetch('StewardshipButtons.json');
+    const response = await fetch('StewardshipButtonsBattleCreek.json');
     const data = await response.json();
     renderStewardshipButtons(data);
   } catch(e) {
