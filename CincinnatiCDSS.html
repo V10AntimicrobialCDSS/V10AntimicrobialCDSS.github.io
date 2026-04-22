@@ -276,25 +276,6 @@
       flex: 1;
     }
 
-    .data-indicator {
-      display: inline-block;
-      width: 8px;
-      height: 8px;
-      background-color: #4caf50;
-      border-radius: 50%;
-      margin-left: 6px;
-      vertical-align: middle;
-      position: relative;
-      top: -1px;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.7; }
-    }
-
-
     .submenu-popup .popup-close {
       background: transparent;
       border: none;
@@ -389,6 +370,29 @@
       color: #2d4373;
       border-bottom-color: #2d4373;
     }
+
+    .data-indicator {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background-color: #4caf50;
+      border-radius: 50%;
+      margin-left: 6px;
+      vertical-align: middle;
+      position: relative;
+      top: -1px;
+      animation: pulse 2s infinite;
+    }
+
+    .data-indicator.unavailable {
+      background-color: #ffc107;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
     table {
       border-collapse: collapse;
       padding: 0; /* Reduce table padding */
@@ -946,13 +950,13 @@ body {
   <a href="AnnArborCDSS.html" class="button">Ann Arbor<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(506) Ann Arbor, MI</span></a>
   <a href="BattleCreekCDSS.html" class="button">Battle Creek<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(515) Battle Creek, MI</span></a>
   <a href="ChillicotheCDSS.html" class="button">Chillicothe<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(538) Chillicothe, OH</span></a>
-  <a href="ClevelandCDSS.html" class="button">Cleveland<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(541) Cleveland, OH</span></a>
-    <a href="ColumbusCDSS.html" class="button">Columbus<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(757) Columbus, OH</span></a>
-    <a href="DaytonCDSS.html" class="button">Dayton<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(552) Dayton, OH</span></a>
-    <a href="DetroitCDSS.html" class="button">Detroit<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(553) Detroit, MI</span></a>
-    <a href="IndianapolisCDSS.html" class="button">Indianapolis<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(583) Indianapolis, IN</span></a>
-    <a href="NorthernIndianaCDSS.html" class="button">Northern Indiana<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(610) Northern Indiana HCS (Marion, IN)</span></a>
-    <a href="SaginawCDSS.html" class="button">Saginaw<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(655) Saginaw, MI</span></a>
+  <a href="CincinnatiCDSS.html" class="button">Cincinnati<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(539) Cincinnati, OH</span></a>    
+  <a href="ColumbusCDSS.html" class="button">Columbus<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(757) Columbus, OH</span></a>
+  <a href="DaytonCDSS.html" class="button">Dayton<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(552) Dayton, OH</span></a>
+  <a href="DetroitCDSS.html" class="button">Detroit<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(553) Detroit, MI</span></a>
+  <a href="IndianapolisCDSS.html" class="button">Indianapolis<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(583) Indianapolis, IN</span></a>
+  <a href="NorthernIndianaCDSS.html" class="button">Northern Indiana<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(610) Northern Indiana HCS (Marion, IN)</span></a>
+  <a href="SaginawCDSS.html" class="button">Saginaw<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(655) Saginaw, MI</span></a>
   </div>
 
   <!-- Data Buttons 
@@ -1012,7 +1016,7 @@ body {
     <button id="CincinnatiButton" class="button">Cincinnati</button>
     <button id="CincinnatiButton" class="button">Cincinnati</button>
     <button id="CincinnatiButton" class="button">Cincinnati</button>
-    <button id="ClevelandButton" class="button">Cleveland</button>
+    <button id="CincinnatiButton" class="button">Cincinnati</button>
     <button id="DaytonButton" class="button">Dayton</button>
     <button id="IndianapolisButton" class="button">Indianapolis</button>
     <button id="DetroitButton" class="button">Detroit</button>
@@ -1106,9 +1110,9 @@ async function checkLocationDataAvailability() {
     'SaginawCDSS.html': 'StewardshipButtonsSaginaw.json'
   };
 
-const unavailableText = 'Pharmacy Antimicrobial Resources Temporarily Unavailable';
+  const unavailableText = 'Pharmacy Antimicrobial Resources Temporarily Unavailable';
 
-// Get all location buttons
+  // Get all location buttons
   const buttons = document.querySelectorAll('.drawer-buttons .button');
   
   buttons.forEach(async (button) => {
@@ -1147,7 +1151,7 @@ const unavailableText = 'Pharmacy Antimicrobial Resources Temporarily Unavailabl
     }
   });
 }
-
+  
 // Fetch and render Stewardship Buttons
 async function fetchStewardshipButtons() {
   try {
@@ -1413,8 +1417,8 @@ if (CDSSlocation === 'Cincinnati') {
 if (CDSSlocation === 'Cincinnati') {
   {document.getElementById("CincinnatiButton").style.display="none";};
 }
-if (CDSSlocation === 'Cleveland') {
-  {document.getElementById("ClevelandButton").style.display="none";};
+if (CDSSlocation === 'Cincinnati') {
+  {document.getElementById("CincinnatiButton").style.display="none";};
 }  
 if (CDSSlocation === 'Dayton') {
   {document.getElementById("DaytonButton").style.display="none";};
@@ -2548,8 +2552,8 @@ document.getElementById('CincinnatiButton').addEventListener('click', function (
 document.getElementById('CincinnatiButton').addEventListener('click', function () {
   openPageInNewWindow("CincinnatiCDSS.html",{ " CI ": " ", " NE ": " " }); // Pass the replacement value
 });
-document.getElementById('ClevelandButton').addEventListener('click', function () {
-  openPageInNewWindow("ClevelandCDSS.html",{ " CI ": " ", " NE ": " " }); // Pass the replacement value
+document.getElementById('CincinnatiButton').addEventListener('click', function () {
+  openPageInNewWindow("CincinnatiCDSS.html",{ " CI ": " ", " NE ": " " }); // Pass the replacement value
 });
 document.getElementById('DaytonButton').addEventListener('click', function () {
   openPageInNewWindow('DaytonCDSS.html', { " CI ": " ", " NE ": " ", "GMENU": "NE GMENU" }); // Pass the replacement value
