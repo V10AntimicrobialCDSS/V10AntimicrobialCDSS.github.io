@@ -1069,7 +1069,26 @@ function adjustFontSize() {
 document.addEventListener('DOMContentLoaded', function() {
   adjustFontSize();
   fetchStewardshipButtons();
+  checkLocationDataAvailability();
 });
+
+// Check location data availability and add indicators
+async function checkLocationDataAvailability() {
+  const locationDataMap = {
+    'AnnArborCDSS.html': 'StewardshipButtonsAnnArbor.json',
+    'BattleCreekCDSS.html': 'StewardshipButtonsBattleCreek.json',
+    'ChillicotheCDSS.html': 'StewardshipButtonsChillicothe.json',
+    'CincinnatiCDSS.html': 'StewardshipButtonsCincinnati.json',
+    'ColumbusCDSS.html': 'StewardshipButtonsColumbus.json',
+    'DaytonCDSS.html': 'StewardshipButtonsDayton.json',
+    'DetroitCDSS.html': 'StewardshipButtonsDetroit.json',
+    'IndianapolisCDSS.html': 'StewardshipButtonsIndianapolis.json',
+    'NorthernIndianaCDSS.html': 'StewardshipButtonsNorthernIndiana.json',
+    'SaginawCDSS.html': 'StewardshipButtonsSaginaw.json'
+  };
+
+
+
   
 // Fetch and render Stewardship Buttons
 async function fetchStewardshipButtons() {
