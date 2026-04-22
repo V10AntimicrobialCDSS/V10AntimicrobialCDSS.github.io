@@ -317,6 +317,24 @@
       box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.1);
     }
 
+.data-indicator {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background-color: #4caf50;
+      border-radius: 50%;
+      margin-left: 6px;
+      vertical-align: middle;
+      position: relative;
+      top: -1px;
+      animation: pulse 2s infinite;
+    }
+
+    .data-indicator.unavailable {
+      background-color: #ffc107;
+    }
+
+
     .submenu-backdrop {
       position: fixed;
       top: 0;
@@ -1069,7 +1087,65 @@ function adjustFontSize() {
 document.addEventListener('DOMContentLoaded', function() {
   adjustFontSize();
   fetchStewardshipButtons();
+  checkLocationDataAvailability();
 });
+
+// Check location data availability and add indicators
+async function checkLocationDataAvailability() {
+  const locationDataMap = {
+    'AnnArborCDSS.html': 'StewardshipButtons.json',
+    'BattleCreekCDSS.html': 'StewardshipButtonsBattleCreek.json',
+    'ChillicotheCDSS.html': 'StewardshipButtonsChillicothe.json',
+    'CincinnatiCDSS.html': 'StewardshipButtonsCincinnati.json',
+    'ColumbusCDSS.html': 'StewardshipButtonsColumbus.json',
+    'DaytonCDSS.html': 'StewardshipButtonsDayton.json',
+    'DetroitCDSS.html': 'StewardshipButtonsDetroit.json',
+    'IndianapolisCDSS.html': 'StewardshipButtonsIndianapolis.json',
+    'NorthernIndianaCDSS.html': 'StewardshipButtonsNorthernIndiana.json',
+    'SaginawCDSS.html': 'StewardshipButtonsSaginaw.json'
+  };
+
+  const unavailableText = 'Pharmacy Antimicrobial Resources Temporarily Unavailable';
+
+  // Get all location buttons
+  const buttons = document.querySelectorAll('.drawer-buttons .button');
+  
+  buttons.forEach(async (button) => {
+    const href = button.getAttribute('href');
+    if (locationDataMap[href]) {
+      const dataFile = locationDataMap[href];
+      try {
+        const response = await fetch(dataFile);
+        if (response.ok) {
+          const jsonData = await response.json();
+          const jsonString = JSON.stringify(jsonData);
+          
+          // Check if the unavailable text is in the data
+          if (jsonString.includes(unavailableText)) {
+            // Data unavailable, add yellow indicator
+            if (!button.querySelector('.data-indicator')) {
+              const indicator = document.createElement('span');
+              indicator.className = 'data-indicator unavailable';
+              indicator.title = 'Resources temporarily unavailable for this location';
+              button.appendChild(indicator);
+            }
+          } else {
+            // Data available, add green indicator
+            if (!button.querySelector('.data-indicator')) {
+              const indicator = document.createElement('span');
+              indicator.className = 'data-indicator';
+              indicator.title = 'Data available for this location';
+              button.appendChild(indicator);
+            }
+          }
+        }
+      } catch (e) {
+        // Data not found, no indicator added
+        console.debug(`No data found for ${href}`);
+      }
+    }
+  });
+}
   
 // Fetch and render Stewardship Buttons
 async function fetchStewardshipButtons() {
