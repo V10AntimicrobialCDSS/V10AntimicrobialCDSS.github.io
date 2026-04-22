@@ -384,6 +384,10 @@
       animation: pulse 2s infinite;
     }
 
+    .data-indicator.unavailable {
+      background-color: #ffc107;
+    }
+
     @keyframes pulse {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.7; }
@@ -1106,6 +1110,8 @@ async function checkLocationDataAvailability() {
     'SaginawCDSS.html': 'SaginawOMJSON.json'
   };
 
+  const unavailableText = 'Pharmacy Antimicrobial Resources Temporarily Unavailable';
+
   // Get all location buttons
   const buttons = document.querySelectorAll('.drawer-buttons .button');
   
@@ -1114,14 +1120,28 @@ async function checkLocationDataAvailability() {
     if (locationDataMap[href]) {
       const dataFile = locationDataMap[href];
       try {
-        const response = await fetch(dataFile, { method: 'HEAD' });
+        const response = await fetch(dataFile);
         if (response.ok) {
-          // Data exists, add green indicator
-          if (!button.querySelector('.data-indicator')) {
-            const indicator = document.createElement('span');
-            indicator.className = 'data-indicator';
-            indicator.title = 'Data available for this location';
-            button.appendChild(indicator);
+          const jsonData = await response.json();
+          const jsonString = JSON.stringify(jsonData);
+          
+          // Check if the unavailable text is in the data
+          if (jsonString.includes(unavailableText)) {
+            // Data unavailable, add yellow indicator
+            if (!button.querySelector('.data-indicator')) {
+              const indicator = document.createElement('span');
+              indicator.className = 'data-indicator unavailable';
+              indicator.title = 'Resources temporarily unavailable for this location';
+              button.appendChild(indicator);
+            }
+          } else {
+            // Data available, add green indicator
+            if (!button.querySelector('.data-indicator')) {
+              const indicator = document.createElement('span');
+              indicator.className = 'data-indicator';
+              indicator.title = 'Data available for this location';
+              button.appendChild(indicator);
+            }
           }
         }
       } catch (e) {
