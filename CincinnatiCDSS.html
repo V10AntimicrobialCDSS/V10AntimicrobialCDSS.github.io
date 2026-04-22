@@ -1106,9 +1106,48 @@ async function checkLocationDataAvailability() {
     'SaginawCDSS.html': 'StewardshipButtonsSaginaw.json'
   };
 
+const unavailableText = 'Pharmacy Antimicrobial Resources Temporarily Unavailable';
 
-
+// Get all location buttons
+  const buttons = document.querySelectorAll('.drawer-buttons .button');
   
+  buttons.forEach(async (button) => {
+    const href = button.getAttribute('href');
+    if (locationDataMap[href]) {
+      const dataFile = locationDataMap[href];
+      try {
+        const response = await fetch(dataFile);
+        if (response.ok) {
+          const jsonData = await response.json();
+          const jsonString = JSON.stringify(jsonData);
+          
+          // Check if the unavailable text is in the data
+          if (jsonString.includes(unavailableText)) {
+            // Data unavailable, add yellow indicator
+            if (!button.querySelector('.data-indicator')) {
+              const indicator = document.createElement('span');
+              indicator.className = 'data-indicator unavailable';
+              indicator.title = 'Resources temporarily unavailable for this location';
+              button.appendChild(indicator);
+            }
+          } else {
+            // Data available, add green indicator
+            if (!button.querySelector('.data-indicator')) {
+              const indicator = document.createElement('span');
+              indicator.className = 'data-indicator';
+              indicator.title = 'Data available for this location';
+              button.appendChild(indicator);
+            }
+          }
+        }
+      } catch (e) {
+        // Data not found, no indicator added
+        console.debug(`No data found for ${href}`);
+      }
+    }
+  });
+}
+
 // Fetch and render Stewardship Buttons
 async function fetchStewardshipButtons() {
   try {
