@@ -12,14 +12,14 @@
   <script>
   var CDSSlocation = 'Columbus'; /*Only important to CDSS program functions, can be left as it for other systems*/
   var Title = 'Columbus Antimicrobial CDSS'; /*Name of the tab on the website*/
-  var MainMenuButton = 'Columbus Home'; /*Main menu button name*/
-  const MainMenu = 'ORZID2 CI GMENU ABX INPT MAIN'; /*the menu the website starts at*/
-  const outptMenu = 'ORZID3 CI GMENU ABX OUTPT MAIN'; /*the menu the website starts at*/
-  const erucMenu = 'ORZID CI GMENU ER/UC EMERGENCY DEPARTMENT MAIN MENU'; /*the menu the website starts at*/	  
-  var IndexButton = 'Index'; /*Only important to CDSS program functions, can be left as it for other systems*/
+  /*var MainMenuButton = 'Columbus Home'; /*Main menu button name*/
+  const MainMenu = 'ORZID2 GMENU ABX INPT MAIN'; /*the menu the website starts at*/
+  const outptMenu = 'ORZID3 GMENU ABX OUTPT MAIN'; /*the menu the website starts at*/
+  const erucMenu = 'ORZID GMENU ER/UC EMERGENCY DEPARTMENT MAIN MENU'; /*the menu the website starts at*/	  
+  /*var IndexButton = 'Index'; /*Only important to CDSS program functions, can be left as it for other systems*/
   var homeButtonUrl = 'https://v10antimicrobialcdss.github.io/'; /*Only important to CDSS program functions, home URL*/
-  const Index = 'ORZID2 CI GMENU ABX INDEX INPATIENT';/*Only important to CDSS program functions, can be left as it for other systems*/
-  const outptIndex = 'ORZID3 CI GMENU ABX INDEX OUTPATIENT';/*Only important to CDSS program functions, can be left as it for other systems*/
+  const Index = 'ORZID2 GMENU ABX INDEX INPATIENT';/*Only important to CDSS program functions, can be left as it for other systems*/
+  const outptIndex = 'ORZID3 GMENU ABX INDEX OUTPATIENT';/*Only important to CDSS program functions, can be left as it for other systems*/
   const OMjson = 'ColumbusOMJSON.json'; /*Name of OMJSON file*/
   const ODjson = 'ColumbusODJSON.json'; /*Name of ODJSOM file*/
   const txmlFile = 'Columbus.txml'; /*Name of txml file*/
@@ -31,14 +31,17 @@
   var hideButtonsVersions = 'True';/*mark as true for non-CDSS systems*/
   var hideButtonsIndex = 'False';/*mark as true for non-CDSS systems*/
   var hideButtonsHome = 'False';/*mark as true for non-CDSS systems*/
-  var Version = 'V1.2'; /*Text at the bottom of the menu, change to whatever you want*/
+  var Version = 'V1.3'; /*Text at the bottom of the menu, change to whatever you want*/
   </script> 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="pageTitle"></title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="CDSSLogo.png" type="image/x-icon">
-<style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
   /* Common styles */
   @font-face {
   font-family: 'Montserrat Bold';
@@ -72,58 +75,313 @@
   font-weight: normal;
   font-style: normal;
 }
-    .button {
-      font-family: 'Montserrat Regular', Arial, sans-serif;
-  	  font-size: 12px;
-  	  /*padding: 5px 5px;  Adjust the values to your desired padding */
-      white-space: nowrap;
-      flex: 1;
-      background-color: #0D323D; /* Blue color */
+    body {
+      font-family: 'Inter', 'Montserrat Regular', Arial, sans-serif;
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      color: #1e293b;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    
+    .button,
+    .button2 {
+      font-family: 'Inter', 'Montserrat Regular', Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      white-space: normal;
+      background: linear-gradient(135deg, #3b5998 0%, #2d4373 100%);
       color: white;
-      padding: 5px; /* Increased padding for square buttons */
+      padding: 12px 20px;
       border: none;
       cursor: pointer;
       text-align: center;
-      text-decoration: none; /* Remove underline from links */
-      border-radius: 0; /* Square corners */
-      display: inline-block; /* Make links behave like buttons */
-      width: 12%; /* Take up 75% of the screen */
+      text-decoration: none;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: auto;
+      min-width: 140px;
+      min-height: 48px;
+      box-shadow: 0 4px 10px rgba(45, 67, 115, 0.2);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
     }
-    
+
+    .button::before,
+    .button2::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .button:hover::before,
+    .button2:hover::before {
+      left: 100%;
+    }
+
     .button:hover,
     .button2:hover {
-      /*background-color: #4db8ff;  Light Blue color */
-  background-color: #155467;
+      background: linear-gradient(135deg, #2d4373 0%, #1e2f52 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(45, 67, 115, 0.3);
+    }
+
+    .button:focus,
+    .button2:focus {
+      background: linear-gradient(135deg, #2d4373 0%, #1e2f52 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(45, 67, 115, 0.3);
+      outline: 2px solid #3b5998;
+      outline-offset: 2px;
+    }
+
+    .button:active,
+    .button2:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
+    }
+    .button:focus,
+    .button2:focus {
+      background-color: #155467;
+      transform: translateY(-1px);
+      box-shadow: 0 16px 32px rgba(13, 50, 61, 0.16);
+      outline: none;
+    }
+
+    .button:active,
+    .button2:active {
+      transform: translateY(0);
+    }
+
+    .button.steward-button {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .button.steward-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(45, 67, 115, 0.25);
+    }
+
+    .button.steward-button,
+    .button2.steward-button {
+      width: 100%;
+      justify-content: flex-start;
+      text-align: left;
+    }
+
+    .inactive-button {
+      pointer-events: none;
+      background: linear-gradient(135deg, #c5d3e0 0%, #b8c7d8 100%);
+      color: #6b7684;
+      box-shadow: none;
+    }
+
+    .inactive-button:hover {
+      background: linear-gradient(135deg, #c5d3e0 0%, #b8c7d8 100%);
+    }
+
+    .section-card {
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      padding: 0;
+      margin-bottom: 20px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .section-card:hover {
+      transform: none;
+      box-shadow: none;
+      border-left-color: transparent;
+    }
+
+    .section-title {
+      font-family: 'Montserrat Bold', Arial, sans-serif;
+      color: #3b5998;
+      font-size: 24px;
+      font-weight: 700;
+      margin: 0;
+      padding-bottom: 0;
+      text-transform: none;
+      letter-spacing: 0;
+      border-bottom: none;
+      display: block;
+      text-align: center;
+    }
+
+    .stewardship-heading {
+      font-family: 'Montserrat Bold', Arial, sans-serif;
+      color: #ffffff;
+      font-size: 28px;
+      text-align: center;
+      margin: 0;
+      letter-spacing: 0.5px;
+      font-weight: 700;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    #pageHeading {
+      flex: 1;
+      width: 100%;
+      padding-left: 0;
+      padding-right: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .submenu-popup {
+      position: fixed;
+      z-index: 10001;
+      background: #ffffff;
+      border: 1px solid rgba(44, 62, 80, 0.15);
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      padding: 12px;
+      min-width: 260px;
+      max-width: 360px;
+      max-height: 85vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    .submenu-popup .popup-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 0 0 10px 0;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(44, 62, 80, 0.12);
+      gap: 14px;
+    }
+
+    .submenu-popup .popup-title {
+      font-family: 'Montserrat Bold', Arial, sans-serif;
+      color: #2c3e50;
+      font-size: 14px;
+      margin: 0;
+      line-height: 1.3;
+      flex: 1;
+    }
+
+    .submenu-popup .popup-close {
+      background: transparent;
+      border: none;
+      color: #2c3e50;
+      font-size: 18px;
+      cursor: pointer;
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.18s ease;
+    }
+
+    .submenu-popup .popup-close:hover {
+      background: rgba(44, 62, 80, 0.08);
+    }
+
+    .submenu-popup button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 10px 14px;
+      margin-bottom: 8px;
+      white-space: normal;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #3b5998 0%, #2d4373 100%);
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .submenu-popup button:hover {
+      background: linear-gradient(135deg, #2d4373 0%, #1e2f52 100%);
+      transform: translateX(4px);
+      box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+    }
+
+/*.data-indicator {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background-color: #4caf50;
+      border-radius: 50%;
+      margin-left: 6px;
+      vertical-align: middle;
+      position: relative;
+      top: -1px;
+      animation: pulse 2s infinite;
+    }*/
+
+    .data-indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #4caf50;
+  border-radius: 50%;
+  margin-right: 6px;  /* ← was margin-left */
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+  flex-shrink: 0;     /* ← added so dot never squishes */
+  animation: pulse 2s infinite;
 }
 
-    .button2 {
-      font-family: 'Montserrat Regular', Arial, sans-serif;
-  	  font-size: 12px;
-  	  /*padding: 5px 5px;  Adjust the values to your desired padding */
-      white-space: nowrap;
-      flex: 1;
-      /*background-color: #00aedb;  Blue color */
-      background-color: #0D323D;
-      color: white;
-      padding: 5px; /* Increased padding for square buttons */
-      border: none;
-      cursor: pointer;
-      text-align: center;
-      text-decoration: none; /* Remove underline from links */
-      border-radius: 0; /* Square corners */
-      display: inline-block; /* Make links behave like buttons */
-      width: 16%; /* Take up 75% of the screen */
+    .data-indicator.unavailable {
+      background-color: #ffc107;
     }
-	  
-    .inactive-button {
-    pointer-events: none; /* Prevent clicks */
-    background-color: #00aedb; /* Inactive color */
-    color: grey; /* Inactive text color */
-  }
 
-  .inactive-button:hover {
-    background-color: #00aedb; /* Prevent hover effect */
-  }
+
+    .submenu-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.2);
+      z-index: 10000;
+    }
+
+    .stewardship-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+    }
+
+    .stewardship-grid:empty {
+      display: none;
+    }
+
+    #stewardshipButtons {
+      padding: 22px 12px 32px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    #mainContent {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: calc(100vh - 74px);
+    }
     .no-term {
       display: none;
     }
@@ -132,9 +390,17 @@
       color: black;
     }
     .AbxLink {
-      color: green;
+      color: #3b5998;
       cursor: pointer;
       text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      border-bottom: 2px solid rgba(59, 89, 152, 0.3);
+    }
+
+    .AbxLink:hover {
+      color: #2d4373;
+      border-bottom-color: #2d4373;
     }
     table {
       border-collapse: collapse;
@@ -147,8 +413,17 @@
       padding: 4px; /* Reduce cell padding */
     }
     .clickable {
-      color: blue;
+      color: #3b5998;
       cursor: pointer;
+      font-weight: 600;
+      transition: color 0.2s ease;
+      text-decoration: underline;
+      text-decoration-color: rgba(59, 89, 152, 0.3);
+    }
+
+    .clickable:hover {
+      color: #2d4373;
+      text-decoration-color: rgba(45, 67, 115, 0.6);
     }
     .bold {
       font-family: 'Montserrat Bold', Arial, sans-serif;
@@ -172,16 +447,18 @@
   position: sticky;
   margin-top: 0;
   top: 0;
-  background-color: #0D323D;
+  background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
   z-index: 1;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  flex-direction: column;
-  min-width: 900px;
-  width: calc(100% - 260px); /* subtract drawer width on desktop */
-  margin-left: 260px;        /* push header right of drawer */
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  width: calc(100% - 260px);
+  margin-left: 260px;
+  padding: 14px 24px;
   box-sizing: border-box;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 #footer {
@@ -197,12 +474,11 @@
 }
     
 .buttons-container {
-  margin-top: 10px;
-  margin-bottom: 5px;
-  margin-left: 10px; /* changed from 5px */
-  display: flex;
-  align-items: center; /* changed from flex-start so items align vertically */
-  gap: 10px;
+      margin-top: 0;
+      margin-bottom: 0;
+      margin-left: 0;
+      display: flex;
+      align-items: center;
   justify-content: flex-start;
 }
 
@@ -235,10 +511,6 @@
   justify-content: flex-start;
 }
 
-.buttons-containerVersions {
-  display: none !important;
-}
-
 .picture-container {
   margin: 10px; /* Add the desired margin value */
   display: flex;
@@ -252,6 +524,14 @@
     align-items: Left;
     max-width: 375px; 
   } 
+  #searchInput {
+    font-family: 'Montserrat Regular', Arial, sans-serif;
+    width: 100%;
+    text-align: left;
+    max-width: 375px;
+    font-size: 14px;
+    font-family: "Times New Roman", serif;
+  }
 .CDSSLogo {
   width: 200px; /* Set the maximum width for the image */
   height: auto;
@@ -278,10 +558,10 @@
   padding: 5px 5px; /* Adjust the values to your desired padding */
 }
 
-#goBackButton,
+/*#goBackButton,
 #mainMenuButton,
 #indexButton,
-#goForwardButton,
+#goForwardButton,*/
 #install-button,
 #homeButton  {
   font-family: 'Montserrat Regular', Arial, sans-serif;
@@ -307,14 +587,6 @@
     max-width: 375px;
     overflow-y: auto; 
     }
-  #searchInput {
-    font-family: 'Montserrat Regular', Arial, sans-serif;
-    width: 100%;
-    text-align: left;
-    max-width: 375px;
-    font-size: 14px;
-    font-family: "Times New Roman", serif;
-  }
   .blankSpace {
    padding: 20px 30px; 
 }
@@ -328,10 +600,10 @@
 }
 
 /* Add a darker shade of blue on hover */
-#goBackButton:hover,
+/*#goBackButton:hover,
 #mainMenuButton:hover,
 #indexButton:hover,
-#goForwardButton:hover,
+#goForwardButton:hover,*/
 #install-button:hover,
 #inptButton:hover,
 #outptButton:hover,
@@ -361,6 +633,7 @@
   background-color: #4db8ff;
 }
 
+
 /*#drawer {
   position: fixed;
   top: 0;
@@ -382,12 +655,12 @@
   left: 0;
   width: 260px;
   height: 100%;
-  background-color: #0D323D;
+  background: linear-gradient(180deg, #34495e 0%, #2c3e50 100%);
   z-index: 1000;
   padding: 20px 15px;
   box-sizing: border-box;
   overflow-y: auto;
-  overflow-x: hidden;  /* ADD THIS */
+  overflow-x: hidden;
   transition: left 0.3s ease;
 
   /* ADD THESE: */
@@ -422,28 +695,8 @@
   display: none; /* hidden on desktop */
 }
 
-.data-indicator {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  background-color: #4caf50;
-  border-radius: 50%;
-  margin-right: 6px;  /* ← was margin-left */
-  vertical-align: middle;
-  position: relative;
-  top: -1px;
-  flex-shrink: 0;     /* ← added so dot never squishes */
-  animation: pulse 2s infinite;
-}
-
-    .data-indicator.unavailable {
-      background-color: #ffc107;
-    }
-
-
-
 .drawer-section-title {
-  color: #4db8ff;
+  color: #9db3cc;
   font-family: 'Montserrat Bold', Arial, sans-serif;
   font-size: 12px;
   margin-top: 20px;
@@ -463,7 +716,7 @@
 .drawer-buttons {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 0px;
 }
 
 .drawer-buttons a,
@@ -471,7 +724,7 @@
   width: 100% !important;
   text-align: left;
   border-radius: 6px;
-  padding: 8px 10px;
+  padding: 2px 4px;
   display: block !important;
   flex: none !important;
 }
@@ -480,52 +733,76 @@
 .drawer-buttons .button2 {
   width: 100% !important;
   text-align: left;
-  border-radius: 6px;
-  padding: 8px 10px;
-}
+      border-radius: 8px;
+      padding: 4px 12px;
+      display: block !important;
+      flex: none !important;
+      font-size: 13px;
+      margin-bottom: 2px;
+      transition: all 0.25s ease;
+    }
 
-/* Desktop — sidebar always visible */
-@media (min-width: 1025px) {
+    .drawer-buttons .button:hover,
+    .drawer-buttons .button2:hover {
+      transform: translateX(4px);
+      background: linear-gradient(135deg, #2d4373 0%, #1e2f52 100%);
   body {
     margin-left: 260px; /* must come AFTER base body rule */
   }
 
-/* Tablet and mobile — sidebar collapsible 
+  #header {
+    margin-left: 260px;
+    width: calc(100% - 260px);
+  }
+
+  #mainContent {
+    margin-left: 260px;
+    box-sizing: border-box;
+    padding: 10px;
+  }
+
+  .section-card {
+    padding: 16px;
+    margin-bottom: 18px;
+  }
+
+  .stewardship-grid {
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 10px;
+  }
+
+  .button,
+  .button2 {
+    padding: 12px 14px;
+    min-width: 120px;
+    min-height: 44px;
+  }
+
+  #stewardshipButtons {
+    padding: 16px 12px 24px;
+  }
+}
+
+/* Tablet and mobile — sidebar collapsible */
 @media (max-width: 1024px) {
   #drawerToggle {
     display: inline-block;
   }
-    */
 
-@media (max-width: 1024px) {
   #header {
     margin-left: 0;
     width: 100%;
     min-width: unset; /* allow full flexibility on mobile */
   }
-}
 
-
-#mainContent {
-  margin-left: 260px;
-  box-sizing: border-box;
-  padding: 10px;
-}
-
-@media (max-width: 1024px) {
   #mainContent {
     margin-left: 0;
-  }
-}
-
-  #closeDrawer {
-    display: block;
+    box-sizing: border-box;
+    padding: 18px 16px 32px;
   }
 
   #drawer {
-    /*left: -280px;  hidden off screen */
-    position: fixed;
-    top: 0;
+    left: -280px;
   }
 
   #drawer.open {
@@ -536,14 +813,38 @@
     display: block;
   }
 
+  #closeDrawer {
+    display: block;
+  }
+
   body {
     margin-left: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .stewardship-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-card {
+    padding: 18px;
+  }
+
+  .button,
+  .button2 {
+    min-width: unset;
+    width: 100%;
   }
 }
 /* Base body — no margins */
 body {
   margin: 0;
   padding: 0;
+  font-family: 'Inter', 'Montserrat Regular', Arial, sans-serif;
+  background: linear-gradient(135deg, #eceff4 0%, #e1e8ef 100%);
+  color: #2c3e50;
+  line-height: 1.6;
 }
 
 .cdss-logo-text {
@@ -579,11 +880,13 @@ body {
   padding-bottom: 10px;
 }*/
 
+
 .drawer-va-seal {
   margin-top: auto;  /* pushes it to the bottom */
-  padding-top: 20px;
+  padding-top: 5px;
   text-align: center;
 }
+
 
 .va-logo-text {
   display: flex;
@@ -625,10 +928,12 @@ body {
 
 
 </style>
+
   <script src="https://kit.fontawesome.com/0f4bc037e4.js" crossorigin="anonymous"></script>
 </head>
 <body>
-	<!-- Overlay (darkens background when drawer is open) -->
+
+<!-- Overlay (darkens background when drawer is open) -->
 <div id="drawerOverlay" onclick="closeDrawer()"></div>
 
 <!-- Sidebar Drawer -->
@@ -637,7 +942,7 @@ body {
   <div class="drawer-logos">
 <!--    <img src="CDSSLogo.png" class="CDSSLogo">-->
 
-<div class="cdss-logo-text">
+<div class="cdss-logo-text" title="Antimicrobial Computer Decision Support System Version 10">
   <span class="cdss-logo-label">CDSS</span>
   <span class="cdss-logo-desc">Antimicrobial Computer<br>Decision Support System <strong>V10</strong></span>
 </div>
@@ -649,25 +954,27 @@ body {
   <!-- Location Buttons -->
   <div class="drawer-section-title">Locations</div>
   <div class="drawer-buttons">
-    <a href="AnnArborCDSS.html" class="button">Ann Arbor</a>
-    <a href="BattleCreekCDSS.html" class="button">Battle Creek</a>
-    <a href="CincinnatiCDSS.html" class="button">Cincinnati</a>
-    <a href="ClevelandCDSS.html" class="button">Cleveland</a>
-    <a href="DaytonCDSS.html" class="button">Dayton</a>
-    <a href="DetroitCDSS.html" class="button">Detroit</a>
-    <a href="IndianapolisCDSS.html" class="button">Indianapolis</a>
-    <a href="NorthernIndianaCDSS.html" class="button">Northern Indiana</a>
-    <a href="SaginawCDSS.html" class="button">Saginaw</a>
+  <a href="AnnArborCDSS.html" class="button">Ann Arbor<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(506) Ann Arbor, MI</span></a>
+  <a href="BattleCreekCDSS.html" class="button">Battle Creek<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(515) Battle Creek, MI</span></a>
+  <a href="CincinnatiCDSS.html" class="button">Cincinnati<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(539) Cincinnati, OH</span></a>
+  <a href="ClevelandCDSS.html" class="button">Cleveland<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(541) Cleveland, OH</span></a>
+    <a href="ColumbusCDSS.html" class="button">Columbus<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(757) Columbus, OH</span></a>
+    <a href="DaytonCDSS.html" class="button">Dayton<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(552) Dayton, OH</span></a>
+    <a href="DetroitCDSS.html" class="button">Detroit<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(553) Detroit, MI</span></a>
+    <a href="IndianapolisCDSS.html" class="button">Indianapolis<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(583) Indianapolis, IN</span></a>
+    <a href="NorthernIndianaCDSS.html" class="button">Northern Indiana<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(610) Northern Indiana HCS (Marion, IN)</span></a>
+    <a href="SaginawCDSS.html" class="button">Saginaw<span style="display: block; font-size: 11px; color: #7fa3d0; font-weight: normal; margin-top: 2px;">(655) Saginaw, MI</span></a>
   </div>
 
-  <!-- Data Buttons -->
+  <!-- Data Buttons 
   <div class="drawer-section-title">Data Tools</div>
   <div class="drawer-buttons">
     <a href="ColumbusOMJSON.json" download id="menusLink" class="button2">MenuData</a>
     <a href="ColumbusODJSON.json" download id="ordersLink" class="button2">OrderData</a>
     <a href="Columbus.txml" download id="templateFieldsLink" class="button2">TemplateFieldData</a>
     <a href="#" id="downloadJSONButton" class="button2">CurrentMenuData</a>
-  </div>
+  </div>-->
+  
 
 <!-- VA Seal at the bottom -->
 <div class="drawer-va-seal">
@@ -678,44 +985,49 @@ body {
 </div>
 
 	<div id="header">
+  <div id="pageHeading"></div>
   <div class="buttons-container">
     <button id="drawerToggle">&#9776;</button>
-    <button id="goBackButton">&#9664;</button>
+    <!--<button id="goBackButton">&#9664;</button>
     <button id="mainMenuButton">Columbus Home</button>
     <button id="indexButton">Index</button>
-    <button id="goForwardButton">&#9654;</button>
+    <button id="goForwardButton">&#9654;</button>-->
     <button id="install-button" style="display: none;">Install App</button>
-    <button id="homeButton" onclick="window.location.href='index.html'">
+    <button id="homeButton" onclick="window.location.href='index.html'" title="V10 CDSS Home">
       <i class="fa-solid fa-house" style="font-size: 15px; color: #D3D3D3;"></i>
     </button>
   </div>
-  <div class="buttons-container2">
+  
+  <!--<div class="buttons-container2">
     <button id="inptButton">Inpatient</button>
     <button id="outptButton">Outpatient</button>
     <button id="erucButton">ER/UC</button>
-  </div>
-  <div class="search-container">
+  </div>-->
+
+<!--  <div class="search-container">
     <input type="text" id="searchInput" placeholder="&#x1F50D;">
     <div class="dropbox-container">
       <select id="filterDropdown"></select>
     </div>
-  </div>
+  </div>-->
 </div>
 
 <!-- Wrap everything below header in this div -->
 <div id="mainContent">
+  <!-- Stewardship Buttons Section -->
+  <div id="stewardshipButtons" style="padding: 10px; max-width: 960px;"></div>
   <table class="table">
     <div id="resultContainer"></div>
   </table>
   <div class="buttons-containerVersions">
     <button id="ColumbusButton" class="button">Columbus</button>
-    <button id="AnnArborButton" class="button">Ann Arbor</button>
+    <button id="ColumbusButton" class="button">Columbus</button>
     <button id="CincinnatiButton" class="button">Cincinnati</button>
     <button id="ClevelandButton" class="button">Cleveland</button>
     <button id="DaytonButton" class="button">Dayton</button>
     <button id="IndianapolisButton" class="button">Indianapolis</button>
     <button id="DetroitButton" class="button">Detroit</button>
-    <button id="BattleCreekButton" class="button">Battle Creek</button>
+    <button id="ColumbusButton" class="button">Columbus</button>
     <button id="SaginawButton" class="button">Saginaw</button>
     <button id="NorthernIndianaButton" class="button">Northern Indiana</button>
   </div>
@@ -795,7 +1107,7 @@ async function checkLocationDataAvailability() {
   const locationDataMap = {
     'AnnArborCDSS.html': 'StewardshipButtons.json',
     'BattleCreekCDSS.html': 'StewardshipButtonsBattleCreek.json',
-    'ChillicotheCDSS.html': 'StewardshipButtonsChillicothe.json',
+    'ColumbusCDSS.html': 'StewardshipButtonsColumbus.json',
     'CincinnatiCDSS.html': 'StewardshipButtonsCincinnati.json',
     'ClevelandCDSS.html': 'StewardshipButtonsCleveland.json',
     'ColumbusCDSS.html': 'StewardshipButtonsColumbus.json',
@@ -849,13 +1161,227 @@ async function checkLocationDataAvailability() {
     }
   });
 }
+  
+// Fetch and render Stewardship Buttons
+async function fetchStewardshipButtons() {
+  try {
+    const response = await fetch('StewardshipButtonsColumbus.json');
+    const data = await response.json();
+    renderStewardshipButtons(data);
+  } catch(e) {
+    console.warn('StewardshipButtons.json not found or invalid.', e);
+  }
+}
+
+function renderStewardshipButtons(data) {
+  const container = document.getElementById('stewardshipButtons');
+  if (!container) return;
+  container.innerHTML = '';
+  container.style.display = 'block';
+
+  // Render header if present
+  const pageHeadingContainer = document.getElementById('pageHeading');
+  if (pageHeadingContainer) {
+    pageHeadingContainer.innerHTML = '';
+  }
+
+  if (data.header) {
+    const header = document.createElement('h2');
+    header.textContent = data.header;
+    header.className = 'stewardship-heading';
+    if (pageHeadingContainer) {
+      pageHeadingContainer.appendChild(header);
+    } else {
+      container.appendChild(header);
+    }
+  }
+
+  data.sections.forEach((section, i) => {
+    const sectionCard = document.createElement('div');
+    sectionCard.className = 'section-card';
+
+    const title = document.createElement('p');
+    title.textContent = section.title;
+    title.className = 'section-title';
+    sectionCard.appendChild(title);
+
+    const grid = document.createElement('div');
+    grid.className = 'stewardship-grid';
+
+    /*section.buttons.forEach(item => {
+      const btn = document.createElement('button');
+      btn.textContent = item.label;
+      btn.title = item.label;
+      btn.className = 'button';
+      btn.style.cssText = 'width:100%; white-space:normal; text-align:left; padding:8px; height:auto;';
+      btn.addEventListener('click', (e) => {
+        if (item.submenu && item.submenu.length > 0) {
+          showSubmenu(e, item.label, item.submenu);  // CHANGED
+        } else if (item.url && item.url !== '#') {
+          window.open(item.url, '_blank');
+        }
+      });
+      grid.appendChild(btn);
+    });*/
+
+ section.buttons.forEach(item => {
+      const btn = document.createElement('button');
+      btn.innerHTML = item.submenu && item.submenu.length > 0
+      ? '<i class="fa fa-chevron-down" style="margin-right:6px;"></i>' + item.label
+      : item.label;
+      btn.title = item.label;
+      btn.className = 'button steward-button';
+      btn.addEventListener('click', (e) => {
+        if (item.submenu && item.submenu.length > 0) {
+          showSubmenu(e, item.label, item.submenu);
+        } else if (item.url && item.url !== '#') {
+          window.open(item.url, '_blank');
+        }
+      });
+      grid.appendChild(btn);
+    });
 
 
 
+    sectionCard.appendChild(grid);
+    container.appendChild(sectionCard);
+  });
+}
 
 
+function showSubmenu(e, title, submenuItems, isNested = false) {
+  // Remove any existing nested popups (but keep parent popup visible)
+  let popupId = isNested ? 'stewardshipPopupNested' : 'stewardshipPopup';
+  const existing = document.getElementById(popupId);
+  if (existing) existing.remove();
+  
+  // Only remove backdrop for nested popups, not the main one
+  if (isNested) {
+    const nestedBackdrop = document.getElementById('stewardshipBackdropNested');
+    if (nestedBackdrop) nestedBackdrop.remove();
+  }
 
+  const popup = document.createElement('div');
+  popup.id = popupId;
+  popup.className = 'submenu-popup';
+  popup.style.zIndex = isNested ? 10002 : 10001;
 
+  // Position near the clicked button
+  const rect = e.currentTarget ? e.currentTarget.getBoundingClientRect() : e.target.getBoundingClientRect();
+  
+  if (isNested) {
+    // Position nested popup to the right of the clicked button
+    popup.style.left = (rect.right + 8) + 'px';
+    popup.style.top = rect.top + 'px';
+  } else {
+    // Position first-level popup below the clicked button
+    popup.style.left = rect.left + 'px';
+    popup.style.top = (rect.bottom + 4) + 'px';
+  }
+
+  // Popup header with title and close icon
+  const popupHeader = document.createElement('div');
+  popupHeader.className = 'popup-header';
+
+  const popupTitle = document.createElement('p');
+  popupTitle.textContent = title;
+  popupTitle.className = 'popup-title';
+  popupHeader.appendChild(popupTitle);
+
+  const closeButton = document.createElement('button');
+  closeButton.className = 'popup-close';
+  closeButton.innerHTML = '&times;';
+  closeButton.title = 'Close';
+  popupHeader.appendChild(closeButton);
+
+  popup.appendChild(popupHeader);
+
+  // Submenu buttons
+
+  const backdropId = isNested ? 'stewardshipBackdropNested' : 'stewardshipBackdrop';
+  closeButton.addEventListener('click', (ev) => {
+    ev.stopPropagation();
+    popup.remove();
+    document.getElementById(backdropId)?.remove();
+  });
+  submenuItems.forEach(subItem => {
+    const subBtn = document.createElement('button');
+    subBtn.innerHTML = (subItem.submenu && subItem.submenu.length > 0)
+      ? '<i class="fa fa-chevron-right" style="margin-right:8px;"></i>' + subItem.label
+      : subItem.label;
+    subBtn.title = subItem.label;
+    subBtn.className = 'submenu-button';
+    subBtn.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      if (subItem.submenu && subItem.submenu.length > 0) {
+        // Recursively show nested submenu
+        showSubmenu(ev, subItem.label, subItem.submenu, true);
+      } else if (subItem.url && subItem.url !== '#') {
+        window.open(subItem.url, '_blank');
+        popup.remove();
+        backdrop.remove();
+      }
+    });
+    popup.appendChild(subBtn);
+  });
+
+  // Create backdrop
+  const backdrop = document.createElement('div');
+  backdrop.id = backdropId;
+  backdrop.className = 'submenu-backdrop';
+  backdrop.style.zIndex = isNested ? 10001 : 10000;
+  
+  backdrop.addEventListener('click', () => {
+    if (!isNested) {
+      popup.remove();
+    }
+    backdrop.remove();
+  });
+
+  // Close when clicking anywhere outside
+  setTimeout(() => {
+    document.addEventListener('click', function closePopup(ev) {
+      if (!popup.contains(ev.target)) {
+        popup.remove();
+        document.getElementById(backdropId)?.remove();
+        document.removeEventListener('click', closePopup);
+      }
+    });
+  }, 0);
+
+  document.body.appendChild(backdrop);
+  document.body.appendChild(popup);
+
+  // Adjust position if popup exceeds viewport
+  const popupRect = popup.getBoundingClientRect();
+  const viewportHeight = window.innerHeight;
+  const viewportWidth = window.innerWidth;
+  let adjustedTop = parseFloat(popup.style.top || '0');
+  let adjustedLeft = parseFloat(popup.style.left || '0');
+  const padding = 12;
+
+  if (popupRect.bottom > viewportHeight - padding) {
+    adjustedTop = Math.max(padding, adjustedTop - (popupRect.bottom - viewportHeight) - 8);
+  }
+  if (popupRect.top < padding) {
+    adjustedTop = padding;
+  }
+
+  if (popupRect.right > viewportWidth - padding) {
+    if (isNested) {
+      adjustedLeft = Math.max(padding, rect.left - popupRect.width - 8);
+    } else {
+      adjustedLeft = Math.max(padding, viewportWidth - popupRect.width - padding);
+    }
+  }
+  if (popupRect.left < padding) {
+    adjustedLeft = padding;
+  }
+
+  popup.style.top = adjustedTop + 'px';
+  popup.style.left = adjustedLeft + 'px';
+  popup.style.maxHeight = (viewportHeight - padding * 2) + 'px';
+}
 
 
 // Fetch OMJSON Data
@@ -895,12 +1421,9 @@ let matchedErucName = null;
 	
 // Function to hide location buttons
 
-if (CDSSlocation === 'Ann Arbor') {
-  {document.getElementById("AnnArborButton").style.display="none";};
-}
 if (CDSSlocation === 'Columbus') {
   {document.getElementById("ColumbusButton").style.display="none";};
-}  
+}
 if (CDSSlocation === 'Cincinnati') {
   {document.getElementById("CincinnatiButton").style.display="none";};
 }
@@ -916,8 +1439,8 @@ if (CDSSlocation === 'Indianapolis') {
 if (CDSSlocation === 'Detroit') {
   {document.getElementById("DetroitButton").style.display="none";};
 }  
-if (CDSSlocation === 'Battle Creek') {
-  {document.getElementById("BattleCreekButton").style.display="none";};
+if (CDSSlocation === 'Columbus') {
+  {document.getElementById("ColumbusButton").style.display="none";};
 }  
 if (CDSSlocation === 'Saginaw') {
   {document.getElementById("SaginawButton").style.display="none";};
@@ -925,9 +1448,9 @@ if (CDSSlocation === 'Saginaw') {
 if (CDSSlocation === 'Northern Indiana') {
   {document.getElementById("NorthernIndianaButton").style.display="none";};
 }  
-if (hideButtonsIndex === 'True') {
+/*if (hideButtonsIndex === 'True') {
   {document.getElementById("indexButton").style.display="none";};
-}
+}*/
 if (hideButtonsHome === 'True') {
   {document.getElementById("homeButton").style.display="none";};
 }
@@ -947,8 +1470,8 @@ buttonsContainerVersions.style.display = 'none';
     
 document.getElementById('versionTag').textContent = Version;
 document.getElementById('pageTitle').textContent = Title;
-document.getElementById('mainMenuButton').textContent = MainMenuButton;
-document.getElementById('indexButton').textContent = IndexButton;
+/*document.getElementById('mainMenuButton').textContent = MainMenuButton;*/
+/*document.getElementById('indexButton').textContent = IndexButton;*/
   
 function populateDropdown(omData) {
   const dropdown = document.getElementById('filterDropdown');
@@ -1356,12 +1879,13 @@ function createOMTable(selectedData) {
   resultContainer.innerHTML = '';
   if (selectedData) {
     resultContainer.appendChild(table);
+    document.getElementById('stewardshipButtons').style.display = 'none';
   }
 checkMatchesAndSetButtonAppearance()
 forwardBackButtonActivate()
 }
 
-function forwardBackButtonActivate () {
+/*function forwardBackButtonActivate () {
 if (historyIndex < history.length - 1) {
 	goForwardButton.classList.remove('inactive-button'); // Remove inactive class	  
     	goForwardButton.style.color = ''; // Reset to default color  
@@ -1377,7 +1901,7 @@ if (historyIndex > 0) {
 	goBackButton.classList.add('inactive-button'); // Add inactive class
     	goBackButton.style.color = 'grey'; // Set to grey text
     }
-}
+}*/
 async function handleRowClick(item, ClickSymbol) {
     const matchingItem = omData.find(
         omItem => omItem.Name.trim().toLowerCase() === item.Item.trim().toLowerCase()
@@ -1583,7 +2107,7 @@ async function createODTable(selectedItem) {
     const headerRow = document.createElement('tr');
     const headerCell = document.createElement('td');
     headerCell.textContent = 'ORDER DIALOG INFORMATION';
-    headerCell.style.fontFamily = 'PT Serif Bold, Arial, sans-serif';
+    headerCell.style.fontFamily = 'Montserrat Bold, Arial, sans-serif';
     headerCell.style.fontWeight = 'bold';
     headerCell.style.backgroundColor = 'lightblue'; // Set background color
     headerCell.style.textAlign = 'left'; // Center align the header
@@ -1675,7 +2199,7 @@ async function createODTable(selectedItem) {
                     const txmlHeaderRow = document.createElement('tr');
                     const txmlHeaderCell = document.createElement('td');
                     txmlHeaderCell.textContent = `TEMPLATE FIELD INFORMATION`;
-                    txmlHeaderCell.style.fontFamily = 'PT Serif Bold, Arial, sans-serif';
+                    txmlHeaderCell.style.fontFamily = 'Montserrat Bold, Arial, sans-serif';
                     txmlHeaderCell.style.fontWeight = 'bold';
                     txmlHeaderCell.style.backgroundColor = 'lightyellow'; // Different background color
                     txmlHeaderCell.style.textAlign = 'left'; // Center align the header
@@ -1854,6 +2378,8 @@ function handleGoForward() {
 
 // Function to handle the Main Menu button click event
 function handleMainMenu() {
+  document.getElementById('resultContainer').innerHTML = '';
+  document.getElementById('stewardshipButtons').style.display = 'block';
   const dropdown = document.getElementById('filterDropdown');
   document.getElementById('searchInput').value = null;
   document.getElementById('searchInput').placeholder = "\u{1F50D}";
@@ -2001,18 +2527,18 @@ function handleInpt() {
   checkMatchesAndSetButtonAppearance()
 }
 // Function to handle the Download JSON button click event
-function handleDownloadJSON() {
-  const displayText = selectedData.DisplayText || selectedData.Name;
-  const data = JSON.stringify(selectedData, null, 2);
-  const filename = `${displayText}.json`;
-  const element = document.createElement('a');
-  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(data));
-  element.setAttribute('download', filename);
-  element.style.display = 'none';
-  document.body.appendChild(element);
-  element.click();
-  document.body.removeChild(element);
-}
+  function handleDownloadJSON() {
+    const displayText = selectedData.DisplayText || selectedData.Name;
+    const data = JSON.stringify(selectedData, null, 2);
+    const filename = `${displayText}.json`;
+    const element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(data));
+    element.setAttribute('download', filename);
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+    }
  
 // Function to open the dropdown when clicking into the search input
 function openDropdown() {
@@ -2026,116 +2552,47 @@ function openDropdown() {
   return element === searchInput || element.parentNode === searchInput;
   }
 
-// JavaScript code to handle button clicks - wrap in try-catch to prevent errors from non-existent buttons
-try {
-  const desMoinesBtn = document.getElementById('desMoinesButton');
-  if (desMoinesBtn) {
-    desMoinesBtn.addEventListener('click', function () {
-      openPageInNewWindow("DesMoinesCDSS.html", { " CI ": " ", " NE ": " ", "GMENU": "CI GMENU" });
-    });
-  }
-  
-  const minneapolisBtn = document.getElementById('minneapolisButton');
-  if (minneapolisBtn) {
-    minneapolisBtn.addEventListener('click', function () {
-      openPageInNewWindow("BlackHillsCDSS.html",{ " CI ": " ", " NE ": " " });
-    });
-  }
-  
-  const fargoBtn = document.getElementById('fargoButton');
-  if (fargoBtn) {
-    fargoBtn.addEventListener('click', function () {
-      openPageInNewWindow("FargoCDSS.html",{ " CI ": " ", " NE ": " " });
-    });
-  }
-  
-  const omahaBtn = document.getElementById('omahaButton');
-  if (omahaBtn) {
-    omahaBtn.addEventListener('click', function () {
-      openPageInNewWindow('OmahaCDSS.html', { " CI ": " ", " NE ": " ", "GMENU": "NE GMENU" });
-    });
-  }
-  
-  const stCloudBtn = document.getElementById('stCloudButton');
-  if (stCloudBtn) {
-    stCloudBtn.addEventListener('click', function () {
-      openPageInNewWindow('StCloudCDSS.html', { " CI ": " ", " NE ": " " });
-    });
-  }
-  
-  const siouxFallsBtn = document.getElementById('siouxFallsButton');
-  if (siouxFallsBtn) {
-    siouxFallsBtn.addEventListener('click', function () {
-      openPageInNewWindow('SiouxFallsCDSS.html', { " CI ": " ", " NE ": " " });
-    });
-  }
-} catch (error) {
-  console.warn('Some location buttons were not found:', error);
-}
+// JavaScript code to handle button clicks
+document.getElementById('ColumbusButton').addEventListener('click', function () {
+openPageInNewWindow("ColumbusCDSS.html", { " CI ": " ", " NE ": " ", "GMENU": "CI GMENU" });
+});
+document.getElementById('ColumbusButton').addEventListener('click', function () {
+  openPageInNewWindow("ColumbusCDSS.html",{ " CI ": " ", " NE ": " " }); // Pass the replacement value
+});
+document.getElementById('CincinnatiButton').addEventListener('click', function () {
+  openPageInNewWindow("CincinnatiCDSS.html",{ " CI ": " ", " NE ": " " }); // Pass the replacement value
+});
+document.getElementById('ClevelandButton').addEventListener('click', function () {
+  openPageInNewWindow("ClevelandCDSS.html",{ " CI ": " ", " NE ": " " }); // Pass the replacement value
+});
+document.getElementById('DaytonButton').addEventListener('click', function () {
+  openPageInNewWindow('DaytonCDSS.html', { " CI ": " ", " NE ": " ", "GMENU": "NE GMENU" }); // Pass the replacement value
+});
+document.getElementById('IndianapolisButton').addEventListener('click', function () {
+  openPageInNewWindow('IndianapolisCDSS.html', { " CI ": " ", " NE ": " " }); // Pass the replacement value
+});
+document.getElementById('DetroitButton').addEventListener('click', function () {
+  openPageInNewWindow('DetroitCDSS.html', { " CI ": " ", " NE ": " " }); // Pass the replacement value
+});
 
 // Attach event listeners
-const downloadBtn = document.getElementById('downloadJSONButton');
-if (downloadBtn) {
-  downloadBtn.addEventListener('click', handleDownloadJSON);
-}
-
-const goBackBtn = document.getElementById('goBackButton');
-if (goBackBtn) {
-  goBackBtn.addEventListener('click', handleGoBack);
-}
-
-const goForwardBtn = document.getElementById('goForwardButton');
-if (goForwardBtn) {
-  goForwardBtn.addEventListener('click', handleGoForward);
-}
-
-const mainMenuBtn = document.getElementById('mainMenuButton');
-if (mainMenuBtn) {
-  mainMenuBtn.addEventListener('click', handleMainMenu);
-}
-
-const indexBtn = document.getElementById('indexButton');
-if (indexBtn) {
-  indexBtn.addEventListener('click', handleIndex);
-}
-
-const outptBtn = document.getElementById('outptButton');
-if (outptBtn) {
-  outptBtn.addEventListener('click', handleOutpt);
-}
-
-const inptBtn = document.getElementById('inptButton');
-if (inptBtn) {
-  inptBtn.addEventListener('click', handleInpt);
-}
-
-const erucBtn = document.getElementById('erucButton');
-if (erucBtn) {
-  erucBtn.addEventListener('click', handleEruc);
-}
-
-const filterDropdownEl = document.getElementById('filterDropdown');
-if (filterDropdownEl) {
-  filterDropdownEl.addEventListener('change', filterData);
-}
-
+document.getElementById('downloadJSONButton').addEventListener('click', handleDownloadJSON);
+/*document.getElementById('goBackButton').addEventListener('click', handleGoBack);
+document.getElementById('goForwardButton').addEventListener('click', handleGoForward);
+document.getElementById('mainMenuButton').addEventListener('click', handleMainMenu);
+document.getElementById('indexButton').addEventListener('click', handleIndex);*/
+document.getElementById('outptButton').addEventListener('click', handleOutpt);
+document.getElementById('inptButton').addEventListener('click', handleInpt);
+document.getElementById('erucButton').addEventListener('click', handleEruc);
+document.getElementById('filterDropdown').addEventListener('change', filterData);
 window.addEventListener('resize', adjustFontSize);
 window.addEventListener('DOMContentLoaded', adjustFontSize);
-
-const searchInputEl = document.getElementById('searchInput');
-if (searchInputEl) {
-  searchInputEl.addEventListener('input', searchData);
-  searchInputEl.addEventListener('click', openDropdown);
-  searchInputEl.addEventListener('input', openDropdown);
-}
-
-const homeBtn = document.getElementById('homeButton');
-if (homeBtn) {
-  homeBtn.addEventListener('click', function() {
+document.getElementById('searchInput').addEventListener('input', searchData);
+document.getElementById('searchInput').addEventListener('click', openDropdown);
+document.getElementById('searchInput').addEventListener('input', openDropdown);
+document.getElementById('homeButton').addEventListener('click', function() {
     window.location.href = homeButtonUrl;
-  });
-}
-
+});
 // Attach download handlers to the data tool buttons
 document.addEventListener('DOMContentLoaded', () => {
   // MenuData, OrderData, and TemplateFieldData buttons work via href/download attributes
@@ -2150,6 +2607,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+  
+// Call the adjustFontSize function when the window is resized
+window.addEventListener('resize', adjustFontSize);
   
 // Function to hide broken images if they are not in repository
 document.addEventListener("DOMContentLoaded", function(event) {
@@ -2188,8 +2648,13 @@ Promise.all([fetchOMData(), fetchODData(), fetchAbxLink()]) // Add fetchIndex()
   if (dropdownValue) {
     dropdown.value = decodeURIComponent(dropdownValue);
   } else {
-    // If no dropdown value is provided in the URL, set a default value
+    // If no dropdown value is provided in the URL, show stewardship buttons as home screen
     dropdown.value = MainMenu;
+    pushHistory(dropdown.value);
+    // Do NOT call filterData on startup — stewardshipButtons serves as the home screen
+    scrollToTop();
+    adjustFontSize();
+    return; // skip filterData so resultContainer stays empty
   }
     pushHistory(dropdown.value);
     filterData({ target: dropdown });
@@ -2239,7 +2704,7 @@ function checkMatchesAndSetButtonAppearance() {
   const outptButton = document.getElementById('outptButton');
   const erucButton = document.getElementById('erucButton');
   const inptButton = document.getElementById('inptButton');
-  const indexButton = document.getElementById('indexButton');
+  /*const indexButton = document.getElementById('indexButton');*/
   matchedOutptName = null;
   matchedErucName = null;
 	
@@ -2286,17 +2751,17 @@ if (currentVersion === 'inpt'){
 	setButtonBackground(inptButton, true);
 	setButtonBackground(outptButton, false);
 	setButtonBackground(erucButton, false);
-	setButtonAppearance(indexButton, true);
+	/*setButtonAppearance(indexButton, true);*/
 } else if (currentVersion === 'outpt') {
   	setButtonBackground(inptButton, false);
 	setButtonBackground(outptButton, true);
 	setButtonBackground(erucButton, false);
-	setButtonAppearance(indexButton, true);
+/*	setButtonAppearance(indexButton, true);*/
 } else if (currentVersion === 'eruc') {
   	setButtonBackground(inptButton, false);
 	setButtonBackground(outptButton, false);
 	setButtonBackground(erucButton, true);
-	setButtonAppearance(indexButton, false);
+	/*setButtonAppearance(indexButton, false);*/
 	}
 }
 // Function to set the button appearance
@@ -2329,5 +2794,24 @@ window.onload = function() {
 };
 	
 </script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    
+    document.getElementById('drawerToggle').addEventListener('click', function() {
+      document.getElementById('drawer').classList.add('open');
+      document.getElementById('drawerOverlay').classList.add('open');
+    });
+
+  });
+
+  function closeDrawer() {
+    document.getElementById('drawer').classList.remove('open');
+    document.getElementById('drawerOverlay').classList.remove('open');
+  }
+</script>
+<script></script>
 </body>
 </html>
+
