@@ -422,6 +422,26 @@
   display: none; /* hidden on desktop */
 }
 
+.data-indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #4caf50;
+  border-radius: 50%;
+  margin-right: 6px;  /* ← was margin-left */
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+  flex-shrink: 0;     /* ← added so dot never squishes */
+  animation: pulse 2s infinite;
+}
+
+    .data-indicator.unavailable {
+      background-color: #ffc107;
+    }
+
+
+
 .drawer-section-title {
   color: #4db8ff;
   font-family: 'Montserrat Bold', Arial, sans-serif;
@@ -766,8 +786,78 @@ function adjustFontSize() {
 // Call the adjustFontSize function when the DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
   adjustFontSize();
+  fetchStewardshipButtons();
+  checkLocationDataAvailability();
 });
+
+// Check location data availability and add indicators
+async function checkLocationDataAvailability() {
+  const locationDataMap = {
+    'AnnArborCDSS.html': 'StewardshipButtons.json',
+    'BattleCreekCDSS.html': 'StewardshipButtonsBattleCreek.json',
+    'ChillicotheCDSS.html': 'StewardshipButtonsChillicothe.json',
+    'CincinnatiCDSS.html': 'StewardshipButtonsCincinnati.json',
+    'ClevelandCDSS.html': 'StewardshipButtonsCleveland.json',
+    'ColumbusCDSS.html': 'StewardshipButtonsColumbus.json',
+    'DaytonCDSS.html': 'StewardshipButtonsDayton.json',
+    'DetroitCDSS.html': 'StewardshipButtonsDetroit.json',
+    'IndianapolisCDSS.html': 'StewardshipButtonsIndianapolis.json',
+    'NorthernIndianaCDSS.html': 'StewardshipButtonsNorthernIndiana.json',
+    'SaginawCDSS.html': 'StewardshipButtonsSaginaw.json'
+  };
+
+  const unavailableText = 'Pharmacy Antimicrobial Resources Temporarily Unavailable';
+
+  // Get all location buttons
+  const buttons = document.querySelectorAll('.drawer-buttons .button');
   
+  buttons.forEach(async (button) => {
+    const href = button.getAttribute('href');
+    if (locationDataMap[href]) {
+      const dataFile = locationDataMap[href];
+      try {
+        const response = await fetch(dataFile);
+        if (response.ok) {
+          const jsonData = await response.json();
+          const jsonString = JSON.stringify(jsonData);
+          
+          // Check if the unavailable text is in the data
+          if (jsonString.includes(unavailableText)) {
+            // Data unavailable, add yellow indicator
+            if (!button.querySelector('.data-indicator')) {
+              const indicator = document.createElement('span');
+              indicator.className = 'data-indicator unavailable';
+              indicator.title = 'Resources temporarily unavailable for this location';
+              /*button.appendChild(indicator);*/
+              button.prepend(indicator);  // ← was appendChild
+            }
+          } else {
+            // Data available, add green indicator
+            if (!button.querySelector('.data-indicator')) {
+              const indicator = document.createElement('span');
+              indicator.className = 'data-indicator';
+              indicator.title = 'Data available for this location';
+              /*button.appendChild(indicator);*/
+              button.prepend(indicator);  // ← was appendChild
+            }
+          }
+        }
+      } catch (e) {
+        // Data not found, no indicator added
+        console.debug(`No data found for ${href}`);
+      }
+    }
+  });
+}
+
+
+
+
+
+
+
+
+
 // Fetch OMJSON Data
 async function fetchOMData() {
     const response = await fetch(OMjson);
