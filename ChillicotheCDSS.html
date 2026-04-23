@@ -317,7 +317,7 @@
       box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.1);
     }
 
-.data-indicator {
+/*.data-indicator {
       display: inline-block;
       width: 8px;
       height: 8px;
@@ -328,7 +328,21 @@
       position: relative;
       top: -1px;
       animation: pulse 2s infinite;
-    }
+    }*/
+
+    .data-indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #4caf50;
+  border-radius: 50%;
+  margin-right: 6px;  /* ← was margin-left */
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+  flex-shrink: 0;     /* ← added so dot never squishes */
+  animation: pulse 2s infinite;
+}
 
     .data-indicator.unavailable {
       background-color: #ffc107;
@@ -1128,7 +1142,8 @@ async function checkLocationDataAvailability() {
               const indicator = document.createElement('span');
               indicator.className = 'data-indicator unavailable';
               indicator.title = 'Resources temporarily unavailable for this location';
-              button.appendChild(indicator);
+              /*button.appendChild(indicator);*/
+              button.prepend(indicator);  // ← was appendChild
             }
           } else {
             // Data available, add green indicator
@@ -1136,7 +1151,8 @@ async function checkLocationDataAvailability() {
               const indicator = document.createElement('span');
               indicator.className = 'data-indicator';
               indicator.title = 'Data available for this location';
-              button.appendChild(indicator);
+              /*button.appendChild(indicator);*/
+              button.prepend(indicator);  // ← was appendChild
             }
           }
         }
