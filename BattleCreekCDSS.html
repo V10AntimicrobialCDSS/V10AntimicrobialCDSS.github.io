@@ -1133,7 +1133,8 @@ async function checkLocationDataAvailability() {
               const indicator = document.createElement('span');
               indicator.className = 'data-indicator unavailable';
               indicator.title = 'Resources temporarily unavailable for this location';
-              button.appendChild(indicator);
+              /*button.appendChild(indicator);*/
+              button.prepend(indicator);  // ← was appendChild
             }
           } else {
             // Data available, add green indicator
@@ -1141,7 +1142,8 @@ async function checkLocationDataAvailability() {
               const indicator = document.createElement('span');
               indicator.className = 'data-indicator';
               indicator.title = 'Data available for this location';
-              button.appendChild(indicator);
+              /*button.appendChild(indicator);*/
+              button.prepend(indicator);  // ← was appendChild
             }
           }
         }
